@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsConfig" targetNamespace="dsConfig.xsd" xmlns:mstns="dsConfig.xsd" xmlns="dsConfig.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsConfig" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsConfig" msprop:Generator_UserDSName="dsConfig">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="SysConfig" msprop:Generator_TableClassName="SysConfigDataTable" msprop:Generator_TableVarName="tableSysConfig" msprop:Generator_RowChangedName="SysConfigRowChanged" msprop:Generator_TablePropName="SysConfig" msprop:Generator_RowDeletingName="SysConfigRowDeleting" msprop:Generator_RowChangingName="SysConfigRowChanging" msprop:Generator_RowEvHandlerName="SysConfigRowChangeEventHandler" msprop:Generator_RowDeletedName="SysConfigRowDeleted" msprop:Generator_RowClassName="SysConfigRow" msprop:Generator_UserTableName="SysConfig" msprop:Generator_RowEvArgName="SysConfigRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="usaTouch" msprop:Generator_ColumnVarNameInTable="columnusaTouch" msprop:Generator_ColumnPropNameInRow="usaTouch" msprop:Generator_ColumnPropNameInTable="usaTouchColumn" msprop:Generator_UserColumnName="usaTouch" type="xs:boolean" minOccurs="0" />
+              <xs:element name="printerFactura" msprop:Generator_ColumnVarNameInTable="columnprinterFactura" msprop:Generator_ColumnPropNameInRow="printerFactura" msprop:Generator_ColumnPropNameInTable="printerFacturaColumn" msprop:Generator_UserColumnName="printerFactura" type="xs:string" minOccurs="0" />
+              <xs:element name="printerProforma" msprop:Generator_ColumnVarNameInTable="columnprinterProforma" msprop:Generator_ColumnPropNameInRow="printerProforma" msprop:Generator_ColumnPropNameInTable="printerProformaColumn" msprop:Generator_UserColumnName="printerProforma" type="xs:string" minOccurs="0" />
+              <xs:element name="printerCocina" msprop:Generator_ColumnVarNameInTable="columnprinterCocina" msprop:Generator_ColumnPropNameInRow="printerCocina" msprop:Generator_ColumnPropNameInTable="printerCocinaColumn" msprop:Generator_UserColumnName="printerCocina" type="xs:string" minOccurs="0" />
+              <xs:element name="printerParrilla" msprop:Generator_ColumnVarNameInTable="columnprinterParrilla" msprop:Generator_ColumnPropNameInRow="printerParrilla" msprop:Generator_ColumnPropNameInTable="printerParrillaColumn" msprop:Generator_UserColumnName="printerParrilla" type="xs:string" minOccurs="0" />
+              <xs:element name="printerBar" msprop:Generator_ColumnVarNameInTable="columnprinterBar" msprop:Generator_ColumnPropNameInRow="printerBar" msprop:Generator_ColumnPropNameInTable="printerBarColumn" msprop:Generator_UserColumnName="printerBar" type="xs:string" minOccurs="0" />
+              <xs:element name="caja" msprop:Generator_ColumnVarNameInTable="columncaja" msprop:Generator_ColumnPropNameInRow="caja" msprop:Generator_ColumnPropNameInTable="cajaColumn" msprop:Generator_UserColumnName="caja" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Database" msprop:Generator_TableClassName="DatabaseDataTable" msprop:Generator_TableVarName="tableDatabase" msprop:Generator_RowChangedName="DatabaseRowChanged" msprop:Generator_TablePropName="Database" msprop:Generator_RowDeletingName="DatabaseRowDeleting" msprop:Generator_RowChangingName="DatabaseRowChanging" msprop:Generator_RowEvHandlerName="DatabaseRowChangeEventHandler" msprop:Generator_RowDeletedName="DatabaseRowDeleted" msprop:Generator_RowClassName="DatabaseRow" msprop:Generator_UserTableName="Database" msprop:Generator_RowEvArgName="DatabaseRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="server" msprop:Generator_ColumnVarNameInTable="columnserver" msprop:Generator_ColumnPropNameInRow="server" msprop:Generator_ColumnPropNameInTable="serverColumn" msprop:Generator_UserColumnName="server" type="xs:string" minOccurs="0" />
+              <xs:element name="base" msprop:Generator_ColumnVarNameInTable="columnbase" msprop:Generator_ColumnPropNameInRow="_base" msprop:Generator_ColumnPropNameInTable="baseColumn" msprop:Generator_UserColumnName="base" type="xs:string" minOccurs="0" />
+              <xs:element name="puerto" msprop:Generator_ColumnVarNameInTable="columnpuerto" msprop:Generator_ColumnPropNameInRow="puerto" msprop:Generator_ColumnPropNameInTable="puertoColumn" msprop:Generator_UserColumnName="puerto" type="xs:long" minOccurs="0" />
+              <xs:element name="usuario" msprop:Generator_ColumnVarNameInTable="columnusuario" msprop:Generator_ColumnPropNameInRow="usuario" msprop:Generator_ColumnPropNameInTable="usuarioColumn" msprop:Generator_UserColumnName="usuario" type="xs:string" minOccurs="0" />
+              <xs:element name="clave" msprop:Generator_ColumnVarNameInTable="columnclave" msprop:Generator_ColumnPropNameInRow="clave" msprop:Generator_ColumnPropNameInTable="claveColumn" msprop:Generator_UserColumnName="clave" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

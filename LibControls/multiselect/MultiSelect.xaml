@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="LibControls.multiselect.MultiSelect"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibControls.multiselect"
+             mc:Ignorable="d" 
+             d:DesignHeight="42" d:DesignWidth="250">
+    <Grid Margin="0,0,0,0">
+        <ComboBox x:Name ="cboContent" Height="40" Width="250" Margin="1,1,1,1" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" FontSize="14">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox x:Name="chkSelect" Margin="0,0,0,0" Content="{Binding descripcion}" CommandParameter="{Binding codigo}" IsChecked="{Binding isChecked}" FontSize="10" VerticalContentAlignment="Center" >
+                        <CheckBox.LayoutTransform>
+                            <ScaleTransform ScaleX="2.3" ScaleY="2.3" />
+                        </CheckBox.LayoutTransform>
+                    </CheckBox>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+    </Grid>
+</UserControl>

@@ -1,0 +1,92 @@
+﻿<UserControl
+    x:Class="TreskelRest.frms.ctls.ctlReporteInventario"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:TreskelRest.frms.ctls"
+    xmlns:radiobutton="clr-namespace:LibControls.radiobutton;assembly=LibControls"
+    mc:Ignorable="d" Background="White"
+    d:DesignHeight="458" d:DesignWidth="600">
+    <Grid>
+        <DockPanel>
+            <Grid DockPanel.Dock="Bottom" Height="60" HorizontalAlignment="Center">
+                <Button x:Name="btnGrabar" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Height="40" Foreground="White" FontSize="16" Click="btnGrabar_Click" Background="#5cb51a">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Image Source="../../images/process.png" Width="30" Height="30" />
+                        <TextBlock VerticalAlignment="Center"><Run Text="Generar"/></TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnCancelar" HorizontalAlignment="Left" Margin="150,10,0,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="16" Foreground="White" Click="btnCancelar_Click" Background="#d9534f">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Image Source="../../images/cancel.png" Width="30" Height="30" />
+                        <TextBlock VerticalAlignment="Center"><Run Text="Cancelar"/></TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+            <Grid>
+                
+                <StackPanel Orientation="Vertical" Margin="10,10,0,0" >
+                    <RadioButton x:Name="rbMovimientos" GroupName="opcion" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" IsChecked="True" Checked="rbMovimientos_Checked" Unchecked="rbMovimientos_Unchecked">
+                        <RadioButton.LayoutTransform>
+                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                        </RadioButton.LayoutTransform>
+                        <Label FontSize="7" Height="15" Padding="0,0,0,0" VerticalContentAlignment="Center">Movimientos por día</Label>
+                    </RadioButton>
+                    <Grid Margin="10,10, 10, 10">
+                        <TextBlock x:Name="label" Text="Se recomienda que el intervalo de fecha a utilizar no sea mayor a un mes, en caso de ser necesario, trate de no ir más allá de tres meses, podría hacer que el reporte demore." FontSize="16" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="560" Height="62" TextWrapping="Wrap" />
+                        <Label Content="Desde" FontSize="16" Width="70" Height="40" Margin="10,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <DatePicker x:Name="desde" FontSize="16" Width="350" Height="40" Margin="100,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"  CalendarStyle="{StaticResource styleCalendar}" />
+                        <Label Content="Hasta" FontSize="16" Width="70" Height="40" Margin="10,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <DatePicker x:Name="hasta" FontSize="16" Width="350" Height="40" Margin="100,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"  CalendarStyle="{StaticResource styleCalendar}" />
+                    </Grid>
+                    <RadioButton x:Name="rbKardex" GroupName="opcion" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" IsChecked="False" Checked="rbKardex_Checked" Unchecked="rbKardex_Unchecked">
+                        <RadioButton.LayoutTransform>
+                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                        </RadioButton.LayoutTransform>
+                        <Label FontSize="7" Height="15" Padding="0,0,0,0" VerticalContentAlignment="Center">Kardex anual</Label>
+                    </RadioButton>
+                    <Grid Margin="10,10,10,10">
+                        <TextBlock Text="Indique el año y el mes a generar" FontSize="16" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="560" Height="32" TextWrapping="Wrap" />
+                        <Label Content="Año" FontSize="16" Width="70" Height="40" Margin="10,40,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <TextBox x:Name="Anio" IsEnabled="False" FontSize="16" Height="40" Width="70" Text="2019" Margin="80,40,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        <Label Content="Mes" FontSize="16" Width="70" Height="40" Margin="180,40,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <ComboBox x:Name="cboMes" IsEnabled="False" Margin="250,40,0,0" Width="150" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center">
+                            <ComboBoxItem FontSize="16" Height="40" VerticalContentAlignment="Center" Tag="0" IsSelected="True">--- Todos ---</ComboBoxItem>
+                            <ComboBoxItem FontSize="16" Height="40" VerticalContentAlignment="Center" Tag="1">Enero</ComboBoxItem>
+                            <ComboBoxItem FontSize="16" Height="40" VerticalContentAlignment="Center" Tag="2">Febrero</ComboBoxItem>
+                            <ComboBoxItem FontSize="16" Height="40" VerticalContentAlignment="Center" Tag="3">Marzo</ComboBoxItem>
+                            <ComboBoxItem FontSize="16" Height="40" VerticalContentAlignment="Center" Tag="4">Abril</ComboBoxItem>
+                            <ComboBoxItem FontSize="16" Height="40" VerticalContentAlignment="Center" Tag="5">Mayo</ComboBoxItem>
+                            <ComboBoxItem FontSize="16" Height="40" VerticalContentAlignment="Center" Tag="6">Junio</ComboBoxItem>
+                            <ComboBoxItem FontSize="16" Height="40" VerticalContentAlignment="Center" Tag="7">Julio</ComboBoxItem>
+                            <ComboBoxItem FontSize="16" Height="40" VerticalContentAlignment="Center" Tag="8">Agosto</ComboBoxItem>
+                            <ComboBoxItem FontSize="16" Height="40" VerticalContentAlignment="Center" Tag="9">Septiembre</ComboBoxItem>
+                            <ComboBoxItem FontSize="16" Height="40" VerticalContentAlignment="Center" Tag="10">Octubre</ComboBoxItem>
+                            <ComboBoxItem FontSize="16" Height="40" VerticalContentAlignment="Center" Tag="11">Noviembre</ComboBoxItem>
+                            <ComboBoxItem FontSize="16" Height="40" VerticalContentAlignment="Center" Tag="12">Diciembre</ComboBoxItem>
+                        </ComboBox>
+                    </Grid>
+                </StackPanel>
+                
+
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>

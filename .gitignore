@@ -1,0 +1,74 @@
+# =======================================================================
+# 1. REGLAS ESENCIALES PARA .NET / VISUAL STUDIO (¡Soluciona el peso!)
+# =======================================================================
+# Ignora absolutamente todas las carpetas bin y obj del proyecto
+[Bb]in/
+[Oo]bj/
+
+# Archivos temporales y cachés de Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.VisualStudio.GitProxy.config
+
+# =======================================================================
+# 2. DEPENDENCIAS Y PAQUETES (NuGet, Node, Java)
+# =======================================================================
+# Paquetes de .NET
+*.nupkg
+packages/
+
+# Node.js (por si usas librerías híbridas)
+node_modules/
+.angular/
+dist/
+
+# Java y Python
+*.class
+*.jar
+*.war
+target/
+*.py[cod]
+
+# =======================================================================
+# 3. ARCHIVOS EJECUTABLES Y COMPILADOS (Extensiones sueltas)
+# =======================================================================
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+
+# =======================================================================
+# 4. ARCHIVOS PESADOS, RESPALDOS Y MULTIMEDIA
+# =======================================================================
+backup/
+libBackup/
+*.backup
+*.bkp
+*.zip
+*.rar
+*.bz7
+
+# Video y audio pesado
+*.mp4
+*.tiff
+*.avi
+*.flv
+*.mov
+*.wmv
+
+# Documentos de ofimática (opcional, actívalo si no deben subirse)
+*.xls
+*.xlsx
+*.doc
+*.docx
+*.pdf
+
+# =======================================================================
+# 5. ARCHIVOS DEL SISTEMA OPERATIVO
+# =======================================================================
+.DS_Store
+Thumbs.db

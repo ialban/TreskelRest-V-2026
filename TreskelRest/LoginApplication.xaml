@@ -1,0 +1,119 @@
+﻿<Window x:Class="TreskelRest.LoginApplication"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TreskelRest"
+        mc:Ignorable="d"
+        Title="Treskel Login" Height="371.052" Width="525" WindowStyle="None"
+        WindowStartupLocation="CenterScreen" Activated="Window_Activated" IsVisibleChanged="Window_IsVisibleChanged" Icon="treskel.ico">
+    <DockPanel>
+        <StackPanel Background="Black" DockPanel.Dock="Bottom" Height="50">
+            <Label Foreground="White">Desarrollado por: TreskelSoft</Label>
+            <TextBlock Foreground="White" Margin="6,0,0,0">
+                <Hyperlink NavigateUri="mailto://ignacio.alban@gmail.com" Foreground="White">Contactar a: Ignacio Albán</Hyperlink>
+            </TextBlock>
+        </StackPanel>
+        <Grid>
+            <Grid.Background>
+                <ImageBrush x:Name="imgBackground" ImageSource="images/fondo.png" />
+            </Grid.Background>
+            <StackPanel Margin="100,10,0,0" Height="250">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Setter Property="Margin" Value="2.5"/>
+                    </Style>
+                    <Style TargetType="{x:Type Label}">
+                        <Setter Property="Margin" Value="2.5"/>
+                    </Style>
+                    <Style TargetType="{x:Type PasswordBox}">
+                        <Setter Property="Margin" Value="2.5"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Label x:Name="lblUser" Content="Usuario" Foreground="White" FontSize="20" />
+                <StackPanel Orientation="Horizontal">
+                    <TextBox x:Name="txtUsuario" HorizontalAlignment="Left" Height="40" MaxLength="20" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="258" FontSize="16"  VerticalContentAlignment="Center" Margin="2,2.5,0,2.5" KeyDown="txtUsuario_KeyDown" />
+                    <Button x:Name="clearUsuario" Height="40" Width="50" Click="clearUsuario_Click" >
+                        <Button.Background>
+                            <SolidColorBrush Color="LavenderBlush" />
+                        </Button.Background>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel.Resources>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Margin" Value="3"/>
+                                </Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Margin" Value="3"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Image Source="images/clear.png" Width="30" Height="30" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                
+                <Label x:Name="lblClave" Content="Contraseña" Foreground="White" FontSize="20" />
+                <StackPanel Orientation="Horizontal">
+                    <PasswordBox x:Name="txtClave" HorizontalAlignment="Left" Height="40" MaxLength="20" VerticalAlignment="Top" Width="258" FontSize="16" VerticalContentAlignment="Center" Margin="2,2.5,0,2.5" KeyUp="txtClave_KeyUp"/>
+                    <Button x:Name="clearClave" Height="40" Width="50" Click="clearClave_Click">
+                        <Button.Background>
+                            <SolidColorBrush Color="LavenderBlush" />
+                        </Button.Background>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel.Resources>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Margin" Value="3"/>
+                                </Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Margin" Value="3"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Image Source="images/clear.png" Width="30" Height="30" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Button x:Name="btnLogin" Height="50" Width="150" Foreground="White" FontSize="20" Click="btnLogin_Click">
+                        <Button.Background>
+                            <SolidColorBrush Color="#5cb85c" />
+                        </Button.Background>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel.Resources>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Margin" Value="3"/>
+                                </Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Margin" Value="3"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Image Source="images/login.png" Width="30" Height="30" />
+                            <TextBlock VerticalAlignment="Center">Ingresar</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnCancel" Height="50" Width="150" Foreground="White" FontSize="20" Click="btnCancel_Click">
+                        <Button.Background>
+                            <SolidColorBrush Color="#d9534f" />
+                        </Button.Background>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel.Resources>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Margin" Value="3"/>
+                                </Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Margin" Value="3"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Image Source="images/cancel.png" Width="30" Height="30" />
+                            <TextBlock VerticalAlignment="Center">Cancelar</TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </DockPanel>
+</Window>

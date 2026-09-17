@@ -1,0 +1,1491 @@
+﻿<UserControl             
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"                           
+             xmlns:local="clr-namespace:TreskelRest.frms.ctls"
+             xmlns:spinner="clr-namespace:LibControls.spinner;assembly=LibControls" 
+             xmlns:timepicker="clr-namespace:LibControls.timepicker;assembly=LibControls" 
+             xmlns:switchButton="clr-namespace:LibControls.switchButton;assembly=LibControls" x:Class="TreskelRest.frms.ctls.ctlConfiguracion" 
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="650" d:DesignWidth="1150">
+    <DockPanel>
+        <Grid DockPanel.Dock="Bottom" Height="60" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Button x:Name="btnGrabar" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Height="40" Foreground="White" FontSize="16" Click="btnGrabar_Click" Background="#5cb85c">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Image Source="../../images/save.png" Width="30" Height="30" />
+                    <TextBlock VerticalAlignment="Center"><Run Text="Grabar"/></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button x:Name="btnCancelar" HorizontalAlignment="Left" Margin="150,10,0,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="16" Foreground="White" Click="btnCancelar_Click" Background="#d9534f">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Image Source="../../images/cancel.png" Width="30" Height="30" />
+                    <TextBlock VerticalAlignment="Center"><Run Text="Cancelar"/></TextBlock>
+                </StackPanel>
+            </Button>
+            <ProgressBar x:Name="uploading" Height="45" VerticalAlignment="Top" Width="300" HorizontalAlignment="left" Margin="300,5,0,0" Visibility="Hidden" IsIndeterminate="True"/>
+        </Grid>
+
+        <Grid Height="Auto">
+            <TabControl x:Name="tabControl" Width="Auto" Height="Auto" Margin="10,10,10,0" VerticalAlignment="Top">
+                <TabItem Header="Generales" FontSize="16" Height="40" Margin="-2,0">
+                    <Grid>
+                        <TabControl Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="960" Height="400">
+                            <TabItem Header="General" Height="40">
+                                <Grid>
+                                    <Label Content="Usa teclado en pantalla:" FontSize="16" Height="40" Width="180" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="3" />
+                                    <CheckBox x:Name="chkTouch" Margin="200,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                    <Label Content="Documentos a Generar:" FontSize="16" Height="40" Width="180" Margin="270,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="3" />
+                                    <switchButton:ctlSwitchButton x:Name="DocuCrea" Height="50" Width="150" Margin="500,10,0,0" Colores="AzulBlanco" Forma="Cuadrado" isEnabled="True" texto="FACTURA" textoAlterno="NOTA DE VENTA" VerticalAlignment="Top" HorizontalAlignment="Left" Valores="F/N"/>
+
+                                    <Label Content="Cierre Caja Acumulativo:" FontSize="16" Height="40" Width="200" Margin="10,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="3" />
+                                    <CheckBox x:Name="chkCierreAcum" Margin="200,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                    <Label Content="Formato de Decimales (Rpte):" FontSize="16" Height="40" Width="220" Margin="270,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Column="2" />
+                                    <ComboBox x:Name="cboFormatDec" FontSize="16" Height="40" Width="200" Margin="500,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" SelectionChanged="cboFormatDec_SelectionChanged" Grid.Column="2" >
+                                        <ComboBoxItem Height="60" VerticalContentAlignment="Center" Content="###,###.##" IsSelected="True" />
+                                        <ComboBoxItem Height="60" VerticalContentAlignment="Center" Content="###.###,##" />
+                                    </ComboBox>
+
+                                    <Label Content="Ruc Empresa Desarrolladora del Sistema:" FontSize="16" Height="40" Width="300" Margin="10,120,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <TextBox x:Name="txtRucDevelop" FontSize="16" Height="40" Width="200" Margin="320,120,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Text="" />
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="Compras e Inventario" Height="40">
+                                <Grid>
+                                    <GroupBox Header="Inventario" Width="800" Height="100" Margin="10,10,10,10" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                        <Grid>
+                                            <Label Content="Controlar Inventario:" FontSize="16" Height="40" Width="180" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="3" />
+                                            <CheckBox x:Name="chkCtrlInv" Margin="200,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                </CheckBox.LayoutTransform>
+                                            </CheckBox>
+
+                                            <Label Content="Stock Mínimo:" FontSize="16" Height="40" Width="180" Margin="270,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="3" />
+                                            <spinner:ctlSpinner x:Name="txtStockMin" HorizontalAlignment="Left" Margin="500,10,0,0" VerticalAlignment="Top" Grid.Column="2" Height="40" Width="160"/>
+                                        </Grid>    
+                                    </GroupBox>
+                                    <GroupBox Header="Compras" Height="150" Width="800" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,120,10,10">
+                                        <Grid>
+                                            <Label Content="Incluir Precios:" FontSize="16" Height="40" Width="180" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="3" />
+                                            <CheckBox x:Name="chkIncPrc" Margin="200,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16" IsChecked="True">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                </CheckBox.LayoutTransform>
+                                            </CheckBox>
+                                        </Grid>
+                                    </GroupBox>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="Precios" Height="40">
+                                <Grid>
+                                    <Label Content="Precios incluyen IVA:" FontSize="16" Height="40" Width="180" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="3" />
+                                    <CheckBox x:Name="chkPrcIva" Margin="210,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                    <Label Content="Valor del IVA:" FontSize="16" Height="40" Width="180" Margin="270,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Column="2" />
+                                    <spinner:ctlSpinner x:Name="txtIva" HorizontalAlignment="Left" Margin="420,10,0,0" VerticalAlignment="Top" Grid.Column="2" Height="40" Width="160"/>
+                                    <Label Content="Usa Descuentos manuales:" FontSize="16" Height="40" Width="200" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Column="2" />
+                                    <CheckBox x:Name="chkDsctManual" Margin="210,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                    <Label Content="Valor IVA Feriado:" FontSize="16" Height="40" Width="180" Margin="270,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Column="2" />
+                                    <spinner:ctlSpinner x:Name="txtIvaFeriado" HorizontalAlignment="Left" Margin="420,60,0,0" VerticalAlignment="Top" Grid.Column="2" Height="40" Width="160"/>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="Crédito" Height="40">
+                                <Grid>
+                                    <GroupBox Header="Opciones de Crédito" Margin="10, 10, 10,10" Width="370" Height="150" BorderThickness="2" BorderBrush="Black" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                        <Grid>
+                                            <Label Content="Permite dar çrédito:" FontSize="16" Height="40" Width="220" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Column="2" />
+                                            <CheckBox x:Name="chkAllowCredito" Margin="200,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Checked="chkAllowProforma_Checked" Unchecked="chkAllowProforma_Unchecked" Grid.Column="2" Height="15" Width="16">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                </CheckBox.LayoutTransform>
+                                            </CheckBox>
+
+                                            <Label Content="Corte para los créditos:" FontSize="16" Height="40" Width="220" Margin="10,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Column="2" />
+                                            <ComboBox x:Name="cboTiempoCorte" FontSize="16" Height="40" Width="150" Margin="200,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" SelectionChanged="cboFormatDec_SelectionChanged" Grid.Column="2" >
+                                                <ComboBoxItem Height="60" VerticalContentAlignment="Center" Content="Quincenal" IsSelected="True" />
+                                                <ComboBoxItem Height="60" VerticalContentAlignment="Center" Content="Mensual" />
+                                            </ComboBox>
+                                        </Grid>
+                                    </GroupBox>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="Reportes" Height="40">
+                                <WrapPanel Orientation="Horizontal" x:Name="tabTemas">
+                                    <WrapPanel.Resources>
+                                        <Style TargetType="{x:Type ToggleButton}">
+                                            <Setter Property="Margin" Value="10" />
+                                        </Style>
+                                    </WrapPanel.Resources>
+                                    <ToggleButton x:Name="tema0" Tag="-1" Width="150" Height="120" IsChecked="True" Style="{StaticResource styleToggleTheme}" >
+                                        <Image Source="/images/tema0.png" Width="130" />
+                                    </ToggleButton>
+                                    <ToggleButton x:Name="tema1" Tag="0" Width="150" Height="120" Style="{StaticResource styleToggleTheme}">
+                                        <Image Source="/images/tema1.png" Width="130" />
+                                    </ToggleButton>
+                                    <ToggleButton x:Name="tema2" Tag="1" Width="150" Height="120" Style="{StaticResource styleToggleTheme}">
+                                        <Image Source="/images/tema2.png" Width="130" />
+                                    </ToggleButton>
+                                    <ToggleButton x:Name="tema3" Tag="2" Width="150" Height="120" Style="{StaticResource styleToggleTheme}">
+                                        <Image Source="/images/tema3.png" Width="130" />
+                                    </ToggleButton>
+                                    <ToggleButton x:Name="tema4" Tag="3" Width="150" Height="120" Style="{StaticResource styleToggleTheme}">
+                                        <Image Source="/images/tema4.png" Width="130" />
+                                    </ToggleButton>
+                                    <ToggleButton x:Name="tema5" Tag="4" Width="150" Height="120" Style="{StaticResource styleToggleTheme}">
+                                        <Image Source="/images/tema5.png" Width="130" />
+                                    </ToggleButton>
+                                    <ToggleButton x:Name="tema6" Tag="5" Width="150" Height="120" Style="{StaticResource styleToggleTheme}">
+                                        <Image Source="/images/tema6.png" Width="130" />
+                                    </ToggleButton>
+                                    <ToggleButton x:Name="tema7" Tag="6" Width="150" Height="120" Style="{StaticResource styleToggleTheme}">
+                                        <Image Source="/images/tema7.png" Width="130" />
+                                    </ToggleButton>
+                                    <ToggleButton x:Name="tema8" Tag="7" Width="150" Height="120" Style="{StaticResource styleToggleTheme}">
+                                        <Image Source="/images/tema8.png" Width="130" />
+                                    </ToggleButton>
+                                    <ToggleButton x:Name="tema9" Tag="8" Width="150" Height="120" Style="{StaticResource styleToggleTheme}">
+                                        <Image Source="/images/tema9.png" Width="130" />
+                                    </ToggleButton>
+                                </WrapPanel>
+                            </TabItem>
+                            <TabItem Header="Presentación Login" Height="40">
+                                <Grid>
+                                    <Label Content="Fondo aleatorio :" FontSize="16" Height="40" Width="220" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Column="2" />
+                                    <CheckBox x:Name="chkFondoRandom" Margin="200,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Checked="chkAllowProforma_Checked" Unchecked="chkAllowProforma_Unchecked" Grid.Column="2" Height="15" Width="16">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+
+                                    <Label Content="Tema :" FontSize="16" Height="40" Width="220" Margin="300,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Column="2" />
+                                    <ComboBox x:Name="cboTemaLogin" FontSize="16" Height="40" Width="200" Margin="370,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" SelectionChanged="cboTemaLogin_SelectionChanged" Grid.Column="2" >
+                                        <ComboBoxItem Height="60" VerticalContentAlignment="Center" Content="Restaurante" IsSelected="True" />
+                                        <ComboBoxItem Height="60" VerticalContentAlignment="Center" Content="Musical" />
+                                        <ComboBoxItem Height="60" VerticalContentAlignment="Center" Content="Software" />
+                                    </ComboBox>
+                                    <GroupBox Header="Fondos disponibles" Margin="10,60,10,10" Height="280" VerticalAlignment="Top">
+                                        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Height="255" CanContentScroll="True" >
+                                            <ScrollViewer.Resources>
+                                                <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+                                                    <Setter Property="Stylus.IsFlicksEnabled" Value="True" />
+                                                    <Style.Triggers>
+                                                        <Trigger Property="Orientation" Value="Horizontal">
+                                                            <Setter Property="Height" Value="30" />
+                                                            <Setter Property="MinHeight" Value="30" />
+                                                        </Trigger>
+                                                        <Trigger Property="Orientation" Value="Vertical">
+                                                            <Setter Property="Width" Value="30" />
+                                                            <Setter Property="MinWidth" Value="30" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ScrollViewer.Resources>
+                                            <WrapPanel FlowDirection="LeftToRight" Margin="0,3,0,3" VerticalAlignment="Top" Orientation="Horizontal">
+                                                <WrapPanel.Resources>
+                                                    <Style TargetType="{x:Type Button}">
+                                                        <Setter Property="Margin" Value="1"/>
+                                                    </Style>
+                                                </WrapPanel.Resources>
+
+                                                <RadioButton x:Name="Fondo1" Width="160" Height="100" Style="{StaticResource styleRadioToggleTheme}" IsChecked="True" Checked="Fondo_Checked" >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel.Resources>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Margin" Value="3"/>
+                                                            </Style>
+                                                        </StackPanel.Resources>
+                                                        <Image x:Name="imgFondo1" Source="../../images/fondo.png" Width="140" Height="80" />
+                                                    </StackPanel>
+                                                </RadioButton>
+                                                <RadioButton x:Name="Fondo2" Width="160"  Height="100" Style="{StaticResource styleRadioToggleTheme}" Checked="Fondo_Checked" >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel.Resources>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Margin" Value="3"/>
+                                                            </Style>
+                                                        </StackPanel.Resources>
+                                                        <Image x:Name="imgFondo2" Source="../../images/fondo2.png" Width="140" Height="80" />
+                                                    </StackPanel>
+                                                </RadioButton>
+                                                <RadioButton x:Name="Fondo3" Width="160"  Height="100" Style="{StaticResource styleRadioToggleTheme}" Checked="Fondo_Checked" >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel.Resources>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Margin" Value="3"/>
+                                                            </Style>
+                                                        </StackPanel.Resources>
+                                                        <Image x:Name="imgFondo3" Source="../../images/fondo3.png" Width="140" Height="80" />
+                                                    </StackPanel>
+                                                </RadioButton>
+
+                                                <RadioButton x:Name="Fondo4" Width="160"  Height="100" Style="{StaticResource styleRadioToggleTheme}" Checked="Fondo_Checked" >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel.Resources>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Margin" Value="3"/>
+                                                            </Style>
+                                                        </StackPanel.Resources>
+                                                        <Image x:Name="imgFondo4" Source="../../images/fondo4.png" Width="140" Height="80" />
+                                                    </StackPanel>
+                                                </RadioButton>
+
+                                                <RadioButton x:Name="Fondo5" Width="160"  Height="100" Style="{StaticResource styleRadioToggleTheme}" Checked="Fondo_Checked" >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel.Resources>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Margin" Value="3"/>
+                                                            </Style>
+                                                        </StackPanel.Resources>
+                                                        <Image x:Name="imgFondo5" Source="../../images/fondo5.png" Width="140" Height="80" />
+                                                    </StackPanel>
+                                                </RadioButton>
+
+                                                <RadioButton x:Name="Fondo6" Width="160"  Height="100" Style="{StaticResource styleRadioToggleTheme}" Checked="Fondo_Checked" >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel.Resources>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Margin" Value="3"/>
+                                                            </Style>
+                                                        </StackPanel.Resources>
+                                                        <Image x:Name="imgFondo6" Source="../../images/fondo6.png" Width="140" Height="80" />
+                                                    </StackPanel>
+                                                </RadioButton>
+
+                                                <RadioButton x:Name="Fondo7" Width="160"  Height="100" Style="{StaticResource styleRadioToggleTheme}" Checked="Fondo_Checked" >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel.Resources>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Margin" Value="3"/>
+                                                            </Style>
+                                                        </StackPanel.Resources>
+                                                        <Image x:Name="imgFondo7" Source="../../images/fondo7.png" Width="140" Height="80" />
+                                                    </StackPanel>
+                                                </RadioButton>
+
+                                                <RadioButton x:Name="Fondo8" Width="160"  Height="100" Style="{StaticResource styleRadioToggleTheme}" Checked="Fondo_Checked" >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel.Resources>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Margin" Value="3"/>
+                                                            </Style>
+                                                        </StackPanel.Resources>
+                                                        <Image x:Name="imgFondo8" Source="../../images/fondo8.png" Width="140" Height="80" />
+                                                    </StackPanel>
+                                                </RadioButton>
+
+                                                <RadioButton x:Name="Fondo9" Width="160"  Height="100" Style="{StaticResource styleRadioToggleTheme}" Checked="Fondo_Checked" >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel.Resources>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Margin" Value="3"/>
+                                                            </Style>
+                                                        </StackPanel.Resources>
+                                                        <Image x:Name="imgFondo9" Source="../../images/fondo9.png" Width="140" Height="80" />
+                                                    </StackPanel>
+                                                </RadioButton>
+
+                                                <RadioButton x:Name="Fondo10" Width="160"  Height="100" Style="{StaticResource styleRadioToggleTheme}" Checked="Fondo_Checked" >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel.Resources>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Margin" Value="3"/>
+                                                            </Style>
+                                                        </StackPanel.Resources>
+                                                        <Image x:Name="imgFondo10" Source="../../images/fondo10.png" Width="140" Height="80" />
+                                                    </StackPanel>
+                                                </RadioButton>
+                                            </WrapPanel>
+                                        </ScrollViewer>
+                                    </GroupBox>
+                                </Grid>
+                            </TabItem>
+                        </TabControl>
+                    </Grid>
+                </TabItem>
+                <TabItem Header=" Mesas " FontSize="16" Height="40">
+                    <Grid>
+                        <Label Content="Sala Principal:" FontSize="16" Height="40" Width="180" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <spinner:ctlSpinner x:Name="txtMesas" HorizontalAlignment="Left" Margin="130,10,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Sala alterna:" FontSize="16" Height="40" Width="100" Margin="10,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="2" />
+                        <CheckBox x:Name="chkAlterna" Margin="120,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" Checked="chkAlterna_Checked" Unchecked="chkAlterna_Unchecked">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                        <Label Content="Cantidad Sala Alterna:" FontSize="16" Height="40" Width="180" Margin="180,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <spinner:ctlSpinner x:Name="txtMesasAlt" HorizontalAlignment="Left" Margin="370,70,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+
+                        <Label Content="Exterior:" FontSize="16" Height="40" Width="100" Margin="10,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="2" />
+                        <CheckBox x:Name="chkExterior" Margin="120,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" Checked="chkExterior_Checked" Unchecked="chkExterior_Unchecked" RenderTransformOrigin="1.5,1.5">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                        <Label Content="Cantidad Exterior:" FontSize="16" Height="40" Width="180" Margin="180,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <spinner:ctlSpinner x:Name="txtMesasExt" HorizontalAlignment="Left" Margin="370,130,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+
+                        <Label Content="Terraza:" FontSize="16" Height="40" Width="100" Margin="10,190,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="2" />
+                        <CheckBox x:Name="chkTerraza" Margin="120,190,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" Checked="chkTerraza_Checked" Unchecked="chkTerraza_Unchecked">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                        <Label Content="Cantidad Terraza:" FontSize="16" Height="40" Width="180" Margin="180,190,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <spinner:ctlSpinner x:Name="txtMesasTerr" HorizontalAlignment="Left" Margin="370,190,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+
+                        <Label Content="2do Piso:" FontSize="16" Height="40" Width="100" Margin="10,250,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="2" />
+                        <CheckBox x:Name="chk2Piso" Margin="120,250,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" Checked="chk2Piso_Checked" Unchecked="chk2Piso_Unchecked">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                        <Label Content="Cantidad 2do Piso:" FontSize="16" Height="40" Width="180" Margin="180,250,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <spinner:ctlSpinner x:Name="txtMesasSPis" HorizontalAlignment="Left" Margin="370,250,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Pedidos y Ventas" FontSize="16" Height="40" VerticalAlignment="Bottom">
+                    <Grid Height="Auto">
+                        <TabControl Margin="10,10,10,10" Width="1000" Height="500" VerticalAlignment="Top" HorizontalAlignment="Left">
+                            <TabItem Header="Diseño" Height="40">
+                                <Grid>
+                                    <Label Content="Facturación y Pedidos separados" FontSize="16" Height="40" Width="280" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <CheckBox x:Name="chkModoFact" Margin="280,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="true" Checked="chkModoFact_Checked"  Unchecked="chkModoFact_Unchecked">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                    <Label Content="Cambio Rápido entre Facturación y Pedidos:" FontSize="16" Height="40" Width="350" Margin="360,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <CheckBox x:Name="chkCambioRapido" Margin="700,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="False" Checked="chkCambioRapido_Checked" Unchecked="chkCambioRapido_Unchecked">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                    <Label Content="Pantalla de Pedidos Vertical:" FontSize="16" Height="40" Width="210" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <CheckBox x:Name="chkPeddVert" Margin="280,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="False">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+
+                                    <Label Content="Muestra cliente Llevar: " FontSize="16" Margin="360,60, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                    <CheckBox x:Name="chkMuestraClieLlevar" Margin="700,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+
+                                    <Label Content="Ordenar Items por : " HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" FontSize="16" Height="40" VerticalContentAlignment="Center"/>
+                                    <ComboBox x:Name="cboOrderBy" Height="40" Width="120" Margin="170,110,0,0" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Left" VerticalContentAlignment="Center">
+                                        <ComboBoxItem Content="Código" Height="40" VerticalContentAlignment="Center" IsSelected="True" />
+                                        <ComboBoxItem Content="Nombre" Height="40" VerticalContentAlignment="Center" />
+                                        <ComboBoxItem Content="Alias" Height="40" VerticalContentAlignment="Center" />
+                                    </ComboBox>
+
+                                    <Label Content="Usar secuencial (Reiniciado) por Periodo: " FontSize="16" Margin="360,110, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                    <CheckBox x:Name="chkSecPorPeriodo" Margin="700,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+
+                                    <GroupBox Header="Generación de ticket para cocina" Margin="10, 170, 10, 10" BorderThickness="2" BorderBrush="Black" FontWeight="Bold" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" >
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                            <RadioButton x:Name="ticketCocina1" Height="170" Width="120" Style="{StaticResource styleRadioToggleTheme}" IsChecked="True" Checked="ticketCocina1_Checked" >
+                                                <StackPanel Orientation="Horizontal">
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="{x:Type Image}">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <Image Source="../../images/ticketCocina1.png" Width="100" Height="140" />
+                                                </StackPanel>
+                                            </RadioButton>
+                                            <RadioButton x:Name="ticketCocina2" Height="170" Width="120" Style="{StaticResource styleRadioToggleTheme}" Checked="ticketCocina2_Checked" >
+                                                <StackPanel Orientation="Horizontal">
+                                                    <StackPanel.Resources>
+                                                        <Style TargetType="{x:Type Image}">
+                                                            <Setter Property="Margin" Value="3"/>
+                                                        </Style>
+                                                    </StackPanel.Resources>
+                                                    <Image Source="../../images/ticketCocina2.png" Width="100" Height="140" />
+                                                </StackPanel>
+                                            </RadioButton>
+                                        </StackPanel>
+                                    </GroupBox>
+
+                                    <TabControl x:Name="tabPresentacion" Width="500" Height="280" HorizontalAlignment="Left" Margin="335,160,0,10" VerticalAlignment="Top">
+                                        <TabItem Header="Organización" FontSize="16" Height="50" Margin="-2,0">
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                    <RadioButton x:Name="organizaProductosHor" Height="140" Width="190" Style="{StaticResource styleRadioToggleTheme}" IsChecked="True" Checked="organizaProductosHor_Checked" >
+                                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                            <StackPanel.Resources>
+                                                                <Style TargetType="{x:Type Image}">
+                                                                    <Setter Property="Margin" Value="3"/>
+                                                                </Style>
+                                                            </StackPanel.Resources>
+                                                            <Image Source="../../images/horOrg.png" Width="160" Height="110" />
+                                                        </StackPanel>
+                                                    </RadioButton>
+                                                    <RadioButton x:Name="organizaProductosVer" Height="140" Width="190" Style="{StaticResource styleRadioToggleTheme}" Checked="organizaProductosVer_Checked" >
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel.Resources>
+                                                                <Style TargetType="{x:Type Image}">
+                                                                    <Setter Property="Margin" Value="3"/>
+                                                                </Style>
+                                                            </StackPanel.Resources>
+                                                            <Image Source="../../images/verOrg.png" Width="160" Height="110" />
+                                                        </StackPanel>
+                                                    </RadioButton>
+                                                </StackPanel>
+                                                <StackPanel x:Name="OpcColsGrp" Orientation="Horizontal" Height="50" IsEnabled="False">
+                                                    <Label Content="Cant. columnas en Opciones Grupo:" FontSize="16" Height="40" Width="270" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                                    <spinner:ctlSpinner x:Name="txtCntCols" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </TabItem>
+                                        <TabItem Header="Botones Prod." FontSize="16" Height="50" Margin="-2,0">
+                                            <WrapPanel Width="Auto" Height="Auto" FlowDirection="LeftToRight" VerticalAlignment="Top" Orientation="Horizontal" >
+                                                <WrapPanel.Resources>
+                                                    <Style TargetType="{x:Type RadioButton}">
+                                                        <Setter Property="Margin" Value="1"/>
+                                                    </Style>
+                                                </WrapPanel.Resources>
+                                                <RadioButton x:Name="btnTextOnly" Height="100" Width="100" Style="{StaticResource styleRadioToggleTheme2}" IsChecked="true" Checked="btnTextOnly_Checked" >
+                                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                        <StackPanel.Resources>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Margin" Value="3"/>
+                                                            </Style>
+                                                        </StackPanel.Resources>
+                                                        <Image Source="../../images/btnOnlyText.png" Width="80" Height="80" />
+                                                    </StackPanel>
+                                                </RadioButton>
+                                                <RadioButton x:Name="btnTextOnlyEdit" Height="100" Width="100" Style="{StaticResource styleRadioToggleTheme2}" Checked="btnTextOnlyEdit_Checked" >
+                                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                        <StackPanel.Resources>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Margin" Value="3"/>
+                                                            </Style>
+                                                        </StackPanel.Resources>
+                                                        <Image Source="../../images/btnOnlyTextEdit.png" Width="80" Height="80" />
+                                                    </StackPanel>
+                                                </RadioButton>
+                                                <RadioButton x:Name="btnImageOnly" Height="100" Width="100" Style="{StaticResource styleRadioToggleTheme2}" Checked="btnImageOnly_Checked" >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel.Resources>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Margin" Value="3"/>
+                                                            </Style>
+                                                        </StackPanel.Resources>
+                                                        <Image Source="../../images/btnOnlyImage.png" Width="80" Height="80" />
+                                                    </StackPanel>
+                                                </RadioButton>
+                                                <RadioButton x:Name="btnImageEdit" Height="100" Width="100" Style="{StaticResource styleRadioToggleTheme2}" Checked="btnImageEdit_Checked" >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel.Resources>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Margin" Value="3"/>
+                                                            </Style>
+                                                        </StackPanel.Resources>
+                                                        <Image Source="../../images/btnImageEdit.png" Width="80" Height="80" />
+                                                    </StackPanel>
+                                                </RadioButton>
+                                                <RadioButton x:Name="btnImageText" Height="100" Width="100" Style="{StaticResource styleRadioToggleTheme2}" Checked="btnImageText_Checked" >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel.Resources>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Margin" Value="3"/>
+                                                            </Style>
+                                                        </StackPanel.Resources>
+                                                        <Image Source="../../images/btnImageText.png" Width="80" Height="80" />
+                                                    </StackPanel>
+                                                </RadioButton>
+                                                <RadioButton x:Name="btnImageTextEdit" Height="100" Width="100" Style="{StaticResource styleRadioToggleTheme2}" Checked="btnImageTextEdit_Checked" >
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <StackPanel.Resources>
+                                                            <Style TargetType="{x:Type Image}">
+                                                                <Setter Property="Margin" Value="3"/>
+                                                            </Style>
+                                                        </StackPanel.Resources>
+                                                        <Image Source="../../images/btnImageTextEdit.png" Width="80" Height="80" />
+                                                    </StackPanel>
+                                                </RadioButton>
+                                            </WrapPanel>
+                                        </TabItem>
+                                        <TabItem Header="Botones Pedd/Fact." FontSize="16" Height="50" Margin="-2,0">
+                                            <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                    <Label Content="Pedidos:" FontSize="16" Height="40" Width="70" Margin="10,35,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Top" />
+                                                    <RadioButton x:Name="tamBotPedd1" Height="85" Width="190" Style="{StaticResource styleRadioToggleTheme}" IsChecked="True" Checked="organizaProductosHor_Checked" >
+                                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                            <StackPanel.Resources>
+                                                                <Style TargetType="{x:Type Image}">
+                                                                    <Setter Property="Margin" Value="3"/>
+                                                                </Style>
+                                                            </StackPanel.Resources>
+                                                            <Image Source="../../images/opPedd1.png" Width="160" Height="70" />
+                                                        </StackPanel>
+                                                    </RadioButton>
+                                                    <RadioButton x:Name="tamBotPedd2" Height="85" Width="180" Style="{StaticResource styleRadioToggleTheme}" Checked="organizaProductosVer_Checked" >
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel.Resources>
+                                                                <Style TargetType="{x:Type Image}">
+                                                                    <Setter Property="Margin" Value="3"/>
+                                                                </Style>
+                                                            </StackPanel.Resources>
+                                                            <Image Source="../../images/opPedd2.png" Width="150" Height="70" />
+                                                        </StackPanel>
+                                                    </RadioButton>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                    <Label Content="Facturas:" FontSize="16" Height="40" Width="70" Margin="10,35,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Top" />
+                                                    <RadioButton x:Name="tamBotFact1" Height="85" Width="190" Style="{StaticResource styleRadioToggleTheme}" IsChecked="True" Checked="organizaProductosHor_Checked" >
+                                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                                            <StackPanel.Resources>
+                                                                <Style TargetType="{x:Type Image}">
+                                                                    <Setter Property="Margin" Value="3"/>
+                                                                </Style>
+                                                            </StackPanel.Resources>
+                                                            <Image Source="../../images/opPedd1.png" Width="160" Height="70" />
+                                                        </StackPanel>
+                                                    </RadioButton>
+                                                    <RadioButton x:Name="tamBotFact2" Height="85" Width="180" Style="{StaticResource styleRadioToggleTheme}" Checked="organizaProductosVer_Checked" >
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <StackPanel.Resources>
+                                                                <Style TargetType="{x:Type Image}">
+                                                                    <Setter Property="Margin" Value="3"/>
+                                                                </Style>
+                                                            </StackPanel.Resources>
+                                                            <Image Source="../../images/opPedd2.png" Width="150" Height="70" />
+                                                        </StackPanel>
+                                                    </RadioButton>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </TabItem>
+                                    </TabControl>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="Comportamiento" Height="40">
+                                <Grid>
+                                    <Label Content="Inicio del Secuencial de Pedidos:" FontSize="16" Height="40" Width="280" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <spinner:ctlSpinner x:Name="txtInicioScl" HorizontalAlignment="Left" Margin="270,10,0,0" VerticalAlignment="Top"/>
+                                    <Button x:Name="btnScl" HorizontalAlignment="Left" Margin="440,10,0,0" VerticalAlignment="Top" Width="60" Height="40" Foreground="White" FontSize="16" Click="btnScl_Click" Background="RoyalBlue">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel.Resources>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Setter Property="Margin" Value="3"/>
+                                                </Style>
+                                            </StackPanel.Resources>
+                                            <TextBlock VerticalAlignment="Center"><Run Text="..."/></TextBlock>
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Label Content="Cierre de Caja con Vtas Carrier:" FontSize="16" Height="40" Width="240" Margin="530,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <CheckBox x:Name="chkIncCarrieCCajar" Margin="780,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="True">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+
+                                    <Label Content="Permite solo ventas locales:" FontSize="16" Height="40" Width="300" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <CheckBox x:Name="chkLocalOnly" Margin="265,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="false">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+
+                                    <Label Content="Permite seleccionar mesas en Market:" FontSize="16" Height="40" Width="300" Margin="500,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <CheckBox x:Name="chkSelMesasMarket" Margin="780,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="false">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+
+                                    <Label Content="Permite seleccionar productos vía BarCode:" FontSize="16" Height="40" Width="320" Margin="460,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <CheckBox x:Name="chkSelProdByBC" Margin="780,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="false">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+
+                                    <GroupBox Header="Filtrado de productos" Margin="460,160,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" BorderThickness="2" BorderBrush="Black">
+                                        <Grid>
+                                            <Label Content="Permite Buscar Productos:" FontSize="16" Height="40" Width="320" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                            <CheckBox x:Name="chkBscItems" Margin="315,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="false">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                </CheckBox.LayoutTransform>
+                                            </CheckBox>
+
+                                            <Label Content="Selecciona Productos del Primer Grupo:" FontSize="16" Height="40" Width="320" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                            <CheckBox x:Name="chkBscGrpSel" Margin="315,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="false">
+                                                <CheckBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                </CheckBox.LayoutTransform>
+                                            </CheckBox>
+                                        </Grid>
+                                    </GroupBox>
+
+                                    <GroupBox Header="Costo del Servicio" Margin="10,110,0,0" BorderThickness="2" BorderBrush="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Height="150">
+                                        <Grid Margin="10,10,10,10">
+                                            <Label Content="Incluye costo servicio:" FontSize="16" Height="40" Width="220" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Column="2" />
+                                            <spinner:ctlSpinner x:Name="txtValServ" HorizontalAlignment="Left" Margin="250,10,0,0" VerticalAlignment="Top"/>
+
+                                            <Label Content="Forma de cálculo del servicio:" FontSize="16" Height="40" Width="220" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Column="2" />
+                                            <ComboBox x:Name="cboCalcServ" FontSize="16" Height="40" Width="160" Margin="250,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" SelectionChanged="cboFormatDec_SelectionChanged" Grid.Column="2" >
+                                                <ComboBoxItem Height="60" VerticalContentAlignment="Center" Content="Porcentual" IsSelected="True" />
+                                                <ComboBoxItem Height="60" VerticalContentAlignment="Center" Content="Valor" />
+                                            </ComboBox>
+                                        </Grid>
+                                    </GroupBox>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="Impresión" Height="40">
+                                <Grid>
+                                    <Label Content="Imprime hora en talonario de cocina:" FontSize="16" Height="40" Width="270" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <CheckBox x:Name="chkImpHoraCocina" Margin="300,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="False">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                    <Label Content="Imprime ticket para carrier automáticamente:" FontSize="16" Height="40" Width="350" Margin="360,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <CheckBox x:Name="chkImpTicketCarrier" Margin="700,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="True">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                    <Label Content="Imprime Comandas al Facturar:" FontSize="16" Height="40" Width="270" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <CheckBox x:Name="chkImpComandaCocina" Margin="300,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="False">
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="Barcode" Height="40">
+                                <Grid>
+                                    <TextBlock TextWrapping="Wrap" FontSize="16" Height="40"
+                                   VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="5,5,5,5" 
+                                   Text="Definición de la estructura de lectura de código de barras, cuando se usa para ventas de productos por peso. El proceso funciona para productos con código de barras de tamaño 12 o 13" />
+                                    <Label  Margin="5, 80, 0, 0" FontSize="16"
+                                Content="Tipo de Código de Barras : " 
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left" />
+                                    <ComboBox x:Name="cboTipo"
+                                  Height="40" Width="200"
+                                  FontSize="14" SelectionChanged="cboTipo_SelectionChanged"
+                                  Margin="210, 80, 0, 0"
+                                  VerticalContentAlignment="Center"
+                                  VerticalAlignment="Top"
+                                  HorizontalAlignment="Left">
+                                        <ComboBoxItem Content="EAN-13 (13 dígitos)" Height="40" IsSelected="True" FontSize="14" VerticalContentAlignment="Center" />
+                                        <ComboBoxItem Content="UPC-A  (12 dígitos)" Height="40" FontSize="14" VerticalContentAlignment="Center" />
+                                    </ComboBox>
+                                    <Border Margin="450,60, 0, 0" 
+                                BorderBrush="Black" 
+                                Width="132" Height="80"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left"
+                                Background="Black">
+                                        <Image  x:Name="imgBarcode" 
+                                    Margin="5, 5, 5, 5"
+                                    Width="120" Height="66"
+                                    Source="../../images/bc-EAN-13.png" />
+                                    </Border>
+                                    <Label  Margin="450, 155, 0, 0"
+                                Content="#############" 
+                                FontSize="30"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left" />
+                                    <Label  Margin="5, 160, 0, 0" Height="40" FontSize="16"
+                                Content="Código para indicar producto por peso : " 
+                                VerticalContentAlignment="Center"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left" />
+                                    <TextBox x:Name="txtIndicador"
+                                 Margin="330, 160, 0, 0"
+                                 Text="200" MaxLength="3"
+                                 Width="100"
+                                 Height="40"
+                                 FontSize="16"
+                                 VerticalAlignment="Top"
+                                 HorizontalAlignment="left"
+                                 VerticalContentAlignment="Center"/>
+                                    <Label  Margin="5, 220, 0, 0" Height="40" FontSize="16"
+                                Content="Cantidad de dígitos del código : " 
+                                VerticalContentAlignment="Center"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left" />
+                                    <spinner:ctlSpinner x:Name="txtCodigo" 
+                                HorizontalAlignment="Left" 
+                                Margin="330,220,0,0" 
+                                VerticalAlignment="Top" 
+                                ValorMaximo="6"
+                                ValorMinimo="1"
+                                Grid.Column="2" 
+                                Height="40" 
+                                Width="160"/>
+
+                                    <Label  Margin="5, 280, 0, 0" Height="40" FontSize="16"
+                                Content="Cantidad de dígitos parte entera del peso : " 
+                                VerticalContentAlignment="Center"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left" />
+                                    <spinner:ctlSpinner x:Name="txtParteEntera" 
+                                HorizontalAlignment="Left" 
+                                Margin="330,280,0,0" 
+                                VerticalAlignment="Top" 
+                                ValorMaximo="3"
+                                ValorMinimo="1"
+                                Grid.Column="2" 
+                                Height="40" 
+                                Width="160"/>
+
+                                    <Label  Margin="5, 340, 0, 0" Height="40" FontSize="16"
+                                Content="Cantidad de dígitos parte decimal del peso : " 
+                                VerticalContentAlignment="Center"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Left" />
+                                    <spinner:ctlSpinner x:Name="txtParteDecimal" 
+                                HorizontalAlignment="Left" 
+                                Margin="330,340,0,0" 
+                                VerticalAlignment="Top" 
+                                ValorMaximo="3"
+                                ValorMinimo="1"
+                                Grid.Column="2" 
+                                Height="40" 
+                                Width="160"/>
+                                    <TextBlock Margin="570,223,0,0"
+                                        Text="La cantidad de dígitos del código identificador del producto por peso + cantidad de digitos del producto + la parte entera + la parte decimal deben sumar 12 o 13 dígitos" 
+                                        FontSize="20"
+                                        TextWrapping="Wrap"
+                                        VerticalAlignment="Top"
+                                        HorizontalAlignment="Left" Height="137" Width="357" />
+
+                                </Grid>
+                            </TabItem>
+                        </TabControl>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Seguridad" FontSize="16" Height="40">
+                    <Grid Height="500">
+                        <Label Content="Usa Contraseña numérica:" FontSize="16" Height="40" Width="200" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="3" />
+                        <CheckBox x:Name="chkPswdNum" Margin="200,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                        <Label Content="Cantidad de caracteres para el password:" FontSize="16" Height="40" Width="310" Margin="260,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="3" />
+                        <spinner:ctlSpinner x:Name="txtCntPswd" HorizontalAlignment="Left" Margin="570,10,0,0" VerticalAlignment="Top" Grid.Column="2" Height="40" Width="160"/>
+                        <GroupBox Header="Acciones de Anulación/Eliminación en facturas/Pedidos" Margin="10,60,10,10" Height="140" Width="1000" FontSize="16" BorderThickness="2" BorderBrush="Black" VerticalAlignment="Top" HorizontalAlignment="Left">
+                            <Grid>
+                                <Label Content="Modo de Confirmación de acción:" Margin="10,10,0,0" Height="40" VerticalContentAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                                <ComboBox x:Name="cboMdoConfir" Margin="270,10,0,0" Width="260" Height="40" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalAlignment="Left" SelectionChanged="cboMdoConfir_SelectionChanged">
+                                    <ComboBoxItem Tag="N" Content="Ninguno" Height="40" VerticalContentAlignment="Center" IsSelected="True" />
+                                    <ComboBoxItem VerticalContentAlignment="Center" Height="40" Tag="G">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="../../images/trjcoordenadas.png" Width="30" Height="30" />
+                                            <Label Content="Tarjeta de COORDENADAS" Margin="3,3,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                                        </StackPanel>
+                                    </ComboBoxItem>
+                                    <ComboBoxItem VerticalContentAlignment="Center" Height="40" Tag="P">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="../../images/pin.png" Width="30" Height="30" />
+                                            <Label Content="PIN aleatorio" Margin="3,3,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                                        </StackPanel>
+                                    </ComboBoxItem>
+                                    <ComboBoxItem VerticalContentAlignment="Center" Height="40" Tag="H">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="../../images/fingerprint.png" Width="30" Height="30" />
+                                            <Label Content="Huella digital" Margin="3,3,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                                        </StackPanel>
+                                    </ComboBoxItem>
+                                    <ComboBoxItem VerticalContentAlignment="Center" Height="40" Tag="C">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="../../images/contactless.png" Width="30" Height="30" />
+                                            <Label Content="ContactLess" Margin="3,3,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                                        </StackPanel>
+                                    </ComboBoxItem>
+                                </ComboBox>
+                                <TextBlock x:Name="lblModoConfirInfo" Text="" Margin="540, 5, 10, 0" Padding="5,5,5,5" Height="50" Background="Aqua" Width="450" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" />
+
+                                <Label Content="Tiempo de vigencia (minutos):" FontSize="16" Height="40" Width="310" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="3" />
+                                <spinner:ctlSpinner x:Name="txtCadMinutos" HorizontalAlignment="Left" Margin="270,60,0,0" VerticalAlignment="Top" Grid.Column="2" Height="40" Width="160"/>
+
+                                <Label Content="Usar Tarj. de Coord. como Alterno:" Margin="450,60,0,0" Height="40" VerticalContentAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                                <CheckBox x:Name="chkAlterCoord" Margin="730,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16" IsEnabled="False">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="3" ScaleY="3" />
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Header="Seguridad en Pagos y Cobros" Margin="10,210,10,10" Height="140" Width="1000" FontSize="16" BorderThickness="2" BorderBrush="Black" VerticalAlignment="Top" HorizontalAlignment="Left">
+                            <Grid>
+                                <Label Content="Receptor ingresa confirmación:" Margin="10,10,0,0" Height="40" VerticalContentAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                                <CheckBox x:Name="chkValidRecep" Margin="250,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="3" ScaleY="3" />
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Impresión" FontSize="16" Height="40">
+                    <Grid>
+                        <TabControl Margin="5,5,5,5" FontSize="16" Width="1000" Height="500" VerticalAlignment="Top" HorizontalAlignment="Left">
+                            <TabItem Header="General" Height="40">
+                                <Grid>
+                                    <Label Content="Separador : " Margin="5, 5, 0, 0" FontSize="16" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                    <ComboBox x:Name="cboTipoSep" FontFamily="Courier New" Width="155" Height="40" Margin="140,5,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalAlignment="Left">
+                                        <ComboBoxItem Content="-----------" Height="40" VerticalContentAlignment="Center" IsSelected="True" />
+                                        <ComboBoxItem Content="..........." Height="40" VerticalContentAlignment="Center" />
+                                        <ComboBoxItem Content="***********" Height="40" VerticalContentAlignment="Center" />
+                                        <ComboBoxItem Content="===========" Height="40" VerticalContentAlignment="Center" />
+                                    </ComboBox>
+                                    <Label Content="Cantidad Columnas : " FontSize="16" Margin="300, 5, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                    <ComboBox x:Name="cboCntCols" FontSize="16" Width="200" Height="40" Margin="470,5,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalAlignment="Left">
+                                        <ComboBoxItem Content="Normal     40 columnas" FontFamily="Courier New" Height="40" VerticalContentAlignment="Center" />
+                                        <ComboBoxItem Content="Normal     48 columnas" FontFamily="Courier New" Height="40" VerticalContentAlignment="Center" IsSelected="True" />
+                                        <ComboBoxItem Content="Expandido  23 columnas" FontFamily="Courier New" Height="40" VerticalContentAlignment="Center" />
+                                        <ComboBoxItem Content="Comprimido 64 columnas" FontFamily="Courier New" Height="40" VerticalContentAlignment="Center" />
+                                    </ComboBox>
+
+                                    <Label Content="Tipo Impresoras : " FontSize="16" Margin="5, 50, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                    <ComboBox x:Name="cboTipoImpresora" FontSize="16" FontFamily="Courier New" Width="100" Height="40" Margin="140,50,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalAlignment="Left" SelectionChanged="cboTipoImpresora_SelectionChanged">
+                                        <ComboBoxItem Content="Impacto" Height="40" VerticalContentAlignment="Center" IsSelected="True" />
+                                        <ComboBoxItem Content="Térmica" Height="40" VerticalContentAlignment="Center" />
+                                        <ComboBoxItem Content="Custom" Height="40" VerticalContentAlignment="Center" />
+                                    </ComboBox>
+                                    <Button x:Name="btnTipImp" HorizontalAlignment="Left" Margin="245,50,0,0" VerticalAlignment="Top" Width="50" Height="40" Foreground="White" FontSize="16" Click="btnTipImp_Click" IsEnabled="False" Background="RoyalBlue">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel.Resources>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Setter Property="Margin" Value="3"/>
+                                                </Style>
+                                            </StackPanel.Resources>
+                                            <TextBlock VerticalAlignment="Center"><Run Foreground="Black" Text="..."/></TextBlock>
+                                        </StackPanel>
+                                    </Button>
+                                    <Button x:Name="TestPrinter" Margin="700,5,0,0" Width="180" Height="40" VerticalAlignment="Top" 
+                                HorizontalAlignment="Left" Visibility="Visible" Grid.Column="2"
+                                Click="TestPrinter_Click" Background="LightGreen">
+                                        <StackPanel Orientation="Horizontal">
+                                            <StackPanel.Resources>
+                                                <Style TargetType="{x:Type Image}">
+                                                    <Setter Property="Margin" Value="3"/>
+                                                </Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Setter Property="Margin" Value="3"/>
+                                                </Style>
+                                            </StackPanel.Resources>
+                                            <Image Source="../../images/printer.png" Width="30" Height="30" />
+                                            <TextBlock VerticalAlignment="Center"><Run Text="Test de Impresión"/></TextBlock>
+                                        </StackPanel>
+                                    </Button>
+
+                                    <TabControl Margin="10,100,0,0" FontSize="16" Width="650" Height="240" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                        <TabItem Header="Destinos" Height="40">
+                                            <Grid>
+                                                <Label Content="Permite Impresora Bar:" FontSize="16" Height="40" Width="220" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Column="2" />
+                                                <CheckBox x:Name="chkAllowImpBar" Margin="210,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Checked="chkAllowProforma_Checked" Unchecked="chkAllowProforma_Unchecked" Grid.Column="2" Height="15" Width="16">
+                                                    <CheckBox.LayoutTransform>
+                                                        <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                    </CheckBox.LayoutTransform>
+                                                </CheckBox>
+
+                                                <Label Content="Permite Impresora Parrilla:" FontSize="16" Height="40" Width="220" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.Column="2" />
+                                                <CheckBox x:Name="chkAllowParrilla" Margin="210,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Checked="chkAllowParrilla_Checked" Unchecked="chkAllowParrilla_Unchecked" Grid.Column="2" Height="15" Width="16">
+                                                    <CheckBox.LayoutTransform>
+                                                        <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                    </CheckBox.LayoutTransform>
+                                                </CheckBox>
+                                            </Grid>
+                                        </TabItem>
+                                        <TabItem Header="Comandas" Height="40">
+                                            <Grid>
+                                                <Label Content="Cab. Comandas : " Margin="10, 5, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                <CheckBox x:Name="chkImpHeadCmds" Margin="150,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                                                          Height="15" Width="16" Checked="chkImpHeadCmds_Checked" Unchecked="chkImpHeadCmds_Unchecked">
+                                                    <CheckBox.LayoutTransform>
+                                                        <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                    </CheckBox.LayoutTransform>
+                                                </CheckBox>
+                                                <Grid Margin="60,60,0,0" Width="90" Height="120" VerticalAlignment="Top" HorizontalAlignment="Left" Background="Black">
+                                                    <Image x:Name="imgCabComanda" Source="../../images/comandaCab.png" Width="80" Height="110" Margin="5,5,5,5" VerticalAlignment="Center" HorizontalAlignment="Center" />    
+                                                </Grid>
+                                                
+                                                <Label Content="Salto de línea Cab: " Margin="210,5,0,0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                <CheckBox x:Name="chkSalHeadCmds" Margin="360,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                                                          Height="15" Width="16" Checked="chkSalHeadCmds_Checked" Unchecked="chkSalHeadCmds_Unchecked">
+                                                    <CheckBox.LayoutTransform>
+                                                        <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                    </CheckBox.LayoutTransform>
+                                                </CheckBox>
+
+                                                <Grid Margin="270,60,0,0" Width="90" Height="120" VerticalAlignment="Top" HorizontalAlignment="Left" Background="Black">
+                                                    <Image x:Name="imgCabSalto" Source="../../images/comandaSalto.png" Width="80" Height="110" Margin="5,5,5,5" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                                </Grid>
+                                                
+                                                <Label Content="Mostrar Cliente : " Margin="420,5, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                <CheckBox x:Name="chkImpClieCmd" Margin="550,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="15" Width="16">
+                                                    <CheckBox.LayoutTransform>
+                                                        <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                    </CheckBox.LayoutTransform>
+                                                </CheckBox>
+                                            </Grid>
+                                        </TabItem>
+                                        <TabItem Header="Cierre de Caja" Height="40">
+                                            <Grid>
+                                                <Label Content="Imprime ticket de Cierre de Caja:" Height="40" Width="280" Margin="10,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                                <CheckBox x:Name="chkImprimeCierreCaja" Margin="270,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Checked="chkAllowProforma_Checked" Height="15" Width="16">
+                                                    <CheckBox.LayoutTransform>
+                                                        <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                    </CheckBox.LayoutTransform>
+                                                </CheckBox>
+                                                
+                                                <Label Content="Muestra Elim/Anul en Cierre: " Margin="10, 60, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                <CheckBox x:Name="chkIncElim" Margin="270,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="15" Width="16">
+                                                    <CheckBox.LayoutTransform>
+                                                        <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                    </CheckBox.LayoutTransform>
+                                                </CheckBox>
+                                            </Grid>
+                                        </TabItem>
+                                        <TabItem Header="Opciones Varias" Height="40">
+                                            <Grid>
+                                                <Label Content="Opción Descarga Fact: " Margin="10, 5, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                <CheckBox x:Name="chkImpDownload" Margin="180,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                                                    <CheckBox.LayoutTransform>
+                                                        <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                    </CheckBox.LayoutTransform>
+                                                </CheckBox>
+                                                <Label Content="Imprime Retención : " Margin="240,5, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                <CheckBox x:Name="chkImpRetencion" Margin="400,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                                                    <CheckBox.LayoutTransform>
+                                                        <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                    </CheckBox.LayoutTransform>
+                                                </CheckBox>
+                                            </Grid>
+                                        </TabItem>
+                                    </TabControl>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="Cabeceras" Height="40">
+                                <GroupBox Header="Opciones de impresión de Cabecera para Facturas/Prefacturas" Margin="5,10,5,0" Height="200" BorderThickness="2" BorderBrush="Black" VerticalAlignment="Top" HorizontalAlignment="Stretch" >
+                                    <Grid>
+                                        <TabControl Margin="10,5,5,10" VerticalAlignment="Top" HorizontalAlignment="Left" Width="700">
+                                            <TabItem Header="Datos" Height="40">
+                                                <Grid>
+                                                    <Label Content="Imprimir Nombre Empresa : " Margin="5, 5, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                    <CheckBox x:Name="chkImpEmpr" Margin="210,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                                                        <CheckBox.LayoutTransform>
+                                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                        </CheckBox.LayoutTransform>
+                                                    </CheckBox>
+                                                    <Label Content="Imprimir Direc. Empresa : " Margin="270, 5, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                    <CheckBox x:Name="chkImpDirEmp" Margin="470,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                                                        <CheckBox.LayoutTransform>
+                                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                        </CheckBox.LayoutTransform>
+                                                    </CheckBox>
+                                                    <Label Content="Imprimir RUC : " Margin="5, 50, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                    <CheckBox x:Name="chkImpRuc" Margin="210,50,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="15" Width="16">
+                                                        <CheckBox.LayoutTransform>
+                                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                        </CheckBox.LayoutTransform>
+                                                    </CheckBox>
+                                                </Grid>
+                                            </TabItem>
+                                            <TabItem Header="Formato" Height="40">
+                                                <Grid>
+                                                    <Label Content="Usa Negrilla : " Margin="10, 5, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                    <CheckBox x:Name="chkHeadBold" Margin="210,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                                                        <CheckBox.LayoutTransform>
+                                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                        </CheckBox.LayoutTransform>
+                                                    </CheckBox>
+                                                    <Label Content="Alineación : " Margin="270, 5, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                    <ComboBox x:Name="cboAlignHeader" Width="200" Height="40" Margin="420,5,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalAlignment="Left">
+                                                        <ComboBoxItem Content="Izquierda" Height="40" VerticalContentAlignment="Center" />
+                                                        <ComboBoxItem Content="Centro" Height="40" VerticalContentAlignment="Center" IsSelected="True" />
+                                                        <ComboBoxItem Content="Derecha" Height="40" VerticalContentAlignment="Center" />
+                                                    </ComboBox>
+                                                    <Label Content="Imprime separador al final : " Margin="10, 50, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                    <CheckBox x:Name="chkSepHead" Margin="210,50,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="15" Width="16">
+                                                        <CheckBox.LayoutTransform>
+                                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                        </CheckBox.LayoutTransform>
+                                                    </CheckBox>
+                                                    <Label Content="Modo Expandido : " Margin="270, 50, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                    <CheckBox x:Name="chkCabExpand" Margin="420,50,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="15" Width="16">
+                                                        <CheckBox.LayoutTransform>
+                                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                        </CheckBox.LayoutTransform>
+                                                    </CheckBox>
+
+                                                </Grid>
+                                            </TabItem>
+                                        </TabControl>
+                                    </Grid>
+                                </GroupBox>
+                            </TabItem>
+                            <TabItem Header="Contenido" Height="40">
+                                <Grid>
+                                    <GroupBox Header="Opciones de impresión de Contenido" Height="260" Margin="5,10,05,0" BorderThickness="2" BorderBrush="Black" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+                                        <Grid>
+                                            <TabControl Margin="10,5,10,5" Height="220" Width="700" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                                <TabItem Header="Datos" Height="40">
+                                                    <Grid>
+                                                        <Label Content="Incluye dato mesero: " Margin="10, 5, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                        <CheckBox x:Name="chkIncMesero" Margin="200,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                                                            <CheckBox.LayoutTransform>
+                                                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                            </CheckBox.LayoutTransform>
+                                                        </CheckBox>
+
+                                                        <Label Content="Incluye Agradecimiento: " Margin="270, 5, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                        <CheckBox x:Name="chkIncThanks" Margin="470,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                                                            <CheckBox.LayoutTransform>
+                                                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                            </CheckBox.LayoutTransform>
+                                                        </CheckBox>
+
+                                                        <Label Content="Imprime Forma de Pago : " Margin="5, 60, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                        <CheckBox x:Name="chkFormPago" Margin="200,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                                                            <CheckBox.LayoutTransform>
+                                                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                            </CheckBox.LayoutTransform>
+                                                        </CheckBox>
+
+                                                        <Label Content="Imprime Secuencial Temp: " Margin="270, 60, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                        <CheckBox x:Name="chkImpTmpSec" Margin="470,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="15" Width="16">
+                                                            <CheckBox.LayoutTransform>
+                                                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                            </CheckBox.LayoutTransform>
+                                                        </CheckBox>
+
+                                                        <Label Content="Permite Impres Proforma:" FontSize="16" Height="40" Width="190" Margin="10,120,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="3"/>
+                                                        <CheckBox x:Name="chkAllowProforma" Margin="200,120,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Checked="chkAllowProforma_Checked" Unchecked="chkAllowProforma_Unchecked" Grid.Column="2" Height="15" Width="16">
+                                                            <CheckBox.LayoutTransform>
+                                                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                            </CheckBox.LayoutTransform>
+                                                        </CheckBox>
+                                                    </Grid>
+                                                </TabItem>
+                                                <TabItem Header="Formato" Height="40">
+                                                    <Grid>
+                                                        <Label Content="Cabecera en Negrita : " Margin="5, 5, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                        <CheckBox x:Name="chkHeadTablaBold" Margin="210,5,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="15" Width="16">
+                                                            <CheckBox.LayoutTransform>
+                                                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                            </CheckBox.LayoutTransform>
+                                                        </CheckBox>
+
+                                                        <Label Content="Separador al final de items : " Margin="5, 60, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                        <CheckBox x:Name="chkSepFinItems" Margin="210,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" Height="15" Width="16">
+                                                            <CheckBox.LayoutTransform>
+                                                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                            </CheckBox.LayoutTransform>
+                                                        </CheckBox>
+
+                                                        <Label Content="Lineas luego de items : " Margin="270, 5, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                        <spinner:ctlSpinner x:Name="txtCntLineas" HorizontalAlignment="Left" Margin="500,5,0,0" VerticalAlignment="Top" Grid.Column="2" Height="40" Width="160"/>
+
+                                                        <Label Content="Cantidad decimales en Items : " Margin="270, 60, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                        <spinner:ctlSpinner x:Name="txtCntDecItems" HorizontalAlignment="Left" Margin="500,60,0,0" VerticalAlignment="Top" Grid.Column="2" Height="40" Width="160"/>
+                                                    </Grid>
+                                                </TabItem>
+                                                <TabItem Header="Comportamiento" Height="40">
+                                                    <Grid>
+                                                        <Label Content="Cnt. Copias Fact : " Margin="10, 5, 0, 0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"/>
+                                                        <spinner:ctlSpinner x:Name="txtCntCopias" HorizontalAlignment="Left" Margin="200,5,0,0" VerticalAlignment="Top" Grid.Column="2" Height="40" Width="160"/>
+
+                                                        <Label Content="Usa espacios:" Margin="10,60,0,0" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="2" VerticalContentAlignment="Center"/>
+                                                        <CheckBox x:Name="chkEspBar" Margin="200,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="15" Grid.Column="2" Width="16">
+                                                            <CheckBox.LayoutTransform>
+                                                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                                                            </CheckBox.LayoutTransform>
+                                                        </CheckBox>
+                                                    </Grid>
+                                                </TabItem>
+                                            </TabControl>
+                                        </Grid>
+                                    </GroupBox>
+                                </Grid>
+                            </TabItem>
+                        </TabControl>
+                        
+                        
+                        
+                        
+                    </Grid>
+                </TabItem>
+                <TabItem Header=" Email " FontSize="16" Height="40">
+                    <Grid>
+                        <Label Content="Enviará correo:" FontSize="16" Height="40" Width="180" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <CheckBox x:Name="chkEnvEmail" Margin="150,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="False" Checked="chkEnvEmail_Checked" Unchecked="chkEnvEmail_Unchecked">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                        <Label Content="Usar Mail Relay:" FontSize="16" Height="40" Width="180" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <CheckBox x:Name="chkUsaRelay" Margin="150,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="False" Checked="chkUsaRelay_Checked" Unchecked="chkUsaRelay_Unchecked">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                        <Label Content="Usar Whatsapp:" FontSize="16" Height="40" Width="180" Margin="10,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <CheckBox x:Name="chkUsaWhatsapp" Margin="150,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="False" Checked="chkUsaWhatsapp_Checked" Unchecked="chkUsaWhatsapp_Unchecked">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                        <Label Content="Usar SMS:" FontSize="16" Height="40" Width="180" Margin="10,160,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <CheckBox x:Name="chkUsaSMS" Margin="150,160,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="False" Checked="chkUsaSMS_Checked" Unchecked="chkUsaSMS_Unchecked">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                        <TabControl x:Name="tcrOpcEnv" Margin="240,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Left" Height="220" Width="Auto">
+                            <TabItem x:Name="titOpcServ" Header="Servidor de Correo" Height="40" Width="Auto">
+                                <Grid>
+                                    <Label Content="Servidor smtp:" FontSize="16" Height="40" Width="180" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <TextBox x:Name="txtServer" FontSize="16" Height="40" Width="500" Margin="150,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEnabled="False" />
+                                    <Label Content="Puerto smtp:" FontSize="16" Height="40" Width="180" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <TextBox x:Name="txtPuerto" FontSize="16" Height="40" Width="150" Margin="150,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="5" IsEnabled="False" />
+                                    <Label Content="Usa TLS:" FontSize="16" Height="40" Width="180" Margin="350,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <CheckBox x:Name="chkTls" Margin="450,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsEnabled="False" >
+                                        <CheckBox.LayoutTransform>
+                                            <ScaleTransform ScaleX="3" ScaleY="3" />
+                                        </CheckBox.LayoutTransform>
+                                    </CheckBox>
+                                    <Label Content="Usuario:" FontSize="16" Height="40" Width="180" Margin="10,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <TextBox x:Name="txtUsuario" FontSize="16" Height="40" Width="200" Margin="150,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="100" IsEnabled="False" />
+                                    <Label Content="Contraseña:" FontSize="16" Height="40" Width="180" Margin="350,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <PasswordBox x:Name="txtClave" FontSize="16" Height="40" Width="200" Margin="450,110,10,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="20" IsEnabled="False" />
+                                </Grid>
+                            </TabItem>
+                            <TabItem x:Name="titOpcRealy" Header="Mail Relay" Height="40" IsEnabled="False">
+                                <Grid>
+                                    <Label Content="Token:" FontSize="16" Height="40" Width="180" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <TextBox x:Name="txtTokenMail" FontSize="16" Height="40" Width="500" Margin="150,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="100" IsEnabled="true" />
+                                    <Label Content="URL:" FontSize="16" Height="40" Width="180" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <TextBox x:Name="txtTSvrMailRelay" FontSize="16" Height="40" Width="500" Margin="150,60,10,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="100" IsEnabled="true" />
+                                </Grid>
+                            </TabItem>
+                            <TabItem x:Name="titOpcWhatsapp" Header="Whatsapp" Height="40" IsEnabled="False">
+                                <Grid>
+                                    <Label Content="Token:" FontSize="16" Height="40" Width="180" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <TextBox x:Name="txtTokenWhatsapp" FontSize="16" Height="40" Width="500" Margin="150,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="100" IsEnabled="true" />
+                                    <Label Content="URL:" FontSize="16" Height="40" Width="180" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <TextBox x:Name="txtSvrWhatsapp" FontSize="16" Height="40" Width="500" Margin="150,60,10,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="100" IsEnabled="true" />
+                                </Grid>
+                            </TabItem>
+                            <TabItem x:Name="titOpcSMS" Header="Sms" Height="40" IsEnabled="False">
+                                <Grid>
+                                    <Label Content="Token:" FontSize="16" Height="40" Width="180" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <TextBox x:Name="txtTokenSms" FontSize="16" Height="40" Width="500" Margin="150,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="100" IsEnabled="true" />
+                                    <Label Content="URL:" FontSize="16" Height="40" Width="180" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <TextBox x:Name="txtSvrSms" FontSize="16" Height="40" Width="500" Margin="150,60,10,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="100" IsEnabled="true" />
+                                </Grid>
+                            </TabItem>
+                        </TabControl>
+
+                        <GroupBox Header="Destinatarios del correo" Margin="10,250,10,10" VerticalAlignment="Top" Height="230">
+                            <Grid>
+                                <Label Content="Correo principal:" FontSize="16" Height="40" Width="180" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                <TextBox x:Name="txtCorreo1" FontSize="16" Height="40" Width="290" Margin="170,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="100" IsEnabled="False" />
+                                <Label Content="Copiar correo:" FontSize="16" Height="40" Width="180" Margin="470,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                <CheckBox x:Name="chkCopiaEmail" Margin="600,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Checked="chkCopiaEmail_Checked" Unchecked="chkCopiaEmail_Unchecked"  IsEnabled="False">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="3" ScaleY="3" />
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
+                                <Label Content="Correo secundario 1:" FontSize="16" Height="40" Width="180" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                <TextBox x:Name="txtCorreo2" FontSize="16" Height="40" Width="290" Margin="170,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"  MaxLength="100" IsEnabled="False" />
+                                <Label Content="Correo secundario 2:" FontSize="16" Height="40" Width="180" Margin="10,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                <TextBox x:Name="txtCorreo3" FontSize="16" Height="40" Width="290" Margin="170,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="100" IsEnabled="False" />
+                                <Label Content="Correo secundario 3:" FontSize="16" Height="40" Width="180" Margin="10,160,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                <TextBox x:Name="txtCorreo4" FontSize="16" Height="40" Width="290" Margin="170,160,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"  MaxLength="100"  IsEnabled="False" />
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </TabItem>
+                
+                <TabItem x:Name="tabFactElect" Header="Facturación" FontSize="16" Height="40" IsEnabled="False">
+                    <Grid>
+                        <Label Content="Usa Fact. Electronica.:" FontSize="16" Height="40" Width="180" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <CheckBox x:Name="chkUseFactElec" Margin="170,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Checked="chkUseFactElec_Checked" Unchecked="chkUseFactElec_Unchecked">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                        <Label Content="Automatico:" FontSize="16" Height="40" Width="180" Margin="300,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <CheckBox x:Name="chkUseAuto" Margin="400,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Checked="chkUseAuto_Checked" Unchecked="chkUseAuto_Unchecked">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                        <Label Content="On Line:" FontSize="16" Height="40" Width="180" Margin="520,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <CheckBox x:Name="chkUseOnline" Margin="620,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Checked="chkUseOnline_Checked" Unchecked="chkUseOnline_Unchecked">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+
+                        <Label Content="Firma Electrónica:" FontSize="16" Height="40" Width="180" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <TextBox x:Name="txtArchFirma" FontSize="16" Height="40" Width="640" Margin="170,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEnabled="False" />
+                        <Button x:Name="btnFirma" HorizontalAlignment="Left" Margin="820,60,0,0" VerticalAlignment="Top" Width="60" Height="40" Foreground="White" FontSize="16" Click="btnFirma_Click" Background="DarkSalmon">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <Image Source="../../images/firma.png" Width="30" Height="30" />
+                            </StackPanel>
+                        </Button>
+                        <Label Content="Clave de Firma:" FontSize="16" Height="40" Width="180" Margin="10,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <TextBox x:Name="txtClaveFirma" FontSize="16" Height="40" Width="200" Margin="170,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+
+                        <Label Content="Ubic Arch. Gen.:" FontSize="16" Height="40" Width="130" Margin="380,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <TextBox x:Name="txtFolder" FontSize="16" Height="40" Width="300" Margin="510,110,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEnabled="False" />
+                        <Button x:Name="btnDown" HorizontalAlignment="Left" Margin="820,110,0,0" VerticalAlignment="Top" Width="60" Height="40" Foreground="White" FontSize="16" Click="btnDown_Click" Background="LightSteelBlue">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <Image Source="../../images/folder.png" Width="30" Height="30" />
+                            </StackPanel>
+                        </Button>
+
+                        <Label Content="Identificador Emp:" FontSize="16" Height="40" Width="180" Margin="10,170,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <TextBox x:Name="txtEmpresaGuid" FontSize="16" Height="40" Width="250" Margin="170,170,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+
+                        <Label Content="Logo Fact.:" FontSize="16" Height="40" Width="130" Margin="420,170,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <TextBox x:Name="txtLogo" FontSize="16" Height="40" Width="300" Margin="510,170,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEnabled="False" />
+                        <Button x:Name="btnLogo" HorizontalAlignment="Left" Margin="820,170,0,0" VerticalAlignment="Top" Width="60" Height="40" Foreground="White" FontSize="16" Click="btnLogo_Click" Background="LightSteelBlue">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <Image Source="../../images/setIcon.png" Width="30" Height="30" />
+                            </StackPanel>
+                        </Button>
+
+                        <TabControl Margin="10,220,0,0" Height="300">
+                            <TabItem Header=" Web Service " Height="40">
+                                <Grid>
+                                    <Label Content="URL WebService:" FontSize="16" Height="40" Width="180" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <TextBox x:Name="txtURLWS" FontSize="16" Height="40" Width="670" Margin="170,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+
+                                    <Label Content="Usuario:" FontSize="16" Height="40" Width="180" Margin="10,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <TextBox x:Name="txtUsuarioWS" FontSize="16" Height="40" Width="250" Margin="170,70,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+
+                                    <Label Content="Clave:" FontSize="16" Height="40" Width="180" Margin="10,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <TextBox x:Name="txtClaveWS" FontSize="16" Height="40" Width="250" Margin="170,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+
+                                    <GroupBox Header="Programación de envío de facturas al SRI" Margin="450,60,10,5" BorderThickness="3" BorderBrush="Black" HorizontalAlignment="Left">
+                                        <Grid>
+                                            <Label Content="Hora inicio:" FontSize="16" Height="40" Width="180" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                            <timepicker:ctlTimePicker x:Name="horaInicio" HorizontalAlignment="Left" Height="40" Margin="110,10,0,0" VerticalAlignment="Top" Width="150"/>
+                                            <Label Content="En caso de fallas reintentar ...:" FontSize="16" Height="40" Width="270" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                            <Label Content="Cada:" FontSize="16" Height="40" Width="180" Margin="10,100,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                            <TextBox x:Name="txtMinutos" FontSize="16" Height="40" Width="100" Margin="90,100,0,10" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                            <Label Content="minutos" FontSize="16" Height="40" Width="180" Margin="200,100,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                        </Grid>
+                                    </GroupBox>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header=" Aplicación Web ">
+                                <Grid>
+                                    <Label Content="Aplicación URL:" FontSize="16" Height="40" Width="180" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                    <TextBox x:Name="txtURLApp" FontSize="16" Height="40" Width="670" Margin="170,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                                </Grid>
+                            </TabItem>
+                        </TabControl>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="tabEmpresa" Header="Empresa" FontSize="16" Height="40" IsEnabled="False">
+                    <Grid>
+                        <Label Content="Razón Social:" FontSize="16" Height="40" Width="180" Margin="10,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <TextBox x:Name="txtRazonSocial" FontSize="16" Height="40" Width="500" Margin="170,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEnabled="False" />
+                        <Label Content="Contabilidad:" FontSize="16" Height="40" Width="180" Margin="680,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <CheckBox x:Name="chkContabilidad" Margin="790,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                        <Label Content="Nombre Empresa:" FontSize="16" Height="40" Width="180" Margin="10,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <TextBox x:Name="txtEmpName" FontSize="16" Height="40" Width="500" Margin="170,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEnabled="False" />
+                        <Label Content="Retención:" FontSize="16" Height="40" Width="180" Margin="680,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <CheckBox x:Name="chkRetencion" Margin="790,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                        <Label Content="Ruc Empresa:" FontSize="16" Height="40" Width="180" Margin="10,112,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <TextBox x:Name="txtEmpRuc" FontSize="16" Height="40" Width="200" Margin="170,112,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEnabled="False" MaxLength="13" />
+                        <Label Content="Establecimiento:" FontSize="16" Height="40" Width="130" Margin="380,112,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <TextBox x:Name="txtEstablecimiento" FontSize="16" Height="40" Width="100" Margin="510,112,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEnabled="False" MaxLength="3" />
+                        <Label Content="No. Facturero:" FontSize="16" Height="40" Width="130" Margin="620,112,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <TextBox x:Name="txtNumFact" FontSize="16" Height="40" Width="100" Margin="740,112,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEnabled="False" MaxLength="3" />
+                        <Label Content="Dirección Matriz:" FontSize="16" Height="40" Width="180" Margin="10,166,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <TextBox x:Name="txtDirMatriz" FontSize="16" Height="40" Width="650" Margin="170,166,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEnabled="False" />
+                        <Label Content="Dirección Local:" FontSize="16" Height="40" Width="180" Margin="10,218,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <TextBox x:Name="txtDirLocal" FontSize="16" Height="40" Width="650" Margin="170,218,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEnabled="False" />
+                        <Label Content="Es RIMPE:" FontSize="16" Height="40" Width="180" Margin="10,272,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <CheckBox x:Name="chkRimpe" Margin="170,272,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="3" ScaleY="3" />
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                        <Label Content="Fondo de pantalla:" FontSize="16" Height="40" Width="140" Margin="270,272,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <Border BorderThickness="2" BorderBrush="#FF000000" Height="220" Width="310" Margin="420,268,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Image x:Name="imgLogo" Source="../../images/no-image-available.png" HorizontalAlignment="Left" Height="220" Margin="0,0,0,0" VerticalAlignment="Top" Width="310" Stretch="Fill" />
+                        </Border>
+                        <Button x:Name="srcLogo" HorizontalAlignment="Left" Height="70" Margin="750,276,0,0" VerticalAlignment="Top" Width="70" Click="srcLogo_Click" Background="Beige" >
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <Image Source="../../images/find.png" Width="50" Height="50" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="delLogo" HorizontalAlignment="Left" Height="70" Margin="750,358,0,0" VerticalAlignment="Top" Width="70" Click="delLogo_Click" Background="Bisque" >
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <Image Source="../../images/delete.png" Width="50" Height="50" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="tabActivacion" Header="Activación" FontSize="16" Height="40" IsEnabled="False">
+                    <Grid>
+                        <TextBlock Margin="10,10,10,0" TextAlignment="Justify" TextWrapping="Wrap"><Run Text="Primero solicite la clave del producto, haciendo click en el botón &quot;Solicitar Clave&quot;, luego usted recibirá un corro con la clave deseada, la cual deberá ser escrita en el campo &quot;Clave de Activación&quot;, para luego proceder a hacer click en &quot;Registrar Clave&quot;, con lo cual el producto quedará activado y listo para usar. Recuerde que ésta clave es válida únicamente para el equipo en el que está trabajando, si desea otra, contacte al proveedor. Revise la opción Acerca de..."/><InlineUIContainer/></TextBlock>
+
+                        <Label Content="Codigo Producto:" FontSize="16" Height="40" Width="180" Margin="10,140,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <TextBox x:Name="txtProdID" FontSize="16" Height="40" Width="500" Margin="170,140,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEnabled="False" Grid.ColumnSpan="2" />
+                        <Label Content="Tipo Licencia:" FontSize="16" Height="40" Width="180" Margin="10,210,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <ComboBox x:Name="cboTipoLic" FontSize="16" Height="40" Width="200" Margin="170,210,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEnabled="False">
+                            <ComboBoxItem Tag="T" Height="60" VerticalContentAlignment="Center" Content="Prueba" />
+                            <ComboBoxItem Tag="C" Height="60" VerticalContentAlignment="Center" Content="Completa" />
+                            <ComboBoxItem Tag="A" Height="60" VerticalContentAlignment="Center" Content="Anual" />
+                        </ComboBox>
+                        <Button x:Name="btnGetKey" Width="155" Height="45" Margin="400, 210, 0, 0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="btnGetKey_Click" Background="Beige">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <Image Source="../../images/requestkey.png" Width="35" Height="35" />
+                                <TextBlock VerticalAlignment="Center"><Run Text="Solicitar Clave"/></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="btnRegisterKey" Width="170" Height="45" Margin="500, 360, 0, 0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="btnRegisterKey_Click" Background="Aquamarine">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <Image Source="../../images/register.png" Width="35" Height="35" />
+                                <TextBlock VerticalAlignment="Center"><Run Text="Registrar Clave"/></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="btnGenerateKey" Width="60" Height="45" Margin="580, 210, 0, 0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="btnGenerateKey_Click" Background="Cornsilk">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <Image Source="../../images/generate.png" Width="35" Height="35" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="BtnLeeQR" Content="Button" Height="43" Width="56" Margin="650,210,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="BtnLeeQR_Click" />
+                        <Label Content="Clave de Activación:" FontSize="16" Height="40" Width="180" Margin="10,280,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <TextBox x:Name="txtProdKey" FontSize="16" Height="46" Width="500" Margin="170,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Grid.ColumnSpan="2" IsEnabled="False" />
+                        <Button x:Name="btnPasteKey" Width="60" Height="45" Margin="680, 280, 0, 0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="btnPasteKey_Click" IsEnabled="False" Background="Cornsilk">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <Image Source="../../images/paste.png" Width="35" Height="35" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>true</UseWPF>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <Configurations>All;Debug;Release</Configurations>
+    <StartupObject>TreskelKeys.App</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FoxLearn.License">
+      <HintPath>..\LibFoxLearn\FoxLearn.License.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibKeys\LibKeys.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\PIC_0.png" />
+    <Resource Include="images\PIC_1.png" />
+    <Resource Include="images\PIC_2.png" />
+    <Resource Include="images\PIC_3.png" />
+    <Resource Include="images\PIC_4.png" />
+    <Resource Include="images\PIC_5.png" />
+    <Resource Include="images\PIC_6.png" />
+    <Resource Include="images\PIC_7.png" />
+    <Resource Include="images\PIC_8.png" />
+    <Resource Include="images\PIC_9.png" />
+  </ItemGroup>
+</Project>

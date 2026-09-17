@@ -1,0 +1,436 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+fael
+</name>
+</assembly>
+<members>
+<member name="T:fael.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:fael.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:fael.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="M:fael.clsFirmXml.fnProc(System.String,System.String,System.String,System.String,System.String)">
+ <summary>
+ PROCESAR
+ </summary>
+ <param name="sDocuRut">Archivo XML: Ruta</param>
+ <param name="sDocuNbr">Archivo XML: Nombre ( Clave de Acceso )</param>
+ <param name="sCertRut">Certificado: Ruta</param>
+ <param name="sCertNbr">Certificado: Nombre</param>
+ <param name="sCertClv">Certificado: Clave</param>
+</member>
+<member name="M:fael.clsFirmXml._fnCargXml">
+ <summary>
+ CARGAR: XML
+ </summary>
+</member>
+<member name="M:fael.clsFirmXml._fnCargCer(java.security.PrivateKey@,java.security.Provider@)">
+ <summary>
+ CARGAR: Certificado
+ </summary>
+</member>
+<member name="M:fael.clsPROD_Envi.fnProc(System.String,System.String,System.String@)">
+ <summary>
+ Procesar
+ </summary>
+ <param name="sDocuRut">Archivo XML: Ruta</param>
+ <param name="sDocuNbr">Archivo XML: Nombre ( Clave de Acceso )</param>
+ <param name="sDocuObs"></param>
+</member>
+<member name="M:fael.clsPROD_Reci.fnProc(System.String,System.String,System.String@,System.String@,System.DateTime@)">
+ <summary>
+ Procesar
+ </summary>
+ <param name="sDocuRut">Archivo XML: Ruta</param>
+ <param name="sDocuNbr">Archivo XML: Nombre ( Clave de Acceso )</param>
+ <param name="sDocuObs"></param>
+ <param name="sAutoNum"></param>
+ <param name="dAutoFch"></param>
+</member>
+<member name="M:fael.clsPRUE_Envi.fnProc(System.String,System.String,System.String@)">
+ <summary>
+ Procesar
+ </summary>
+ <param name="sDocuRut">Archivo XML: Ruta</param>
+ <param name="sDocuNbr">Archivo XML: Nombre ( Clave de Acceso )</param>
+ <param name="sDocuObs"></param>
+</member>
+<member name="M:fael.clsPRUE_Reci.fnProc(System.String,System.String,System.String@,System.String@,System.DateTime@)">
+ <summary>
+ Procesar
+ </summary>
+ <param name="sDocuRut">Archivo XML: Ruta</param>
+ <param name="sDocuNbr">Archivo XML: Nombre ( Clave de Acceso )</param>
+ <param name="sDocuObs"></param>
+ <param name="sAutoNum"></param>
+ <param name="dAutoFch"></param>
+</member>
+<member name="T:fael.WS_PROD_AC.AutorizacionComprobantesOfflineService">
+<remarks/>
+</member>
+<member name="M:fael.WS_PROD_AC.AutorizacionComprobantesOfflineService.#ctor">
+<remarks/>
+</member>
+<member name="E:fael.WS_PROD_AC.AutorizacionComprobantesOfflineService.autorizacionComprobanteCompleted">
+<remarks/>
+</member>
+<member name="E:fael.WS_PROD_AC.AutorizacionComprobantesOfflineService.autorizacionComprobanteLoteCompleted">
+<remarks/>
+</member>
+<member name="M:fael.WS_PROD_AC.AutorizacionComprobantesOfflineService.autorizacionComprobante(System.String)">
+<remarks/>
+</member>
+<member name="M:fael.WS_PROD_AC.AutorizacionComprobantesOfflineService.autorizacionComprobanteAsync(System.String)">
+<remarks/>
+</member>
+<member name="M:fael.WS_PROD_AC.AutorizacionComprobantesOfflineService.autorizacionComprobanteAsync(System.String,System.Object)">
+<remarks/>
+</member>
+<member name="M:fael.WS_PROD_AC.AutorizacionComprobantesOfflineService.autorizacionComprobanteLote(System.String)">
+<remarks/>
+</member>
+<member name="M:fael.WS_PROD_AC.AutorizacionComprobantesOfflineService.autorizacionComprobanteLoteAsync(System.String)">
+<remarks/>
+</member>
+<member name="M:fael.WS_PROD_AC.AutorizacionComprobantesOfflineService.autorizacionComprobanteLoteAsync(System.String,System.Object)">
+<remarks/>
+</member>
+<member name="M:fael.WS_PROD_AC.AutorizacionComprobantesOfflineService.CancelAsync(System.Object)">
+<remarks/>
+</member>
+<member name="T:fael.WS_PROD_AC.respuestaComprobante">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.respuestaComprobante.claveAccesoConsultada">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.respuestaComprobante.numeroComprobantes">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.respuestaComprobante.autorizaciones">
+<remarks/>
+</member>
+<member name="T:fael.WS_PROD_AC.autorizacion">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.autorizacion.estado">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.autorizacion.numeroAutorizacion">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.autorizacion.fechaAutorizacion">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.autorizacion.fechaAutorizacionSpecified">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.autorizacion.ambiente">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.autorizacion.comprobante">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.autorizacion.mensajes">
+<remarks/>
+</member>
+<member name="T:fael.WS_PROD_AC.mensaje">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.mensaje.identificador">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.mensaje.mensaje1">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.mensaje.informacionAdicional">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.mensaje.tipo">
+<remarks/>
+</member>
+<member name="T:fael.WS_PROD_AC.respuestaLote">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.respuestaLote.claveAccesoLoteConsultada">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.respuestaLote.numeroComprobantesLote">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.respuestaLote.autorizaciones">
+<remarks/>
+</member>
+<member name="T:fael.WS_PROD_AC.autorizacionComprobanteCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:fael.WS_PROD_AC.autorizacionComprobanteCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.autorizacionComprobanteCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:fael.WS_PROD_AC.autorizacionComprobanteLoteCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:fael.WS_PROD_AC.autorizacionComprobanteLoteCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_AC.autorizacionComprobanteLoteCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:fael.WS_PROD_RC.RecepcionComprobantesOfflineService">
+<remarks/>
+</member>
+<member name="M:fael.WS_PROD_RC.RecepcionComprobantesOfflineService.#ctor">
+<remarks/>
+</member>
+<member name="E:fael.WS_PROD_RC.RecepcionComprobantesOfflineService.validarComprobanteCompleted">
+<remarks/>
+</member>
+<member name="M:fael.WS_PROD_RC.RecepcionComprobantesOfflineService.validarComprobante(System.Byte[])">
+<remarks/>
+</member>
+<member name="M:fael.WS_PROD_RC.RecepcionComprobantesOfflineService.validarComprobanteAsync(System.Byte[])">
+<remarks/>
+</member>
+<member name="M:fael.WS_PROD_RC.RecepcionComprobantesOfflineService.validarComprobanteAsync(System.Byte[],System.Object)">
+<remarks/>
+</member>
+<member name="M:fael.WS_PROD_RC.RecepcionComprobantesOfflineService.CancelAsync(System.Object)">
+<remarks/>
+</member>
+<member name="T:fael.WS_PROD_RC.respuestaSolicitud">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_RC.respuestaSolicitud.estado">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_RC.respuestaSolicitud.comprobantes">
+<remarks/>
+</member>
+<member name="T:fael.WS_PROD_RC.comprobante">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_RC.comprobante.claveAcceso">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_RC.comprobante.mensajes">
+<remarks/>
+</member>
+<member name="T:fael.WS_PROD_RC.mensaje">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_RC.mensaje.identificador">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_RC.mensaje.mensaje1">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_RC.mensaje.informacionAdicional">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_RC.mensaje.tipo">
+<remarks/>
+</member>
+<member name="T:fael.WS_PROD_RC.validarComprobanteCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:fael.WS_PROD_RC.validarComprobanteCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:fael.WS_PROD_RC.validarComprobanteCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:fael.WS_PRUE_AC.AutorizacionComprobantesOfflineService">
+<remarks/>
+</member>
+<member name="M:fael.WS_PRUE_AC.AutorizacionComprobantesOfflineService.#ctor">
+<remarks/>
+</member>
+<member name="E:fael.WS_PRUE_AC.AutorizacionComprobantesOfflineService.autorizacionComprobanteCompleted">
+<remarks/>
+</member>
+<member name="E:fael.WS_PRUE_AC.AutorizacionComprobantesOfflineService.autorizacionComprobanteLoteCompleted">
+<remarks/>
+</member>
+<member name="M:fael.WS_PRUE_AC.AutorizacionComprobantesOfflineService.autorizacionComprobante(System.String)">
+<remarks/>
+</member>
+<member name="M:fael.WS_PRUE_AC.AutorizacionComprobantesOfflineService.autorizacionComprobanteAsync(System.String)">
+<remarks/>
+</member>
+<member name="M:fael.WS_PRUE_AC.AutorizacionComprobantesOfflineService.autorizacionComprobanteAsync(System.String,System.Object)">
+<remarks/>
+</member>
+<member name="M:fael.WS_PRUE_AC.AutorizacionComprobantesOfflineService.autorizacionComprobanteLote(System.String)">
+<remarks/>
+</member>
+<member name="M:fael.WS_PRUE_AC.AutorizacionComprobantesOfflineService.autorizacionComprobanteLoteAsync(System.String)">
+<remarks/>
+</member>
+<member name="M:fael.WS_PRUE_AC.AutorizacionComprobantesOfflineService.autorizacionComprobanteLoteAsync(System.String,System.Object)">
+<remarks/>
+</member>
+<member name="M:fael.WS_PRUE_AC.AutorizacionComprobantesOfflineService.CancelAsync(System.Object)">
+<remarks/>
+</member>
+<member name="T:fael.WS_PRUE_AC.respuestaComprobante">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.respuestaComprobante.claveAccesoConsultada">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.respuestaComprobante.numeroComprobantes">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.respuestaComprobante.autorizaciones">
+<remarks/>
+</member>
+<member name="T:fael.WS_PRUE_AC.autorizacion">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.autorizacion.estado">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.autorizacion.numeroAutorizacion">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.autorizacion.fechaAutorizacion">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.autorizacion.fechaAutorizacionSpecified">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.autorizacion.ambiente">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.autorizacion.comprobante">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.autorizacion.mensajes">
+<remarks/>
+</member>
+<member name="T:fael.WS_PRUE_AC.mensaje">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.mensaje.identificador">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.mensaje.mensaje1">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.mensaje.informacionAdicional">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.mensaje.tipo">
+<remarks/>
+</member>
+<member name="T:fael.WS_PRUE_AC.respuestaLote">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.respuestaLote.claveAccesoLoteConsultada">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.respuestaLote.numeroComprobantesLote">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.respuestaLote.autorizaciones">
+<remarks/>
+</member>
+<member name="T:fael.WS_PRUE_AC.autorizacionComprobanteCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:fael.WS_PRUE_AC.autorizacionComprobanteCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.autorizacionComprobanteCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:fael.WS_PRUE_AC.autorizacionComprobanteLoteCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:fael.WS_PRUE_AC.autorizacionComprobanteLoteCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_AC.autorizacionComprobanteLoteCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:fael.WS_PRUE_RC.RecepcionComprobantesOfflineService">
+<remarks/>
+</member>
+<member name="M:fael.WS_PRUE_RC.RecepcionComprobantesOfflineService.#ctor">
+<remarks/>
+</member>
+<member name="E:fael.WS_PRUE_RC.RecepcionComprobantesOfflineService.validarComprobanteCompleted">
+<remarks/>
+</member>
+<member name="M:fael.WS_PRUE_RC.RecepcionComprobantesOfflineService.validarComprobante(System.Byte[])">
+<remarks/>
+</member>
+<member name="M:fael.WS_PRUE_RC.RecepcionComprobantesOfflineService.validarComprobanteAsync(System.Byte[])">
+<remarks/>
+</member>
+<member name="M:fael.WS_PRUE_RC.RecepcionComprobantesOfflineService.validarComprobanteAsync(System.Byte[],System.Object)">
+<remarks/>
+</member>
+<member name="M:fael.WS_PRUE_RC.RecepcionComprobantesOfflineService.CancelAsync(System.Object)">
+<remarks/>
+</member>
+<member name="T:fael.WS_PRUE_RC.respuestaSolicitud">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_RC.respuestaSolicitud.estado">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_RC.respuestaSolicitud.comprobantes">
+<remarks/>
+</member>
+<member name="T:fael.WS_PRUE_RC.comprobante">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_RC.comprobante.claveAcceso">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_RC.comprobante.mensajes">
+<remarks/>
+</member>
+<member name="T:fael.WS_PRUE_RC.mensaje">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_RC.mensaje.identificador">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_RC.mensaje.mensaje1">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_RC.mensaje.informacionAdicional">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_RC.mensaje.tipo">
+<remarks/>
+</member>
+<member name="T:fael.WS_PRUE_RC.validarComprobanteCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:fael.WS_PRUE_RC.validarComprobanteCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:fael.WS_PRUE_RC.validarComprobanteCompletedEventArgs.Result">
+<remarks/>
+</member>
+</members>
+</doc>

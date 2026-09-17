@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <Configurations>All;Debug;Release</Configurations>
+    <TargetFramework>net9.0</TargetFramework>
+    <AssemblyTitle>LibHttpClient</AssemblyTitle>
+    <Product>LibHttpClient</Product>
+    <Copyright>Copyright ©  2022</Copyright>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Flurl" />
+    <PackageReference Include="Flurl.Http" />
+    <PackageReference Include="Microsoft.CSharp" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="System.Data.DataSetExtensions"/>
+    <PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters" />
+    <PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters.CoreServices" />
+  </ItemGroup>
+</Project>

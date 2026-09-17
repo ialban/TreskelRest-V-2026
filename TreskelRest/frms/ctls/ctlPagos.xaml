@@ -1,0 +1,434 @@
+﻿<UserControl x:Class="TreskelRest.frms.ctls.ctlPagos"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TreskelRest.frms.ctls"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="500" d:DesignWidth="1080" Loaded="UserControl_Loaded">
+    <Grid>
+        <DockPanel>
+            <Grid DockPanel.Dock="Top" Height="80">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <StackPanel.Resources>
+                        <Style TargetType="Label">
+                            <Setter Property="Margin" Value="2" />
+                        </Style>
+                    </StackPanel.Resources>
+                    <Label Content="TOTAL" FontWeight="Bold" HorizontalAlignment="Right" FontSize="18" Width="114" HorizontalContentAlignment="Center" />
+                    <Label x:Name="lblTotal" Content="0,00" HorizontalAlignment="Right" FontSize="17" Width="114" HorizontalContentAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                        <Style TargetType="ToggleButton">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Button x:Name="btnCancelar" Margin="3,3,3,0" HorizontalAlignment="Left" Background="LightCoral" VerticalAlignment="Top" Height="70" Width="70" Click="btnCancelar_Click">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="../../images/cancel.png" Width="30" Height="30" />
+                            <Label Content="Cancelar" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnAceptar" Margin="3,3,3,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="70" Click="btnAceptar_Click">
+                        <Button.Background>
+                            <SolidColorBrush Color="#5cb85c" />
+                        </Button.Background>
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="../../images/accept.png" Width="30" Height="30" />
+                            <Label Content="Aceptar" />
+                        </StackPanel>
+                    </Button>
+                    <ToggleButton x:Name="btnCash" Margin="15,3,3,0" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="70" Checked="btnCash_Checked">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="../../images/cash.png" Width="30" Height="30" />
+                            <Label Content="Efectivo" />
+                        </StackPanel>
+                    </ToggleButton>
+                    <ToggleButton x:Name="btnCheque" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="70" Checked="btnCheque_Checked">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="../../images/cheque.png" Width="30" Height="30" />
+                            <Label Content="Cheque" />
+                        </StackPanel>
+                    </ToggleButton>
+                    <ToggleButton x:Name="btnTransf" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="70" Checked="btnTransf_Checked">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="../../images/transfer.png" Width="30" Height="30" />
+                            <Label Content="Transfer" />
+                        </StackPanel>
+                    </ToggleButton>
+                    <ToggleButton x:Name="btnTarjeta" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="70" Checked="btnTarjeta_Checked">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="../../images/creditcard.png" Width="30" Height="30" />
+                            <Label Content="Trj. Cred." />
+                        </StackPanel>
+                    </ToggleButton>
+
+                    <ToggleButton x:Name="btnVisa" Margin="15,3,3,0" IsEnabled="False" Background="Honeydew" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="75" Checked="btnVisa_Checked">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="../../images/visacc.png" Width="40" Height="40" />
+                            <Label Content="Visa" />
+                        </StackPanel>
+                    </ToggleButton>
+                    <ToggleButton x:Name="btnMasterCard" Margin="3,3,3,0" IsEnabled="False" Background="Honeydew" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="75" Checked="btnMasterCard_Checked">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="../../images/mastercardcc.png" Width="40" Height="40" />
+                            <Label Content="Mastercard" />
+                        </StackPanel>
+                    </ToggleButton>
+                    <ToggleButton x:Name="btnAmerican" Margin="3,3,3,0" IsEnabled="False" Background="Honeydew" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="75" Checked="btnAmerican_Checked">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="../../images/americanexcc.png" Width="40" Height="40" />
+                            <Label Content="American" />
+                        </StackPanel>
+                    </ToggleButton>
+                    <ToggleButton x:Name="btnDiscovery" Margin="3,3,3,0" IsEnabled="False" Background="Honeydew" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="75" Checked="btnDiscovery_Checked">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="../../images/discover.png" Width="40" Height="40" />
+                            <Label Content="Discover" />
+                        </StackPanel>
+                    </ToggleButton>
+                    <ToggleButton x:Name="btnDiners" Margin="3,3,3,0" IsEnabled="False" Background="Honeydew" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="75" Checked="btnDiners_Checked">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="../../images/dinnerscc.png" Width="40" Height="40" />
+                            <Label Content="Diners Club" />
+                        </StackPanel>
+                    </ToggleButton>
+                </StackPanel>
+
+            </Grid>
+            <Grid DockPanel.Dock="Right" Width="120">
+                <StackPanel Orientation="Vertical">
+                    <Label FontSize="14" Content="Detalle Pago" FontWeight="Bold" HorizontalContentAlignment="Center">
+                        <Label.Background>
+                            <SolidColorBrush Color="Red" />
+                        </Label.Background>
+                        <Label.Foreground>
+                            <SolidColorBrush Color="White" />
+                        </Label.Foreground>
+                    </Label>
+                    <Label x:Name="lblSaldo" FontSize="14" Content="0.00" FontWeight="Bold" HorizontalContentAlignment="Center">
+                        <Label.Background>
+                            <SolidColorBrush Color="LightBlue" />
+                        </Label.Background>
+                        <Label.Foreground>
+                            <SolidColorBrush Color="Black" />
+                        </Label.Foreground>
+                    </Label>
+                    <!--<StackPanel x:Name="stDetPago" Orientation="Vertical">
+                        <StackPanel.Resources>
+                            <Style TargetType="Label">
+                                <Setter Property="Margin" Value="2" />
+                            </Style>
+                        </StackPanel.Resources>-->
+                        <DataGrid x:Name="dgvPagos"
+                                  AlternationCount="2" AlternatingRowBackground="Aquamarine"
+                                  ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                  CanUserReorderColumns="False" CanUserAddRows="False"
+                                  FontSize="16" VerticalContentAlignment="Center" ColumnWidth="*" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn Width="50" >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Button Width="40" Height="40" Margin="3" Background="Transparent" BorderBrush="Transparent" Click="Delete_Click" >
+                                                    <Image Source="../../images/delete.png" Width="30" Height="30" />
+                                                </Button>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="Valor" Binding="{Binding valor}" Width="60" />
+                        </DataGrid.Columns>
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="FontSize" Value="16" />
+                                    <Setter Property="Height" Value="40" />
+                                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+                            <DataGrid.RowStyle>
+                                <Style TargetType="DataGridRow">
+                                    <Setter Property="Background" Value="White"/>
+                                </Style>
+                            </DataGrid.RowStyle>
+                            <DataGrid.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                                <Grid Background="{TemplateBinding Background}">
+                                                    <ContentPresenter VerticalAlignment="Center" />
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DataGrid.CellStyle>
+                        </DataGrid>
+                    <!--</StackPanel>-->
+                </StackPanel>
+            </Grid>
+            <Grid>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="Button">
+                                <Setter Property="Margin" Value="3" />
+                            </Style>
+                            <Style TargetType="TextBox">
+                                <Setter Property="Margin" Value="3" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <TextBox x:Name="txtPEfectivo" FontSize="16" VerticalContentAlignment="Center" Text="" Width="110" Height="40" MaxLength="8" GotFocus="txtPEfectivo_GotFocus" SelectionChanged="txtPEfectivo_SelectionChanged" />
+                        <Button x:Name="btnClear" Width="60" Height="40" Click="btnClear_Click">
+                            <Image Source="../../images/clear.png" Width="30" Height="30" />
+                        </Button>
+                        <Button x:Name="btnBack" Width="60" Height="40" Click="btnBack_Click">
+                            <Image Source="../../images/back.png" Width="30" Height="30" />
+                        </Button>
+                        <Button x:Name="btnAdd" Width="60" Height="40" Click="btnAdd_Click">
+                            <Image Source="../../images/add.png" Width="30" Height="30" />
+                        </Button>
+                        <Button x:Name="btnSaldo" Width="60" Height="40" Click="btnSaldo_Click">
+                            <Image Source="../../images/saldo.png" Width="30" Height="30" />
+                        </Button>
+                        <Label x:Name="lblTitulo" Width="400" Content="Pago en Efectivo" FontSize="18" FontWeight="Bold" HorizontalContentAlignment="Right" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="Grid">
+                                <Setter Property="Margin" Value="3" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <Grid x:Name="gridKey" Visibility="Visible">
+                            <Grid Width="190" Height="220" Margin="16,0,254,45">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button x:Name="button7" Content="7" FontSize="16" Width="60" Height="55"/>
+                                        <Button x:Name="button8" Content="8" FontSize="16" Width="60" Height="55"/>
+                                        <Button x:Name="button9" Content="9" FontSize="16" Width="60" Height="55"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button x:Name="button4" Content="4" FontSize="16" Width="60" Height="55"/>
+                                        <Button x:Name="button5" Content="5" FontSize="16" Width="60" Height="55"/>
+                                        <Button x:Name="button6" Content="6" FontSize="16" Width="60" Height="55"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button x:Name="button1" Content="1" FontSize="16" Width="60" Height="55"/>
+                                        <Button x:Name="button2" Content="2" FontSize="16" Width="60" Height="55"/>
+                                        <Button x:Name="button3" Content="3" FontSize="16" Width="60" Height="55"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button x:Name="button0" Margin="60,0,0,0" Content="0" FontSize="16" Width="60" Height="55"/>
+                                        <Button x:Name="buttonP" Content="." FontSize="16" Width="60" Height="55"/>
+                                        <!--<Button x:Name="enter" FontSize="16" Width="60" Height="55">
+                                            <Image Source="../../images/enter.png" Width="30" Height="30" />
+                                        </Button>-->
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Margin="259,0,19,4">
+                                <StackPanel Orientation="Vertical" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button x:Name="shcut2" Content="10" FontSize="16" Width="60" Height="55"/>
+                                        <Button x:Name="shcut3" Content="15" FontSize="16" Width="60" Height="55"/>
+                                        <Button x:Name="shcut4" Content="20" FontSize="16" Width="60" Height="55"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button x:Name="shcut5" Content="25" FontSize="16" Width="60" Height="55"/>
+                                        <Button x:Name="shcut6" Content="30" FontSize="16" Width="60" Height="55"/>
+                                        <Button x:Name="shcut7" Content="35" FontSize="16" Width="60" Height="55"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button x:Name="shcut8" Content="40" FontSize="16" Width="60" Height="55"/>
+                                        <Button x:Name="shcut9" Content="45" FontSize="16" Width="60" Height="55"/>
+                                        <Button x:Name="shcut10" Content="50" FontSize="16" Width="60" Height="55"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button x:Name="shcut11" Content="55" FontSize="16" Width="60" Height="55"/>
+                                        <Button x:Name="shcut12" Content="60" FontSize="16" Width="60" Height="55"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid>
+                            <Grid Visibility="Hidden" x:Name="gridCC">
+                                <Grid HorizontalAlignment="Left" Margin="140,0,0,0">
+                                    <Label Content="Lote" FontSize="16" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                                    <TextBox x:Name="txtLote" FontSize="16" Width="150" Height="40" Margin="0, 40, 0, 0" HorizontalAlignment="Left" VerticalAlignment="Top" MaxLength="10" GotFocus="txtLote_GotFocus" SelectionChanged="txtLote_SelectionChanged" />
+                                    <Label Content="Referencia" FontSize="16" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,90,0,0" />
+                                    <TextBox x:Name="txtRef" FontSize="16" Width="150" Height="40" Margin="0, 130, 0, 0" HorizontalAlignment="Left" VerticalAlignment="Top" MaxLength="10" GotFocus="txtRef_GotFocus" SelectionChanged="txtRef_SelectionChanged" />
+                                </Grid>
+                                <Grid Width="130" VerticalAlignment="Top" HorizontalAlignment="Left">
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel.Resources>
+                                            <Style TargetType="ToggleButton">
+                                                <Setter Property="Margin" Value="3" />
+                                            </Style>
+                                        </StackPanel.Resources>
+                                        <ToggleButton x:Name="pgCorriente" Height="60" Content="Pago Corriente" Checked="pgCorriente_Checked" />
+                                        <ToggleButton x:Name="pgDiferido" Height="60" Content="Pago Diferido" Checked="pgDiferido_Checked" />
+                                    </StackPanel>
+                                </Grid>
+                                <Grid x:Name="grdMeses" Width="320" Height="70" Margin="0,180,0,0" HorizontalAlignment="Left">
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel.Resources>
+                                            <Style TargetType="ToggleButton">
+                                                <Setter Property="Margin" Value="3" />
+                                            </Style>
+                                        </StackPanel.Resources>
+                                        <ToggleButton x:Name="pg3meses" Background="DarkSalmon" Width="100" Height="60" Content="3 Meses" Checked="pg3meses_Checked" />
+                                        <ToggleButton x:Name="pg6meses" Background="DarkSalmon" Width="100" Height="60" Content="6 Meses" Checked="pg6meses_Checked" />
+                                        <ToggleButton x:Name="pg9meses" Background="DarkSalmon" Width="100" Height="60" Content="9 Meses" Checked="pg9meses_Checked" />
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                            <Grid Visibility="Hidden" x:Name="gridCheque">
+                                <DockPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel x:Name="contBancos1" Orientation="Horizontal" DockPanel.Dock="Top" Height="70" VerticalAlignment="Top">
+                                            <StackPanel.Resources>
+                                                <Style TargetType="ToggleButton">
+                                                    <Setter Property="Margin" Value="2" />
+                                                </Style>
+                                            </StackPanel.Resources>
+                                            <ToggleButton x:Name="BcoGquil" Tag="BG" Background="WhiteSmoke" Width="70" Height="60" Checked="Banco_Checked" Unchecked="Banco_Unchecked">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Source="../../images/bgquil.png" Width="30" Height="30" />
+                                                    <Label Content="Guayaquil" />
+                                                </StackPanel>
+                                            </ToggleButton>
+                                            <ToggleButton x:Name="BcoPichincha" Tag="BP" Background="WhiteSmoke" Width="70" Height="60" Checked="Banco_Checked" Unchecked="Banco_Unchecked">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Source="../../images/bpichincha.png" Width="30" Height="30" />
+                                                    <Label Content="Pichincha" />
+                                                </StackPanel>
+                                            </ToggleButton>
+                                            <ToggleButton x:Name="BcoBolivariano" Tag="BB" Background="WhiteSmoke" Width="70" Height="60" Checked="Banco_Checked" Unchecked="Banco_Unchecked">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Source="../../images/bbolivariano.png" Width="30" Height="30" />
+                                                    <Label Content="Bolivariano" />
+                                                </StackPanel>
+                                            </ToggleButton>
+                                            <ToggleButton x:Name="BcoPacifico" Tag="PB" Background="WhiteSmoke" Width="70" Height="60" Checked="Banco_Checked" Unchecked="Banco_Unchecked">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Source="../../images/bpacifico.png" Width="30" Height="30" />
+                                                    <Label Content="Pacífico" />
+                                                </StackPanel>
+                                            </ToggleButton>
+                                            <ToggleButton x:Name="MutPichincha" Tag="MP" Background="WhiteSmoke" Width="70" Height="60" Checked="Banco_Checked" Unchecked="Banco_Unchecked">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Source="../../images/mutPichincha.png" Width="30" Height="30" />
+                                                    <Label Content="M. Pichincha" />
+                                                </StackPanel>
+                                            </ToggleButton>
+                                        </StackPanel>
+                                        <StackPanel x:Name="contBancos2" Orientation="Horizontal" DockPanel.Dock="Top" Height="70" VerticalAlignment="Top">
+                                            <StackPanel.Resources>
+                                                <Style TargetType="ToggleButton">
+                                                    <Setter Property="Margin" Value="2" />
+                                                </Style>
+                                            </StackPanel.Resources>
+                                            <ToggleButton x:Name="BcoProdubanco" Tag="BD" Background="WhiteSmoke" Width="70" Height="60" Checked="Banco_Checked" Unchecked="Banco_Unchecked">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Source="../../images/produbanco.png" Width="30" Height="30" />
+                                                    <Label Content="Produbanco" />
+                                                </StackPanel>
+                                            </ToggleButton>
+                                            <ToggleButton x:Name="BcoInternacional" Tag="BI" Background="WhiteSmoke" Width="70" Height="60"  Checked="Banco_Checked" Unchecked="Banco_Unchecked">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Source="../../images/binternacional.png" Width="30" Height="30" />
+                                                    <Label Content="Internacional" />
+                                                </StackPanel>
+                                            </ToggleButton>
+                                            <ToggleButton x:Name="BcoAustro" Tag="BA" Background="WhiteSmoke" Width="70" Height="60" Checked="Banco_Checked" Unchecked="Banco_Unchecked">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Source="../../images/baustro.png" Width="30" Height="30" />
+                                                    <Label Content="Austro" />
+                                                </StackPanel>
+                                            </ToggleButton>
+                                            <ToggleButton x:Name="BcoMachala" Tag="BM" Background="WhiteSmoke" Width="70" Height="60" Checked="Banco_Checked" Unchecked="Banco_Unchecked">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Source="../../images/bmachala.png" Width="30" Height="30" />
+                                                    <Label Content="Machala" />
+                                                </StackPanel>
+                                            </ToggleButton>
+                                            <ToggleButton x:Name="MAmbato" Tag="MA" Background="WhiteSmoke" Width="70" Height="60" Checked="Banco_Checked" Unchecked="Banco_Unchecked">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Source="../../images/mutAmbato.png" Width="30" Height="30" />
+                                                    <Label Content="M.Ambato" />
+                                                </StackPanel>
+                                            </ToggleButton>
+                                        </StackPanel>
+                                        <StackPanel x:Name="contBancos3" Orientation="Horizontal" DockPanel.Dock="Top" Height="70" VerticalAlignment="Top">
+                                            <StackPanel.Resources>
+                                                <Style TargetType="ToggleButton">
+                                                    <Setter Property="Margin" Value="2" />
+                                                </Style>
+                                            </StackPanel.Resources>
+                                            <ToggleButton x:Name="BcoSolidario" Tag="BS" Background="WhiteSmoke" Width="70" Height="60" Checked="Banco_Checked" Unchecked="Banco_Unchecked">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Source="../../images/bsolidario.png" Width="30" Height="30" />
+                                                    <Label Content="Solidario" />
+                                                </StackPanel>
+                                            </ToggleButton>
+                                            <ToggleButton x:Name="BcoRuminahui" Tag="BR" Background="WhiteSmoke" Width="70" Height="60" Checked="Banco_Checked" Unchecked="Banco_Unchecked">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Source="../../images/bruminahui.png" Width="30" Height="30" />
+                                                    <Label Content="Rumiñahui" />
+                                                </StackPanel>
+                                            </ToggleButton>
+                                            <ToggleButton x:Name="CoopPN" Tag="CP" Background="WhiteSmoke" Width="70" Height="60" Checked="Banco_Checked" Unchecked="Banco_Unchecked">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Source="../../images/coopPN.png" Width="30" Height="30" />
+                                                    <Label Content="C.Policia N" />
+                                                </StackPanel>
+                                            </ToggleButton>
+                                            <ToggleButton x:Name="CoopOscus" Tag="CO" Background="WhiteSmoke" Width="70" Height="60" Checked="Banco_Checked" Unchecked="Banco_Unchecked">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Source="../../images/coopOscus.png" Width="30" Height="30" />
+                                                    <Label Content="Oscus" />
+                                                </StackPanel>
+                                            </ToggleButton>
+                                            <ToggleButton x:Name="CoopJep" Tag="CJ" Background="WhiteSmoke" Width="70" Height="60" Checked="Banco_Checked" Unchecked="Banco_Unchecked">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Source="../../images/coopJep.png" Width="30" Height="30" />
+                                                    <Label Content="C. JEP" />
+                                                </StackPanel>
+                                            </ToggleButton>
+                                        </StackPanel>
+                                        <StackPanel x:Name="contBancos4" Orientation="Horizontal" DockPanel.Dock="Top" Height="90" VerticalAlignment="Top">
+                                            <ToggleButton x:Name="Coop29" Tag="29" Background="WhiteSmoke" Width="70" Height="60" Checked="Banco_Checked" Unchecked="Banco_Unchecked">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Source="../../images/coop29Oct.png" Width="30" Height="30" />
+                                                    <Label Content="C.29 Oct" />
+                                                </StackPanel>
+                                            </ToggleButton>
+                                            <ToggleButton x:Name="BanEc" Tag="BE" Background="WhiteSmoke" Width="70" Height="60" Checked="Banco_Checked" Unchecked="Banco_Unchecked">
+                                                <StackPanel Orientation="Vertical">
+                                                    <Image Source="../../images/banEcuador.png" Width="30" Height="30" />
+                                                    <Label Content="B.Ecuador" />
+                                                </StackPanel>
+                                            </ToggleButton>
+                                            <StackPanel Orientation="Vertical">
+                                                <Label x:Name="lblContCheque" Content="Numero Cheque:" FontSize="16" Height="40" Width="200" HorizontalContentAlignment="Center" />
+                                                <TextBox x:Name="txtNCheque" FontSize="16" Height="40" VerticalContentAlignment="Center" Width="160" MaxLength="10" GotFocus="txtNCheque_GotFocus" SelectionChanged="txtNCheque_SelectionChanged" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DockPanel>
+                            </Grid>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>

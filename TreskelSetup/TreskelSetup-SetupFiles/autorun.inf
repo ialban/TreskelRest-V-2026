@@ -1,0 +1,7 @@
+[autorun]
+label = TreskelSoft
+open = autorun.exe [open][1] "TreskelSetup.msi"
+icon = autorun.exe
+
+[Installed]
+ProductCode = {7C3798B0-183F-46BE-8CEA-323C7A452C1E}

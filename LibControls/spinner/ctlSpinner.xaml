@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="LibControls.spinner.ctlSpinner"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibControls.spinner"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="40" d:DesignWidth="170">
+    <Grid>
+        <Button x:Name="btnPlus" Content="+" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="40" Height="40" FontSize="25" Foreground="White" FontWeight="Bold" Background="RoyalBlue" Click="btnPlus_Click" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txt" HorizontalAlignment="Left" Height="40" Margin="40,0,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="80" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True"/>
+        <Button x:Name="btnMinus" Content="-" HorizontalAlignment="Left" Margin="120,0,0,0" VerticalAlignment="Top" Width="40" Height="40" FontSize="25" Foreground="White" FontWeight="Bold" Background="RoyalBlue" Click="btnMinus_Click" VerticalContentAlignment="Center"/>
+    </Grid>
+</UserControl>

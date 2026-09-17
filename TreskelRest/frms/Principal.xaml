@@ -1,0 +1,408 @@
+﻿<Window x:Class="TreskelRest.frms.Principal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TreskelRest.frms"
+        mc:Ignorable="d" WindowState="Maximized" WindowStartupLocation="Manual" Loaded="Window_Loaded"
+        Title="Treskel System" Height="300" Width="864" Closed="Window_Closed" Closing="Window_Closing" Icon="/TreskelRest;component/treskel.ico">
+    <Grid Background="#FF121212">
+        <!-- Capa del Menú -->
+        <DockPanel x:Name="ContenedorGeneral" LastChildFill="True" Background="#FF121212" Visibility="Collapsed">
+            <Menu DockPanel.Dock="Top" x:Name="menu" HorizontalAlignment="Stretch"  Height="45" Margin="0,0,0,0" VerticalAlignment="Top" Width="Auto" >
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <DockPanel HorizontalAlignment="Stretch"></DockPanel>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+                <MenuItem Header="_Sistema" FontSize="16" Height="45">
+                    <MenuItem Height="45" x:Name="menuConfig" Header="Configuración" Click="menuConfig_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/setting.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Height="45" x:Name="menuConfigPC" Header="Configuración Computador" Click="menuConfigPC_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/pcsetting.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Height="45" x:Name="menuTestFactElec" Header="Test Facturación Electrónica" Click="menuTestFactElec_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/FactElect.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Height="45" x:Name="menuTestEmail" Header="Test Correo Electrónico" Click="menuTestEmail_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/email.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Height="45" x:Name="menuImportacion" Header="Importación de datos." Click="menuImportacion_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/excel.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Height="45" x:Name="menuModulos" Header="Habilitación de módulos">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/modules.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Height="45" x:Name="menuSeguridad" Header="Administración de Usuarios" Click="menuSeguridad_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/security.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Height="45" x:Name="menuSistema" Header="Cambiar Usuario" Click="menuSistema_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/changeUser.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Height="45" x:Name="menuSalir" Header="Salir" Click="menuSalir_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/logout.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="M_antenimiento" FontSize="16" Height="45">
+                    <MenuItem Height="45" Header="Ventas">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/sale.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                        <MenuItem Height="45" x:Name="menuGrupos" Header="Grupo de Productos" Click="menuGrupos_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/group.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="45" x:Name="menuSubGrupos" Header="Subgrupo de Productos" Click="menuSubGrupos_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/subgroup.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="45" x:Name="menuProducts" Header="Productos" Click="menuProducts_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/products.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="45" x:Name="menuCarriers" Header="Empresas Carriers" Click="menuCarriers_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/delivery.png"  Margin="-2,-4,-4,-4"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Height="45" Header="Compras">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/buy.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                        <MenuItem Height="45" x:Name="menuProviders" Header="Proveedores" Click="menuProviders_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/provider.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="45" x:Name="menuMateriaPrima" Header="Productos" Click="menuMateriaPrima_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/materiaprima.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Height="45" Header="Contabilidad">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/contabilidad.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                        <MenuItem Height="45" x:Name="menuCuentas" Header="Plan de Cuentas" Click="menuCuentas_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/plancuentas.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="45" x:Name="menuBancos" Header="Bancos" Click="menuBancos_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/banco.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Height ="45" Header ="Seguridad">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/security.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                        <MenuItem Height="45" Header="Tarjeta de Coordenadas">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/trjcoordenadas.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="45" Header="Pin aleatorio">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/pin.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="45" Header="Huella Digital">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/fingerprint.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="45" Header="Tarjeta CONTACTLESS">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/contactless.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Height="45" x:Name="menuFeriados" Header="Feriados" Click="menuFeriados_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/calendario.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Height="45" x:Name="menuCaja" Header="Cajas" Click="menuCaja_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/caja.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Height="45" x:Name="menuRetencion" Header="Retenciones" Click="menuRetencion_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/retencion.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem Height="45" x:Name="menuReceta" Header="Recetas" Click="menuRecetas_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/toserv.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem Height="45" x:Name="menuClientes" Header="Clientes" Click="menuClientes_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/clients.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Height="45" x:Name="menuEmployee" Header="Empleados" Click="menuEmployee_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/employee.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Height="45" x:Name="menuBackup" Header="Copia de Seguridad" Click="menuBackup_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/backup.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Transacciones" FontSize="16">
+                    <MenuItem Height="45" x:Name="menuReservaciones" Header="Reservaciones" Click="menuReservaciones_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/reservar.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Height="45" x:Name="menuPedidos" Header="Pedidos" Click="menuPedidos_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/pedidos.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Height="45" x:Name="menuBilling" Header="Facturación" Click="menuBilling_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/billing.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Height="45" x:Name="SRIDocs" Header="Documentos SRI">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/sri.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                        <MenuItem Height="45" x:Name="menuRetenciones" Header="Retenciones" Click="menuRetenciones_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/Retencion.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="45" x:Name="menuNotaCredito" Header="Notas de Crédito" Click="menuNotaCredito_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/notacredito.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="45" x:Name="FactElect" Header="Fact. Electronica manual" Click="FactElect_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/faturaelect.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="45" x:Name="SearchFactElect" Header="Buscar Facturas Electrónicas" Click="SearchFactElect_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/find.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Height="45" x:Name="menuCobroPagos" Header="Cobros, Pagos y Bancos">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/cash.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+
+                        <MenuItem Height="45" x:Name="menuCobroCredito" Header="Cobro de Créditos" Click="menuCobroCredito_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/porCobrar.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="45" x:Name="menuPagoSalarios" Header="Pago de Salarios" Click="menuPagoSalarios_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/salario.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Height="45" x:Name="menuTransBancaria" Header="Movimientos Bancarios" Click="menuTransBancaria_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/transbco.png" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Height="45" x:Name="menuCompras" Header="Compras" Click="menuCompras_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/buy.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Height="45" x:Name="menuInvAdapt" Header="Ajuste de Inventario" Click="menuInvAdapt_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/inventoryadapt.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <Separator />
+                    <MenuItem Height="45" x:Name="menuEnvio" Header="Entregas a domicilio" Click="menuEnvio_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/delivery.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Movimiento Caja" FontSize="16">
+                    <MenuItem Height="45" x:Name="menuInicioCaja" Header="Inicio de Caja" Click="menuInicioCaja_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/inicio.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Height="45" x:Name="menuValeIn" Header="Vale de Ingreso" Click="menuValeIn_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/document.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Height="45" x:Name="menuValeOut" Header="Vale de Egreso" Click="menuValeOut_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/document.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Height="45" x:Name="menuCierre" Header="Cierre de Caja" Click="menuCierre_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/caja.png" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Reportes" FontSize="16">
+                    <MenuItem Height="45" x:Name="menuRptControCaja" Header="Control de Caja" Click="menuRptControCaja_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/reporte3.png" Stretch="Fill" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem Height="45" Margin="0" Header="Pedidos/Facturas">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/pedidos.png" Stretch="Fill" Margin="-4,-4,-4,-4" />
+                        </MenuItem.Icon>
+
+                        <MenuItem Height="45" x:Name="menuRptPedidos" Header="Control Pedidos" Click="menuRptPedidos_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/pedidos.png" Stretch="Fill"  Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+
+                        <MenuItem Height="45" x:Name="menuRptVentas" Header="Control Mensual de Ventas" Click="menuRptVentas_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/piechart.png" Stretch="Fill" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+
+                        <MenuItem Height="45" Margin="0" x:Name="menuRptAnulaciones" Header="Anulaciones y Eliminaciones" Click="menuRptAnulaciones_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/anulaFactura.png" Stretch="Fill" Margin="-4,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+
+                        <MenuItem Height="45" Margin="0" x:Name="menuRptCobrar" Header="Pedidos Empresas por Cobrar" Click="menuRptCobrar_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/porCobrar.png" Stretch="Fill" Margin="-4,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+
+                    <MenuItem Height="45" Header="Pagos/Deudas">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/salario.png" Stretch="Fill" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+
+                        <MenuItem Height="45" x:Name="menuRptSalarios" Header="Pago de Salarios" Click="menuRptSalarios_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/salario.png" Stretch="Fill" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+
+                        <MenuItem Height="45" x:Name="menuRptSalariosPendientes" Header="Salarios Pendientes" Click="menuRptSalariosPendientes_Click">
+                            <MenuItem.Icon>
+                                <Image Width="22" Height="22" Source="../images/deuda.png" Stretch="Fill" Margin="-2,-4,-4,-4" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+
+                    <MenuItem Height="45" x:Name="menuRptBancos" Header="Transacciones Bancarias" Click="menuRptBancos_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/banco.png" Stretch="Fill" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem Height="45" x:Name="menuRptInventario" Header="Control Inventario" Click="menuRptInventario_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/inventory_color.png" Stretch="Fill" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem Height="45" x:Name="menuRptRegalos" Header="Control Regalos" Click="menuRptRegalos_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/gift.png" Stretch="Fill" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <MenuItem Height="45" x:Name="menuRptSRI" Header="Comprobantes S.R.I" Click="menuRptSRI_Click">
+                        <MenuItem.Icon>
+                            <Image Width="22" Height="22" Source="../images/sri.png" Stretch="Fill" Margin="-2,-4,-4,-4" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem x:Name="CambioRapido" Header="Cambia a Pedidos" FontSize="16" HorizontalAlignment="Right" Foreground="Brown" Click="CambioRapido_Click" >
+                    <MenuItem.Icon>
+                        <Image Width="22" Height="22" x:Name="imgCambioRapido" Source="../images/pedidos.png" Margin="-2,-4,-4,-4" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </Menu>
+            <Grid Height="Auto" Width="Auto" x:Name="contenido">
+                <Grid.Background>
+                    <ImageBrush x:Name="imgFondo" Stretch="UniformToFill"/>
+                </Grid.Background>
+            </Grid>
+        </DockPanel>
+        <!-- Capa del LOADING -->
+        <Grid x:Name="LoadingOverlay" Visibility="Visible">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image Source="/images/treskel-sb.png" Width="70" Height="70"></Image>
+                <ProgressBar Margin="0, 20, 0, 0" IsIndeterminate="True" 
+                     Width="280" 
+                     Height="10" 
+                     Foreground="#FF007ACC" 
+                     Background="#FF2D2D30" 
+                     BorderThickness="0"/>
+
+                <TextBlock Text="Cargando configuración de Treskel Restaurant System..." 
+                   Foreground="#FFE0E0E0" 
+                   FontSize="16" 
+                   FontWeight="Normal"
+                   HorizontalAlignment="Center" 
+                   Margin="0,15,0,0"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+    
+</Window>

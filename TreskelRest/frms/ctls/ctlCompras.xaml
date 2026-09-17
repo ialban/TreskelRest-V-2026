@@ -1,0 +1,533 @@
+﻿<UserControl x:Class="TreskelRest.frms.ctls.ctlCompras"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TreskelRest.frms.ctls" xmlns:TextBoxMask="clr-namespace:LibControls.TextBoxMask;assembly=LibControls"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="700" d:DesignWidth="1300">
+    <DockPanel>
+        <StackPanel Orientation="Vertical" DockPanel.Dock="Top" Height="100" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" >
+                <StackPanel.Resources>
+                    <Style TargetType="Label">
+                        <Setter Property="Margin" Value="3" />
+                    </Style>
+                    <Style TargetType="ComboBox">
+                        <Setter Property="Margin" Value="3" />
+                    </Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Margin" Value="3" />
+                    </Style>
+                </StackPanel.Resources>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Margin" Value="6" />
+                    </Style>
+                </StackPanel.Resources>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button x:Name="btnGrabar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="70" Foreground="White" FontSize="16" Click="btnGrabar_Click">
+                        <Button.Background>
+                            <SolidColorBrush Color="#5cb85c" />
+                        </Button.Background>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel.Resources>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Margin" Value="3"/>
+                                </Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Margin" Value="3"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Image Source="../../images/save.png" Width="30" Height="30" />
+                            <TextBlock VerticalAlignment="Center">Grabar</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnCancelar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="70" FontSize="16" Foreground="White" Click="btnCancelar_Click">
+                        <Button.Background>
+                            <SolidColorBrush Color="#d9534f" />
+                        </Button.Background>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel.Resources>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Margin" Value="3"/>
+                                </Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Margin" Value="3"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Image Source="../../images/cancel.png" Width="30" Height="30" />
+                            <TextBlock VerticalAlignment="Center">Cancelar</TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnPago" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="70" FontSize="16" Click="btnPago_Click">
+                        <Button.Background>
+                            <SolidColorBrush Color="GreenYellow" />
+                        </Button.Background>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel.Resources>
+                                <Style TargetType="{x:Type Image}">
+                                    <Setter Property="Margin" Value="3"/>
+                                </Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Margin" Value="3"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Image Source="../../images/topay.png" Width="30" Height="30" />
+                            <TextBlock VerticalAlignment="Center">Pago</TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                
+                <StackPanel Orientation="Vertical" Margin="5,5,5,5">
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <Label Content="Empresa : " HorizontalAlignment="Left" Width="95" VerticalContentAlignment="Center" Height="40" FontSize="16" />
+                        <ComboBox x:Name="cboEmpresa" Width="320" Height="40" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center" />
+                        <Label Content="N° Factura : " FontSize="16" Height="40" Width="100" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <!--<TextBox x:Name="NumFact" Height="40" Width="220" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" MaxLength="20" />-->
+                        <TextBoxMask:TextBoxMask x:Name="NumFact" Style="{StaticResource placeHolder}" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="40" Width="160" MaxLength="17" Masked="Factura" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <Label Content="Fecha : " FontSize="16" Height="40" Width="95" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <DatePicker x:Name="Fecha" CalendarStyle="{StaticResource styleCalendar}" Width="170" FontSize="16" Height="40" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                        <!--<Label Content="Código Autorización : " HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="40" FontSize="16" />
+                        <TextBox x:Name="CodAutorizacion" Height="40" Width="555" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" MaxLength="49" />-->
+                    </StackPanel>
+                </StackPanel>
+                
+                <!--<Label Content="Fecha : " FontSize="16" Height="40" Width="70" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                <DatePicker x:Name="Fecha" CalendarStyle="{StaticResource styleCalendar}" Width="130" FontSize="16" Height="40" HorizontalAlignment="Left" VerticalContentAlignment="Center" />-->
+                <ToggleButton x:Name="CajaChica" FontSize="16" Width="80" Height="70" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0">
+                    <ToggleButton.Background>
+                        <SolidColorBrush Color="AntiqueWhite" />
+                    </ToggleButton.Background>
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="../../images/cajaout.png" Width="30" Height="30" />
+                        <TextBlock VerticalAlignment="Center">Caja Chica</TextBlock>
+                    </StackPanel>
+                </ToggleButton>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Height="5" Orientation="Horizontal">
+            
+        </StackPanel>
+        <Grid DockPanel.Dock="Right" Width="400">
+            <StackPanel Orientation="Vertical">
+                <DataGrid x:Name="dgvProd" Width="Auto" Height="400" Margin="0,0,0,0"
+                            AlternationCount="2" AlternatingRowBackground="Aquamarine"
+                            ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                            CanUserReorderColumns="True" CanUserAddRows="False"  IsReadOnly="True" VerticalAlignment="Top"
+                            FontSize="12" VerticalContentAlignment="Center" ColumnWidth="*" AutoGenerateColumns="False" >
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Acción" Width="70" >
+                            <DataGridTemplateColumn.CellTemplate >
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button x:Name="btnDelItem" Width="33" Height="33" Margin="2" Background="Transparent" BorderBrush="Transparent" Click="btnDelItem_Click" >
+                                            <Image Source="../../images/delete.png" Width="20" Height="20" />
+                                        </Button>
+                                        <Button x:Name="btnEditItem" Width="33" Height="33" Margin="2" Background="Transparent" BorderBrush="Transparent" Click="btnEditItem_Click" >
+                                            <Image Source="../../images/edit.png" Width="20" Height="20" />
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Codigo" Binding="{Binding codigo}" Width="70" Visibility="Hidden" />
+                        <DataGridTextColumn Header="Producto" Binding="{Binding item}" Width="170"  />
+                        <DataGridTextColumn Header="Cantidad" Binding="{Binding cantidad}" Width="50" CellStyle="{StaticResource CentroCell}" />
+                        <DataGridTextColumn Header="Unidad" Binding="{Binding unidad}" Width="50" CellStyle="{StaticResource CentroCell}" />
+                        <DataGridTextColumn Header="Precio" Binding="{Binding precio}" Width="100" Visibility="Hidden" />
+                    </DataGrid.Columns>
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="Transparent" />
+                            <Setter Property="FontSize" Value="12" />
+                            <Setter Property="Height" Value="40" />
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+                    <DataGrid.RowStyle>
+                        <Style TargetType="{x:Type DataGridRow}">
+                            <Setter Property="Background" Value="White"/>
+                        </Style>
+                    </DataGrid.RowStyle>
+                    <DataGrid.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                        <Grid Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="Center" />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DataGrid.CellStyle>
+                </DataGrid>
+                <Label Height="10" />
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Sub Sin Iva" FontSize="14" Height="30" Width="90" />
+                    <TextBox x:Name="SubTotal0" FontSize="14" Height="36" Width="100" VerticalContentAlignment="Center" IsEnabled="False" />
+                    <Label Content="Sub Con Iva" FontSize="14" Height="30" Width="90" />
+                    <TextBox x:Name="SubTotal12" FontSize="14" Height="36"  Width="100" VerticalContentAlignment="Center" IsEnabled="False" />
+                </StackPanel>
+                <Label Height="10" />
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Descuento" FontSize="14" Height="30" Width="90" />
+                    <TextBox x:Name="Descuento" FontSize="14" Height="36"  Width="100" VerticalContentAlignment="Center" IsEnabled="False" />
+                    <Label Content="I.V.A" FontSize="14" Height="30"  Width="90" />
+                    <TextBox x:Name="Iva" FontSize="14" Height="36" Width="100" VerticalContentAlignment="Center" IsEnabled="False" />
+                </StackPanel>
+                <Label Height="10" />
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Total" FontSize="14" Height="30" Width="90" />
+                    <TextBox x:Name="Total" FontSize="14" Height="36" Width="100" VerticalContentAlignment="Center" IsEnabled="False" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid>
+            <DockPanel>
+                <Grid DockPanel.Dock="Right" Width="120" HorizontalAlignment="Right">
+                    <Grid.Resources>
+                        <Style TargetType="StackPanel">
+                            <Setter Property="Margin" Value="5" />
+                        </Style>
+                    </Grid.Resources>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel.Resources>
+                            <Style TargetType="Button">
+                                <Setter Property="Margin" Value="3" />
+                            </Style>
+                            <Style TargetType="TextBox">
+                                <Setter Property="Margin" Value="3" />
+                            </Style>
+                            <Style TargetType="ComboBox">
+                                <Setter Property="Margin" Value="3" />
+                            </Style>
+                            <Style TargetType="Label">
+                                <Setter Property="Margin" Value="3" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <Label Content="Cantidad" FontSize="14" Height="30" />
+                        <TextBox x:Name="Cantidad" FontSize="14" Height="36" VerticalContentAlignment="Center" />
+                        <Label Content="Unidad" FontSize="14" Height="30" />
+                        <ComboBox x:Name="cboUnidad" Height="36" FontSize="16" VerticalContentAlignment="Center">
+                            <ComboBoxItem Tag="U" FontSize="14" VerticalContentAlignment="Center" IsSelected="True" Content="Unidad" />
+                            <ComboBoxItem Tag="Q" FontSize="14" VerticalContentAlignment="Center" Content="Quintal" />
+                            <ComboBoxItem Tag="K" FontSize="14" VerticalContentAlignment="Center" Content="Kilo" />
+                            <ComboBoxItem Tag="L" FontSize="14" VerticalContentAlignment="Center" Content="Libra" />
+                            <ComboBoxItem Tag="G" FontSize="14" VerticalContentAlignment="Center" Content="Gramo" />
+                            <ComboBoxItem Tag="O" FontSize="14" VerticalContentAlignment="Center" Content="Onza" />
+                            <ComboBoxItem Tag="P" FontSize="14" VerticalContentAlignment="Center" Content="Porción" />
+                        </ComboBox>
+                        <Label Content="Precio" FontSize="14" Height="30" />
+                        <TextBox x:Name="Precio" FontSize="14" Height="36" VerticalContentAlignment="Center" Text="0.00" />
+                        <Button x:Name="Seleccionar" FontSize="14" Height="40" Background="LightCoral" Click="Seleccionar_Click">
+                            <StackPanel>
+                                <Image Source="../../images/rightchevron.png" Width="30" Height="30" />
+                                <!--<Label Content="Aceptar" FontSize="14" Foreground="White" />-->
+                            </StackPanel>
+                        </Button>
+                        
+                    </StackPanel>
+                </Grid>
+                <Grid x:Name="GrpProductos" DockPanel.Dock="Top" Height="78">
+                    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled">
+                        <WrapPanel FlowDirection="LeftToRight"  Orientation="Horizontal">
+                            <WrapPanel.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="Margin" Value="3" />
+                                </Style>
+                            </WrapPanel.Resources>
+                            <Button x:Name="Todo" Height="70" Width="70" Tag="" Click="ButtonGroup_Click">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FAFBA5" />
+                                </Button.Background>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Image Source="../../images/allproducts.png" Width="30" Height="30" />
+                                    <TextBlock VerticalAlignment="Center">Todos</TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="Vegetales" Height="70" Width="70" Tag="V" Click="ButtonGroup_Click">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FAFBA5" />
+                                </Button.Background>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Image Source="../../images/vegetables.png" Width="30" Height="30" />
+                                    <TextBlock VerticalAlignment="Center">Vegetales</TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="Carnes" Height="70" Width="70" Tag="C" Click="ButtonGroup_Click">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FAFBA5" />
+                                </Button.Background>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Image Source="../../images/meat.png" Width="30" Height="30" />
+                                    <TextBlock VerticalAlignment="Center">Carnes</TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="Bebida" Height="70" Width="70" Tag="B" Click="ButtonGroup_Click">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FAFBA5" />
+                                </Button.Background>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Image Source="../../images/noalcoholica.png" Width="30" Height="30" />
+                                    <TextBlock VerticalAlignment="Center">Bebidas</TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="BAlcohol" Height="70" Width="70" Tag="A" Click="ButtonGroup_Click">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FAFBA5" />
+                                </Button.Background>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Image Source="../../images/wine.png" Width="30" Height="30" />
+                                    <TextBlock VerticalAlignment="Center">B Alcohol</TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="Lacteos" Height="70" Width="70" Tag="L" Click="ButtonGroup_Click">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FAFBA5" />
+                                </Button.Background>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Image Source="../../images/lacteos.png" Width="30" Height="30" />
+                                    <TextBlock VerticalAlignment="Center">Lacteos</TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="Mariscos" Height="70" Width="70" Tag="M" Click="ButtonGroup_Click">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FAFBA5" />
+                                </Button.Background>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Image Source="../../images/seafood.png" Width="30" Height="30" />
+                                    <TextBlock VerticalAlignment="Center">Mariscos</TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="Especias" Height="70" Width="70" Tag="E" Click="ButtonGroup_Click">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FAFBA5" />
+                                </Button.Background>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Image Source="../../images/spices.png" Width="30" Height="30" />
+                                    <TextBlock VerticalAlignment="Center">Especias</TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="Frutas" Height="70" Width="70" Tag="F" Click="ButtonGroup_Click">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FAFBA5" />
+                                </Button.Background>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Image Source="../../images/fruits.png" Width="30" Height="30" />
+                                    <TextBlock VerticalAlignment="Center">Frutas</TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="PanTorta" Height="70" Width="70" Tag="P" Click="ButtonGroup_Click">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FAFBA5" />
+                                </Button.Background>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Image Source="../../images/bread.png" Width="30" Height="30" />
+                                    <TextBlock VerticalAlignment="Center">Pan/Torta</TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="Cereales" Height="70" Width="70" Tag="R" Click="ButtonGroup_Click">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FAFBA5" />
+                                </Button.Background>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Image Source="../../images/cereal.png" Width="30" Height="30" />
+                                    <TextBlock VerticalAlignment="Center">Cereales</TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="Pastas" Height="70" Width="70" Tag="S" Click="ButtonGroup_Click">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FAFBA5" />
+                                </Button.Background>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Image Source="../../images/pastas.png" Width="30" Height="30" />
+                                    <TextBlock VerticalAlignment="Center">Pastas</TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="Herramientas" Height="70" Width="70" Tag="H" Click="ButtonGroup_Click">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FAFBA5" />
+                                </Button.Background>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Image Source="../../images/herramienta.png" Width="30" Height="30" />
+                                    <TextBlock VerticalAlignment="Center">Herramienta</TextBlock>
+                                </StackPanel>
+                            </Button>
+                            
+                            <Button x:Name="Materiales" Height="70" Width="70" Tag="M" Click="ButtonGroup_Click">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FAFBA5" />
+                                </Button.Background>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Image Source="../../images/materiales.png" Width="30" Height="30" />
+                                    <TextBlock VerticalAlignment="Center">Materiales</TextBlock>
+                                </StackPanel>
+                            </Button>
+
+                            <Button x:Name="Otros" Height="70" Width="70" Tag="O" Click="ButtonGroup_Click">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#FAFBA5" />
+                                </Button.Background>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Image Source="../../images/others.png" Width="30" Height="30" />
+                                    <TextBlock VerticalAlignment="Center">Otros</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </WrapPanel>
+                    </ScrollViewer>
+                </Grid>
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <WrapPanel x:Name="Contenedor" Orientation="Horizontal">
+                        <WrapPanel.Resources>
+                            <Style TargetType="ToggleButton">
+                                <Setter Property="Margin" Value="3" />
+                            </Style>
+                        </WrapPanel.Resources>
+                    
+                    </WrapPanel>
+                </ScrollViewer>
+            </DockPanel>
+        </Grid>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Company>TreskelSoft</Company>
+    <Version>2.0.0</Version>
+    <Product>TreskelRest</Product>
+    <Copyright>Copyright © 2025</Copyright>
+    <TargetFramework>net9.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <Configurations>All;Debug;Release</Configurations>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="datasets\dsCfgCnxDB.cs">
+      <DependentUpon>dsCfgCnxDB.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="datasets\dsCfgCnxDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCfgCnxDB.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="datasets\dsConfig.cs">
+      <DependentUpon>dsConfig.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="datasets\dsConfig.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsConfig.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="datasets\dsCfgCnxDB.xsc">
+      <DependentUpon>dsCfgCnxDB.xsd</DependentUpon>
+    </None>
+    <None Update="datasets\dsCfgCnxDB.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCfgCnxDB.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="datasets\dsCfgCnxDB.xss">
+      <DependentUpon>dsCfgCnxDB.xsd</DependentUpon>
+    </None>
+    <None Update="datasets\dsConfig.xsc">
+      <DependentUpon>dsConfig.xsd</DependentUpon>
+    </None>
+    <None Update="datasets\dsConfig.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>dsConfig.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="datasets\dsConfig.xss">
+      <DependentUpon>dsConfig.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibEncrypt\LibEncrypt.csproj" />
+  </ItemGroup>
+</Project>

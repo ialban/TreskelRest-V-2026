@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="TreskelRest.frms.ctls.ctlViewFacturas"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TreskelRest.frms.ctls"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="600" d:DesignWidth="900">
+    <DockPanel>
+        <DockPanel.Resources>
+            <Style TargetType="{x:Type Grid}">
+                <Setter Property="Margin" Value="3"/>
+            </Style>
+        </DockPanel.Resources>
+        <Grid DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+            <GroupBox Header="Acciones" Height="90" BorderBrush="Black" BorderThickness="2" Margin="0,0,0,0">
+                <StackPanel Width="Auto" Orientation="Horizontal" Margin="0,0,0,0">
+                    <Button x:Name="btnSalir" Width="75" Height="65" Background="LightCoral" Click="btnSalir_Click">
+                        <StackPanel>
+                            <Image Source="../../images/cancel.png" Width="30" Height="30" />
+                            <Label Content="Salir" FontSize="12" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                    <StackPanel Orientation="Vertical" Margin="3,0,3,3">
+                        <Label Content="Cliente" FontSize="12" />
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                            <TextBox x:Name="txtCliente" Width="120" Height="38" VerticalContentAlignment="Center" FontSize="12" />
+                        </StackPanel>
+                    </StackPanel>
+                    <Button x:Name="btnCliFnl" Width="65" Height="60" Click="btnCliFnl_Click">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="../../images/client.png" Width="30" Height="30"/>
+                            <Label Content="Cli. Final" />
+                        </StackPanel>
+                    </Button>
+                    <StackPanel Orientation="Vertical" Margin="3,0,3,3">
+                        <Label Content="Pedido" FontSize="12" />
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                            <TextBox x:Name="txtPedido" Width="120" Height="38" VerticalContentAlignment="Center" FontSize="12" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="3,0,3,3">
+                        <Label Content="Desde" FontSize="12" />
+                        <DatePicker x:Name="desde" FontSize="14" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"  CalendarStyle="{StaticResource styleCalendar}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="3,0,3,3">
+                        <Label Content="Hasta" FontSize="12" />
+                        <DatePicker x:Name="hasta" FontSize="14" Height="38" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"  CalendarStyle="{StaticResource styleCalendar}" />
+                    </StackPanel>
+                    <Button x:Name="btnBuscar" Width="65" Click="btnBuscar_Click">
+                        <StackPanel>
+                            <Image Source="../../images/find.png" Width="30" Height="30" />
+                            <Label Content="Buscar" FontSize="12" Foreground="Black" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <Grid>
+            <DataGrid x:Name="Resultado" Margin="0,0,0,0"
+                              AlternationCount="2" AlternatingRowBackground="Aquamarine"
+                              ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                              CanUserReorderColumns="False" CanUserAddRows="False"
+                              FontSize="12" VerticalContentAlignment="Center" ColumnWidth="*" 
+                              AutoGenerateColumns="False" 
+                              IsReadOnly="True" ColumnHeaderHeight="45">
+                <DataGrid.Resources>
+                    <Style TargetType="ScrollBar">
+                        <Style.Triggers>
+                            <Trigger Property="Orientation" Value="Vertical">
+                                <Setter Property="Width" Value="30"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Tipo" Width="50" IsReadOnly="True">
+                        <DataGridTemplateColumn.CellTemplate >
+                            <DataTemplate>
+                                <Image Source="{Binding tipoImg}" Width="30" Height="30">
+                                    <Image.ToolTip>
+                                        <ToolTip Content="{Binding tipo}" />
+                                    </Image.ToolTip>
+                                </Image>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate >
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Vta/Ret/Cdto/Dbto" Binding="{Binding secPeddRet}" Width="140" />
+                    <DataGridTextColumn Header="Pedido/Venta" Binding="{Binding ventscl}" Width="90" />
+                    <DataGridTextColumn Header="Autorizacion" Binding="{Binding autosri}" Width="90" Visibility="Hidden" />
+                    <DataGridTextColumn Header="Cliente/Proveedor" Binding="{Binding nombre}" Width="250" />
+                    <DataGridTextColumn Header="Valor" Binding="{Binding total}" Width="100" />
+                    <DataGridTextColumn Header="Documento" Binding="{Binding docref}" Width="150" />
+                    <DataGridTextColumn Header="Fecha" Binding="{Binding fecha}" Width="80" />
+                    <DataGridTemplateColumn Header="Descarga" Width="70" >
+                        <DataGridTemplateColumn.CellTemplate >
+                            <DataTemplate>
+                                <Grid>
+                                    <Button x:Name="btnMostrar" Width="30" Height="30" Margin="1" Background="Transparent" BorderBrush="Transparent" Click="btnMostrar_Click" IsEnabled="{Binding ToProcessEnable, Mode=TwoWay}" >
+                                        <StackPanel Orientation="Vertical" Margin="0,0,0,0">
+                                            <Image Source="../../images/download.png" Width="26" Height="26">
+                                                <Image.ToolTip>
+                                                    <ToolTip Content="Descarga del archivo" />
+                                                </Image.ToolTip>
+                                            </Image>
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </DockPanel>
+</UserControl>

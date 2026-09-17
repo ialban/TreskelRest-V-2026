@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="TreskelRest.frms.ctls.ctlCreaCarrier"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TreskelRest.frms.ctls"
+             xmlns:imageUploader="clr-namespace:LibControls.imageUploader;assembly=LibControls"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="380" d:DesignWidth="670">
+    <Grid>
+        <Label Content="Código : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="40" VerticalContentAlignment="Center" FontSize="16"/>
+        <TextBox x:Name="txtNid" HorizontalAlignment="Left" Margin="100,10,0,0" IsEnabled="False" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="40" FontSize="16" VerticalContentAlignment="Center" MaxLength="20"/>
+        <Label Content="Nombre : " HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top" Height="40" VerticalContentAlignment="Center" FontSize="16"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Margin="100,70,0,0" IsEnabled="True" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" Height="40" FontSize="16" VerticalContentAlignment="Center" MaxLength="80"  CharacterCasing="Upper" Typography.Capitals="AllSmallCaps"/>
+        <TextBox x:Name="txtAcronimo" HorizontalAlignment="Left" Margin="340,70,0,0" IsEnabled="True" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="40" FontSize="16" VerticalContentAlignment="Center" MaxLength="80"  CharacterCasing="Upper" Typography.Capitals="AllSmallCaps"/>
+        <Label Content="Valor : " HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Height="40" VerticalContentAlignment="Center" FontSize="16"/>
+        <TextBox x:Name="txtValor" HorizontalAlignment="Left" Margin="100,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="40" FontSize="16" VerticalContentAlignment="Center" MaxLength="80"/>
+        <Label Content="En Porcentaje : " HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top" Height="40" VerticalContentAlignment="Center" FontSize="16"/>
+        <CheckBox x:Name="chkPctj" Margin="150,190,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="True">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="3" ScaleY="3" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <Label Content="Activo : " HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top" Height="40" VerticalContentAlignment="Center" FontSize="16"/>
+        <CheckBox x:Name="chkAtv" Margin="150,250,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" IsChecked="True">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="3" ScaleY="3" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+
+        <CheckBox x:Name="chkAplica" Content="Aplicar a" FontSize="16" HorizontalAlignment="Left" Height="49" Margin="221,191,0,0" VerticalAlignment="Top" Width="214" Style="{DynamicResource SliderStyle}"/>
+
+        <Grid HorizontalAlignment="Center">
+            <Button x:Name="btnGrabar" HorizontalAlignment="Left" Margin="10,325,0,0" VerticalAlignment="Top" Width="120" Height="40" Foreground="White" FontSize="16" Click="btnGrabar_Click" Background="#5cb85c">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Image Source="../../images/save.png" Width="30" Height="30" />
+                    <TextBlock VerticalAlignment="Center"><Run Text="Grabar"/></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button x:Name="btnCancelar" HorizontalAlignment="Left" Margin="150,325,0,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="16" Foreground="White" Click="btnCancelar_Click" Background="#d9534f">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Image Source="../../images/cancel.png" Width="30" Height="30" />
+                    <TextBlock VerticalAlignment="Center"><Run Text="Cancelar"/></TextBlock>
+                </StackPanel>
+            </Button>
+
+        </Grid>
+
+        <imageUploader:ctlImageUploader x:Name="imgUploader" HorizontalAlignment="Left" Width="185" Height="230" Margin="468,10,0,0" VerticalAlignment="Top" _ctlImageUploader="imgUploader__ctlImageUploader" />
+    </Grid>
+</UserControl>

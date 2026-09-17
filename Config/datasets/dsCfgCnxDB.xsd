@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsCfgCnxDB" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsCfgCnxDB" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsCfgCnxDB" msprop:Generator_UserDSName="dsCfgCnxDB">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="cfg" msprop:Generator_TableClassName="cfgDataTable" msprop:Generator_TableVarName="tablecfg" msprop:Generator_TablePropName="cfg" msprop:Generator_RowDeletingName="cfgRowDeleting" msprop:Generator_RowChangingName="cfgRowChanging" msprop:Generator_RowEvHandlerName="cfgRowChangeEventHandler" msprop:Generator_RowDeletedName="cfgRowDeleted" msprop:Generator_UserTableName="cfg" msprop:Generator_RowChangedName="cfgRowChanged" msprop:Generator_RowEvArgName="cfgRowChangeEvent" msprop:Generator_RowClassName="cfgRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SrvSql" msprop:Generator_ColumnVarNameInTable="columnSrvSql" msprop:Generator_ColumnPropNameInRow="SrvSql" msprop:Generator_ColumnPropNameInTable="SrvSqlColumn" msprop:Generator_UserColumnName="SrvSql" type="xs:string" minOccurs="0" />
+              <xs:element name="InsSql" msprop:Generator_ColumnVarNameInTable="columnInsSql" msprop:Generator_ColumnPropNameInRow="InsSql" msprop:Generator_ColumnPropNameInTable="InsSqlColumn" msprop:Generator_UserColumnName="InsSql" type="xs:string" minOccurs="0" />
+              <xs:element name="PrtSql" msprop:Generator_ColumnVarNameInTable="columnPrtSql" msprop:Generator_ColumnPropNameInRow="PrtSql" msprop:Generator_ColumnPropNameInTable="PrtSqlColumn" msprop:Generator_UserColumnName="PrtSql" type="xs:string" minOccurs="0" />
+              <xs:element name="TipAut" msprop:Generator_ColumnVarNameInTable="columnTipAut" msprop:Generator_ColumnPropNameInRow="TipAut" msprop:Generator_ColumnPropNameInTable="TipAutColumn" msprop:Generator_UserColumnName="TipAut" type="xs:string" minOccurs="0" />
+              <xs:element name="UsrSql" msprop:Generator_ColumnVarNameInTable="columnUsrSql" msprop:Generator_ColumnPropNameInRow="UsrSql" msprop:Generator_ColumnPropNameInTable="UsrSqlColumn" msprop:Generator_UserColumnName="UsrSql" type="xs:string" minOccurs="0" />
+              <xs:element name="ClvSql" msprop:Generator_ColumnVarNameInTable="columnClvSql" msprop:Generator_ColumnPropNameInRow="ClvSql" msprop:Generator_ColumnPropNameInTable="ClvSqlColumn" msprop:Generator_UserColumnName="ClvSql" type="xs:string" minOccurs="0" />
+              <xs:element name="NbrDB" msprop:Generator_ColumnVarNameInTable="columnNbrDB" msprop:Generator_ColumnPropNameInRow="NbrDB" msprop:Generator_ColumnPropNameInTable="NbrDBColumn" msprop:Generator_UserColumnName="NbrDB" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

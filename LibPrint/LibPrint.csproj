@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <OutputType>Library</OutputType>
+    <UseWPF>true</UseWPF>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <Configurations>All;Debug;Release</Configurations>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="ESC-POS-USB-NET" />
+    <PackageReference Include="ESCPOS" />
+    <PackageReference Include="ESCPOS_NET" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="dataset\dsPrinter.cs">
+      <DependentUpon>dsPrinter.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="dataset\dsPrinter.xsc">
+      <DependentUpon>dsPrinter.xsd</DependentUpon>
+    </None>
+    <None Update="dataset\dsPrinter.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPrinter.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="dataset\dsPrinter.xss">
+      <DependentUpon>dsPrinter.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj" />
+  </ItemGroup>
+</Project>

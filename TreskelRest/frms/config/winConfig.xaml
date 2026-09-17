@@ -1,0 +1,205 @@
+﻿<Window x:Class="TreskelRest.frms.config.winConfig"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TreskelRest.frms.config"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="Configuración del Sistema" Height="600" Width="800">
+    <Grid HorizontalAlignment="Left">
+        <DockPanel HorizontalAlignment="Left" LastChildFill="False" Width="790" Height="565">
+            <Grid DockPanel.Dock="Bottom" Height="70" Width="790" HorizontalAlignment="Left">
+                <Grid.Resources>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Margin" Value="2"/>
+                    </Style>
+                </Grid.Resources>
+                <Button x:Name="Grabar" Width="150" Height="50" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="20"  Foreground="White" Click="Grabar_Click">
+                    <Button.Background>
+                        <SolidColorBrush Color="#5cb85c" />
+                    </Button.Background>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Image Source="../../images/save.png" Width="30" Height="30" />
+                        <TextBlock VerticalAlignment="Center">Grabar</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="Cancelar" Width="150" Height="50" Margin="170,0,0,0" HorizontalAlignment="Left" FontSize="20" Foreground="White" Click="Cancelar_Click">
+                    <Button.Background>
+                        <SolidColorBrush Color="#d9534f" />
+                    </Button.Background>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Image Source="../../images/cancel.png" Width="30" Height="30" />
+                        <TextBlock VerticalAlignment="Center">Cancelar</TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+            <StackPanel DockPanel.Dock="Left" Width="200" Height="Auto">
+                <StackPanel.Background>
+                    <ImageBrush ImageSource="../../images/config.png" />
+                </StackPanel.Background>
+            </StackPanel>
+            <Grid>
+                <TabControl Width="590">
+                    <TabItem x:Name="tabSistema" Header="Sistema" FontSize="20">
+                        <Grid VerticalAlignment="Top" HorizontalAlignment="Left" Width="585">
+                            <Label x:Name="lblTouch" Content="Usa Pantalla Touch :" Margin="10,10,386,354"  VerticalAlignment="Top" HorizontalAlignment="Left" />
+                            <CheckBox x:Name="chkTouch" Margin="200,10,0,350"  VerticalAlignment="Top" HorizontalAlignment="Left">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+                            <Label x:Name="lblFact" Content="Impresora para Facturación :"  Margin="10,70,0,0"  VerticalAlignment="Top" HorizontalAlignment="Left" />
+                            <ComboBox x:Name="cboFacturacion" Margin="290,68,10,289" Height="40"  VerticalAlignment="Top" HorizontalAlignment="Left">
+                                <ComboBoxItem IsSelected="True" >Ninguna</ComboBoxItem>
+                            </ComboBox>
+                            <Label x:Name="lblProform" Content="Impresora para Proformas :"  Margin="10,120,0,0"  VerticalAlignment="Top" HorizontalAlignment="Left" />
+                            <ComboBox x:Name="cboProforma" Margin="290,120,0,0" Height="40"  VerticalAlignment="Top" HorizontalAlignment="Left">
+                                <ComboBoxItem IsSelected="True">Ninguna</ComboBoxItem>
+                            </ComboBox>
+                            <Label x:Name="lblCocina" Content="Impresora para Cocina :"  Margin="10,170,320,134" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                            <ComboBox x:Name="cboCocina" Margin="290,170,0,0"  Height="40"  VerticalAlignment="Top" HorizontalAlignment="Left">
+                                <ComboBoxItem IsSelected="True">Ninguna</ComboBoxItem>
+                            </ComboBox>
+                            <Label x:Name="lblCocinaAlt" Content="Impresora para Parrilla :"  Margin="10,220,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                            <ComboBox x:Name="cboCocinaAlt" Margin="290,220,0,0"  Height="40"  VerticalAlignment="Top" HorizontalAlignment="Left">
+                                <ComboBoxItem IsSelected="True">Ninguna</ComboBoxItem>
+                            </ComboBox>
+                            <Label x:Name="lblCocinaBar" Content="Impresora para Bar :"  Margin="10,270,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                            <ComboBox x:Name="cboCocinaBar" Margin="290,270,0,0"  Height="40"  VerticalAlignment="Top" HorizontalAlignment="Left">
+                                <ComboBoxItem IsSelected="True">Ninguna</ComboBoxItem>
+                            </ComboBox>
+                            <Label x:Name="lblCaja" Content="Numero de Caja :"  Margin="10,340,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                            <TextBox x:Name="txtCaja" Margin="192,320,0,0" Width="200" Height="50" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" VerticalContentAlignment="Center" MaxLength="4" />
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabDatabase" Header="Base de datos" FontSize="20">
+                        <Grid  VerticalAlignment="Top" HorizontalAlignment="Left" Width="585">
+                            <Label Content="Servidor :" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="txtServer" Margin="190,10,10,0" Height="50" MaxLength="20" FontSize="20" VerticalAlignment="Top" VerticalContentAlignment="Center" />
+                            <Label Content="Nombre Base :" Margin="10,70,10,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="txtDbName" Margin="190,70,10,0" Height="50" MaxLength="20" FontSize="20" VerticalAlignment="top" VerticalContentAlignment="Center" />
+                            <Label Content="Puerto :" Margin="10,130,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="txtPuerto" Margin="190,130,10,0" Height="50" MaxLength="5" FontSize="20" VerticalAlignment="Top" VerticalContentAlignment="Center" />
+                            <Label Content="Usuario :" Margin="10,190,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="txtUsuario" Margin="190,190,10,0" Height="50" MaxLength="20" FontSize="20" VerticalAlignment="Top" VerticalContentAlignment="Center" />
+                            <Label Content="Clave :" Margin="10,250,0,0" VerticalAlignment="Top"/>
+                            <PasswordBox x:Name="txtClave" Margin="190,250,10,0" Height="50" MaxLength="20" FontSize="20" VerticalAlignment="Top" VerticalContentAlignment="Center" />
+
+                            <Button x:Name="TestDb" Width="200" Height="50" Margin="10,400,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Foreground="Black" Click="TestDb_Click">
+                                <Button.Background>
+                                    <SolidColorBrush Color="#A5D0EC" />
+                                </Button.Background>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Image Source="../../images/testing.png" Width="30" Height="30" />
+                                    <TextBlock VerticalAlignment="Center" >Probar conexión </TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+                    </TabItem>
+                    <TabItem x:Name="tabReset" Header="Reset Database" FontSize="20">
+                        <Grid>
+                            <CheckBox x:Name="ResetAll" Content="Seleccionar Todos" Margin="5,10,5,5" 
+                                      VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="8" 
+                                      VerticalContentAlignment="Center" Checked="ResetAll_Checked"
+                                      Unchecked="ResetAll_Unchecked">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+
+                            <CheckBox x:Name="rstItems" Content="Items" Margin="60,60,5,5" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="8" VerticalContentAlignment="Center">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+
+                            <CheckBox x:Name="rstVentas" Content="Ventas/Pagos" Margin="60,110,5,5" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="8" VerticalContentAlignment="Center">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+
+                            <CheckBox x:Name="rstPedidos" Content="Pedidos" Margin="60,160,5,5" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="8" VerticalContentAlignment="Center">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+
+                            <CheckBox x:Name="rstUsuarios" Content="Usuarios/Empleados" Margin="60,210,5,5" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="8" VerticalContentAlignment="Center">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+
+                            <CheckBox x:Name="rstCaja" Content="Caja" Margin="60,260,5,5" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="8" VerticalContentAlignment="Center">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+
+                            <CheckBox x:Name="rstCierre" Content="Cierre de Caja" Margin="60,310,5,5" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="8" VerticalContentAlignment="Center">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+
+                            <CheckBox x:Name="rstInventario" Content="Inventario" Margin="60,360,5,5" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="8" VerticalContentAlignment="Center">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+
+                            <CheckBox x:Name="rstEmpresa" Content="Empresa" Margin="60,410,5,5" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="8" VerticalContentAlignment="Center">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3" />
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+
+                            <Button x:Name="ResetDb" Width="200" Height="50" Margin="0,400,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="20" Foreground="Black" Click="ResetDb_Click">
+                                <Button.Background>
+                                    <SolidColorBrush Color="LightYellow" />
+                                </Button.Background>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type Image}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Setter Property="Margin" Value="3"/>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Image Source="../../images/resetdb.png" Width="30" Height="30" />
+                                    <TextBlock VerticalAlignment="Center" >Reset Database</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>

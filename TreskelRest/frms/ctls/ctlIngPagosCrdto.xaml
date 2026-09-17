@@ -1,0 +1,151 @@
+﻿<UserControl x:Class="TreskelRest.frms.ctls.ctlIngPagosCrdto"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TreskelRest.frms.ctls"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="550" d:DesignWidth="800">
+    <DockPanel>
+        <Grid DockPanel.Dock="Bottom" Height="60" HorizontalAlignment="Center">
+            <Button x:Name="btnGrabar" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Height="40" Foreground="White" FontSize="16" Click="btnGrabar_Click">
+                <Button.Background>
+                    <SolidColorBrush Color="#5cb51a" />
+                </Button.Background>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Image Source="../../images/save.png" Width="30" Height="30" />
+                    <TextBlock VerticalAlignment="Center">Grabar</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button x:Name="btnCancelar" HorizontalAlignment="Left" Margin="150,10,0,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="16" Foreground="White" Click="btnCancelar_Click">
+                <Button.Background>
+                    <SolidColorBrush Color="#d9534f" />
+                </Button.Background>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Image Source="../../images/cancel.png" Width="30" Height="30" />
+                    <TextBlock VerticalAlignment="Center">Cancelar</TextBlock>
+                </StackPanel>
+            </Button>
+        </Grid>
+        <Grid>
+            <Label Content="Cliente : " Width="55" FontSize="12" Margin="10,10,0,0" Height="40" HorizontalContentAlignment="Left" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+            <TextBox x:Name="txtCedula" Width="170" FontSize="16" Height="40" Margin="80,10,0,0" Text="" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"  VerticalAlignment="Top" HorizontalAlignment="Left" />
+            <TextBox x:Name="txtCliente" Width="250" FontSize="16" Height="40" Margin="260,10,0,0" Text="" IsReadOnly="True" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"  VerticalAlignment="Top" HorizontalAlignment="Left" />
+            <Button x:Name="btnBscCli" Width="50" Height="40" Margin="515,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="btnBscCli_Click_1">
+                <StackPanel Orientation="Vertical">
+                    <Image Source="../../images/find.png" Width="30" Height="30"/>
+                </StackPanel>
+            </Button>
+
+            <Button x:Name="btnToPay" Width="100" Height="40" Background="GreenYellow" Margin="0,10,10,0" Click="btnToPay_Click" VerticalAlignment="Top" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="../../images/topay.png" Width="30" Height="30" />
+                    <Label Content="Pago" FontSize="12" />
+                </StackPanel>
+            </Button>
+
+            <DataGrid x:Name="dgvDetalle" 
+                      Width="780" 
+                      Margin="10, 60, 10, 10" 
+                      Height="290"
+                      AlternationCount="2"
+                      AlternatingRowBackground="Aquamarine"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                      CanUserAddRows="False" IsReadOnly="True"
+                      FontSize="16" VerticalContentAlignment="Center"
+                      AutoGenerateColumns="False"
+                      VerticalAlignment="Top"
+                      >
+                <DataGrid.Resources>
+                    <Style TargetType="ScrollBar">
+                        <Style.Triggers>
+                            <Trigger Property="Orientation" Value="Vertical">
+                                <Setter Property="Width" Value="28"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="FontSize" Value="16" />
+                        <Setter Property="Height" Value="48" />
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Property="HorizontalAlignment" Value="Center"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Width="60">
+                        <!--<DataGridTemplateColumn.Header>
+                            <CheckBox x:Name="chkSelectAll" Checked="chkSelectAll_Checked" Unchecked="chkSelectAll_Unchecked" Height="15" Width="16">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3"/>
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+                        </DataGridTemplateColumn.Header>-->
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding itemsel}" Tag="{Binding itemcod}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Height="15" Width="16">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="3" ScaleY="3"/>
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Secuencial" Binding="{Binding cdtoscl}" Width="120" FontSize="14" CellStyle="{StaticResource IzquierdaCell}" />
+                    <DataGridTextColumn Header="Correspondiente a" Binding="{Binding cdtopdo}" Width="350" FontSize="14" CellStyle="{StaticResource IzquierdaCell}" />
+                    <DataGridTextColumn Header="Valor" Binding="{Binding cdtoval}" Width="130" FontSize="14" CellStyle="{StaticResource DerechaCell}" />
+                </DataGrid.Columns>
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Height" Value="48"/>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+                    <Style TargetType="{x:Type DataGridCell}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                    <Grid Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DataGrid.CellStyle>
+            </DataGrid>
+            <!--<Label Content="Observación : " Width="100" FontSize="12" Margin="10,360,0,0" Height="30" HorizontalContentAlignment="Left" VerticalAlignment="Top" HorizontalAlignment="Left" />
+            <TextBox x:Name="txtObserv" Width="350" FontSize="16" Height="120" Margin="100,360,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" />-->
+            
+            <Label Content="Valor a pagar : " Width="110" FontSize="12" Margin="0,360,180,0" Height="30" HorizontalContentAlignment="Left" VerticalAlignment="Top" HorizontalAlignment="Right" />
+            <TextBox x:Name="txtValor" Width="150" FontSize="16" Height="30" Margin="0,360,10,0" Text="0.00" IsReadOnly="True" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"  VerticalAlignment="Top" HorizontalAlignment="Right" />
+
+            <Label Content="Valor recibido : " Width="110" FontSize="12" Margin="0,400,180,0" Height="30" HorizontalContentAlignment="Left" VerticalAlignment="Top" HorizontalAlignment="Right" />
+            <TextBox x:Name="txtRecibido" Width="150" FontSize="16" Height="30" Margin="0,400,10,0" IsReadOnly="True" Text="0.00" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"  VerticalAlignment="Top" HorizontalAlignment="Right" />
+
+            <Label Content="Saldo pendiente : " Width="110" FontSize="12" Margin="0,440,180,0" Height="30" HorizontalContentAlignment="Left" VerticalAlignment="Top" HorizontalAlignment="Right" />
+            <TextBox x:Name="txtSaldo" Width="150" FontSize="16" Height="30" Margin="0,440,10,0" Text="0.00" IsReadOnly="True" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"  VerticalAlignment="Top" HorizontalAlignment="Right" />
+
+        </Grid>
+    </DockPanel>
+</UserControl>

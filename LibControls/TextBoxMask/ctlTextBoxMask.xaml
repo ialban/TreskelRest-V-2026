@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="LibControls.TextBoxMask.ctlTextBoxMask"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibControls.TextBoxMask"
+             mc:Ignorable="d" 
+             d:DesignHeight="65" d:DesignWidth="200" >
+    <Grid>
+        <Label x:Name="lblPlaceHolder" HorizontalAlignment="Left" Height="25" Width="200" Margin="0,0,0,0" Content="" VerticalAlignment="Top" 
+               Visibility="Visible" FontSize="10" VerticalContentAlignment="Center" Foreground="Red"/>
+        <TextBox x:Name="txtContent" HorizontalAlignment="Left" Height="40" Width="200" Margin="0,25,0,0" TextWrapping="Wrap" Text="" 
+                 VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="16"
+                 GotFocus="txtContent_GotFocus" TextChanged="txtContent_TextChanged" />
+    </Grid>
+</UserControl>

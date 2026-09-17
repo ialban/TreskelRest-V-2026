@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Company>TreskelSoft</Company>
+    <Version>2.0.0</Version>
+    <Product>TreskelRest</Product>
+    <Copyright>Copyright © 2025</Copyright>
+    <TargetFramework>net9.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <Configurations>All;Debug;Release</Configurations>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="PDFsharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibElectSign\LibElectSign.csproj" />
+    <ProjectReference Include="..\LibFirmaElect\LibFirmaElect.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="TreskelRest.frms.ctls.ctlCarrierData"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TreskelRest.frms.ctls"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="500" d:DesignWidth="600">
+    <Grid>
+        <DockPanel>
+            <Grid DockPanel.Dock="Bottom" Height="60">
+                <Button x:Name="btnGrabar" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Height="40" Foreground="White" FontSize="16" Click="btnGrabar_Click">
+                    <Button.Background>
+                        <SolidColorBrush Color="#5cb85c" />
+                    </Button.Background>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Image Source="../../images/save.png" Width="30" Height="30" />
+                        <TextBlock VerticalAlignment="Center">Grabar</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnCancelar" HorizontalAlignment="Left" Margin="150,10,0,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="16" Foreground="White" Click="btnCancelar_Click">
+                    <Button.Background>
+                        <SolidColorBrush Color="#d9534f" />
+                    </Button.Background>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Image Source="../../images/cancel.png" Width="30" Height="30" />
+                        <TextBlock VerticalAlignment="Center">Cancelar</TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+            <Grid>
+                <Label Content="Código : " FontSize="16" Height="40" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="198,30,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtNid" HorizontalAlignment="Left" Height="40" FontSize="16" Margin="198,75,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="392" MaxLength="20"  CharacterCasing="Upper" Typography.Capitals="AllSmallCaps"/>
+                <Label Content="Observación : " FontSize="16" Height="40" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="198,134,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtDir" HorizontalAlignment="Left" Height="133" FontSize="16" Margin="198,179,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="392" MaxLength="100" MaxLines="3"  CharacterCasing="Upper" Typography.Capitals="AllSmallCaps" />
+                <Image x:Name="image" HorizontalAlignment="Left" Height="157" Margin="24,30,0,0" VerticalAlignment="Top" Width="154" Source="/TreskelRest;component/images/deliveryBig.png"/>
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="TreskelRest.frms.ctls.ctlReportePedidos"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TreskelRest.frms.ctls"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="308" d:DesignWidth="600">
+    <Grid>
+        <DockPanel>
+            <Grid DockPanel.Dock="Bottom" Height="60" HorizontalAlignment="Center">
+                <Button x:Name="btnGrabar" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Height="40" Foreground="White" FontSize="16" Click="btnGrabar_Click">
+                    <Button.Background>
+                        <SolidColorBrush Color="#5cb51a" />
+                    </Button.Background>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Image Source="../../images/process.png" Width="30" Height="30" />
+                        <TextBlock VerticalAlignment="Center">Generar</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnCancelar" HorizontalAlignment="Left" Margin="150,10,0,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="16" Foreground="White" Click="btnCancelar_Click">
+                    <Button.Background>
+                        <SolidColorBrush Color="#d9534f" />
+                    </Button.Background>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Image Source="../../images/cancel.png" Width="30" Height="30" />
+                        <TextBlock VerticalAlignment="Center">Cancelar</TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>
+            <Grid>
+                <Label Content="Desde" FontSize="16" Width="70" Height="40" Margin="10,91,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                <DatePicker x:Name="desde" FontSize="16" Width="350" Height="40" Margin="100,91,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"  CalendarStyle="{StaticResource styleCalendar}" />
+                <Label Content="Hasta" FontSize="16" Width="70" Height="40" Margin="10,151,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
+                <DatePicker x:Name="hasta" FontSize="16" Width="350" Height="40" Margin="100,151,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"  CalendarStyle="{StaticResource styleCalendar}" />
+                <TextBlock x:Name="label" Text="Se recomienda que el intervalo de fecha a utilizar no sea mayor a un mes, en caso de ser necesario, trate de no ir más allá de tres meses, podría hacer que el reporte demore." FontSize="16" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="580" Height="62" TextWrapping="Wrap" />
+
+            </Grid>
+        </DockPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,237 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TreskelRest.frms.ctls"
+             xmlns:buttons="clr-namespace:LibControls.buttons;assembly=LibControls" x:Class="TreskelRest.frms.ctls.ctlPedidos"
+             mc:Ignorable="d"  Background="White" 
+             d:DesignHeight="500" d:DesignWidth="1100" GotFocus="UserControl_GotFocus">
+    <DockPanel>
+        <DockPanel.Resources>
+            <Style TargetType="{x:Type Grid}">
+                <Setter Property="Margin" Value="3"/>
+            </Style>
+        </DockPanel.Resources>
+
+        <Grid DockPanel.Dock="Right" Width="300">
+            <DockPanel>
+                <Grid DockPanel.Dock="Top" Height="100">
+                    <GroupBox Header="Información"  BorderBrush="Black" BorderThickness="2" >
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel.Resources>
+                                <Style TargetType="{x:Type StackPanel}">
+                                    <Setter Property="Margin" Value="1"/>
+                                </Style>
+                            </StackPanel.Resources>
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style TargetType="{x:Type Button}">
+                                        <Setter Property="Margin" Value="3"/>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <Button x:Name="cambiaTipoPedido" Width="80" Height="60" IsEnabled="False" Click="cambiaTipoPedido_Click">
+                                    <StackPanel Orientation="Vertical">
+                                        <Image x:Name="imgTipoPedd" Source="../../images/toserv.png" Width="30" Height="30"/>
+                                        <Label x:Name="lblTipo" Content="Local" />
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="btnChgMesa" Width="80" Height="60" IsEnabled="False" Click="btnChgMesa_Click">
+                                    <StackPanel Orientation="Vertical">
+                                        <Image Source="../../images/table.png" Width="30" Height="30"/>
+                                        <Label x:Name="lblMesa" Content="" />
+                                    </StackPanel>
+                                </Button>
+                                <StackPanel Orientation="Vertical">
+                                    <Label Content="Pedido : " FontWeight="Bold" FontSize="13" HorizontalContentAlignment="Center" />
+                                    <Label x:Name="txtPedido" IsEnabled="False" Width="Auto" FontSize="13" Content="" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                </Grid>
+                <Grid DockPanel.Dock="Bottom" Height="100">
+                    <GroupBox Header="Total" FontSize="20" FontWeight="Bold" BorderBrush="Black" BorderThickness="2">
+                        <Label x:Name="txtTotal" Content="0,00" FontSize="40" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Regular" />
+                    </GroupBox>
+                </Grid>
+                <Grid>
+                    <DataGrid x:Name="dgvPedd" Width="Auto" Height="Auto" Margin="0,0,0,0"
+                            AlternationCount="2" AlternatingRowBackground="Aquamarine"
+                            ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                            CanUserReorderColumns="True" CanUserAddRows="False" IsReadOnly="True"
+                            FontSize="12" VerticalContentAlignment="Center" ColumnWidth="*" AutoGenerateColumns="False" >
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Header="Acción" Width="40" >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Button x:Name="btnDelItem" Width="33" Height="33" Margin="2" Background="Transparent" BorderBrush="Transparent" Click="btnDelItem_Click" >
+                                                <Image Source="../../images/delete.png" Width="20" Height="20" />
+                                            </Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="Codigo" Binding="{Binding codigo}" Width="70" Visibility="Hidden" />
+                            <DataGridTextColumn Header="Producto" Binding="{Binding producto}" Width="170"  />
+                            <DataGridTextColumn Header="Cantidad" Binding="{Binding cantidad}" Width="50" CellStyle="{StaticResource CentroCell}" />
+                            <DataGridTextColumn Header="Precio" Binding="{Binding precio}" Width="100" Visibility="Hidden" />
+                            <DataGridTextColumn Header="IVA" Binding="{Binding iva}" Width="100" Visibility="Hidden" />
+                        </DataGrid.Columns>
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="FontSize" Value="12" />
+                                <Setter Property="Height" Value="40" />
+                                <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Setter Property="Background" Value="White"/>
+                            </Style>
+                        </DataGrid.RowStyle>
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                            <Grid Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center" />
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGrid.CellStyle>
+                    </DataGrid>
+                </Grid>
+            </DockPanel>
+        </Grid>
+        <Grid DockPanel.Dock="Top" Height="100" Width="Auto" Margin="5,5,5,5">
+            <GroupBox Header="Pedidos" BorderBrush="Black" BorderThickness="2" >
+                <Grid>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Button x:Name="btnSalir" Width="70" Height="70" Margin="0,0,0,0" Background="LightCoral" Click="btnSalir_Click">
+                            <StackPanel>
+                                <Image Source="../../images/cancel.png" Width="30" Height="30" />
+                                <Label Content="Salir" FontSize="14" Foreground="White" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="btnCrear" Width="70" Height="70" Margin="15,0,3,0" Background="Beige" Click="btnCrear_Click">
+                            <StackPanel>
+                                <Image Source="../../images/pedidos.png" Width="30" Height="30" />
+                                <Label Content="Crear" FontSize="14" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="btnModificar" Width="75" Height="70" Margin="0,0,0,0" Background="Beige" Click="btnModificar_Click">
+                            <StackPanel>
+                                <Image Source="../../images/edit.png" Width="30" Height="30" />
+                                <Label Content="Modificar" FontSize="14" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="btnSave" Width="70" Height="70" Background="GreenYellow" Margin="15,0,3,0" IsEnabled="False" Click="btnSave_Click">
+                            <StackPanel>
+                                <Image Source="../../images/save.png" Width="30" Height="30" />
+                                <Label Content="Grabar" FontSize="14" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="btnEliminar" Width="70" Height="70" Margin="0,0,0,0" Background="GreenYellow" IsEnabled="False" Click="btnEliminar_Click">
+                            <StackPanel>
+                                <Image Source="../../images/delete.png" Width="30" Height="30" />
+                                <Label Content="Eliminar" FontSize="14" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="btnCocinar" Width="70" Height="70" Margin="3,0,0,0" Background="GreenYellow" IsEnabled="False" Click="btnCocinar_Click">
+                            <StackPanel>
+                                <Image Source="../../images/tocook.png" Width="30" Height="30" />
+                                <Label Content="Cocinar" FontSize="14" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="btnCancelar" Width="70" Height="70" Background="Aqua" Margin="3,0,15,0" Click="btnCancelar_Click" IsEnabled="False">
+                            <StackPanel>
+                                <Image Source="../../images/undo.png" Width="30" Height="30" />
+                                <Label Content="Cancelar" FontSize="14" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="btnToBill" Width="70" Height="70" Margin="0,0,0,0" Background="Plum" Click="btnToBill_Click">
+                            <StackPanel>
+                                <Image Source="../../images/tobill.png" Width="30" Height="30" />
+                                <Label Content="Finalizar" FontSize="14" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="btnUndoBill" Width="70" Height="70" Margin="3,0,0,0" Background="Plum" Click="btnUndoBill_Click">
+                            <StackPanel>
+                                <Image Source="../../images/undobill.png" Width="30" Height="30" />
+                                <Label Content="Revertir" FontSize="14" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="btnImpFact" Width="70" Height="70"  Margin="3,0,0,0" Background="BlanchedAlmond" Click="btnImpFact_Click">
+                            <StackPanel>
+                                <Image Source="../../images/printer.png" Width="30" Height="30" />
+                                <Label Content="Imprimir" FontSize="12" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,3,0">
+                        <!--<Label x:Name="Mesero" Tag="" FontSize="18" VerticalContentAlignment="Center" Height="60" Width="120" HorizontalContentAlignment="Center" />-->
+                        <TextBlock x:Name="Mesero" Tag="" FontSize="18" Height="60" Width="60" TextWrapping="Wrap" />
+                        <ToggleButton x:Name="btnMesero" Width="70" Height="70" Background="GhostWhite" Click="btnMesero_Click" HorizontalAlignment="Right" Checked="btnMesero_Checked" Unchecked="btnMesero_Unchecked">
+                            <StackPanel>
+                                <Image Source="../../images/mesero.png" Width="30" Height="30" />
+                                <Label Content="Mesero" FontSize="14" />
+                            </StackPanel>
+                        </ToggleButton>
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+        </Grid>
+
+        <!-- Definición del contenedor principal -->
+        <Grid Margin="3, 3, 3, 3" Height="auto" Width="auto">
+            <!-- Contenedor de lector de barcode -->
+            <Grid>
+                <TextBox x:Name="barcode" Width="200" Visibility="Visible" Margin="3,3,3,3" VerticalAlignment="Top" HorizontalAlignment="Right" Height="30" Background="Aquamarine" VerticalContentAlignment="Center" />
+                <TextBox x:Name="buscaItem" Width="200" Visibility="Visible" Margin="3,3,98,3" VerticalAlignment="Top" HorizontalAlignment="Right" Height="30" VerticalContentAlignment="Center"  CharacterCasing="Upper" />
+                <Button x:Name="btnBscItem" Margin="3,3,50,3" VerticalAlignment="Top" HorizontalAlignment="Right" Height="30" Content=" Buscar " Click="btnBscItem_Click" VerticalContentAlignment="Center" />
+                <Button x:Name="btnBscCls" Margin="3,3,3,3" VerticalAlignment="Top" HorizontalAlignment="Right" Height="30" Content="Limpiar" Click="btnBscCls_Click" VerticalContentAlignment="Center" />
+            </Grid>
+            
+            <!-- Contenedor principal -->
+            <ScrollViewer x:Name="ScrollPedidos" Width="Auto" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <ScrollViewer.Resources>
+                    <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+                        <Setter Property="Stylus.IsFlicksEnabled" Value="True" />
+                        <Style.Triggers>
+                            <Trigger Property="Orientation" Value="Horizontal">
+                                <Setter Property="Height" Value="30" />
+                                <Setter Property="MinHeight" Value="30" />
+                            </Trigger>
+                            <Trigger Property="Orientation" Value="Vertical">
+                                <Setter Property="Width" Value="30" />
+                                <Setter Property="MinWidth" Value="30" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ScrollViewer.Resources>
+                <UniformGrid x:Name="pedidoContainer" Width="auto" 
+                     Columns="0" HorizontalAlignment="Left"
+                     Margin="0,3,0,3" VerticalAlignment="Top">
+                    <UniformGrid.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Margin" Value="1"/>
+                        </Style>
+                    </UniformGrid.Resources>
+                </UniformGrid>
+            </ScrollViewer>
+        </Grid>
+    </DockPanel>
+</UserControl>

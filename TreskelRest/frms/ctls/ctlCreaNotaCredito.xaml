@@ -1,0 +1,157 @@
+﻿<UserControl x:Class="TreskelRest.frms.ctls.ctlCreaNotaCredito"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TreskelRest.frms.ctls"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="660" d:DesignWidth="1000">
+    <Grid>
+        <Label Content="Sec. Venta : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="40" VerticalContentAlignment="Center" FontSize="16"/>
+        <TextBox x:Name="txtVenta" HorizontalAlignment="Left" Margin="100,10,0,0" TextWrapping="Wrap" 
+                 Text="" VerticalAlignment="Top" Width="200" Height="40" FontSize="16" 
+                 VerticalContentAlignment="Center" MaxLength="20" KeyDown="txtVenta_KeyDown"/>
+        <Button x:Name="btnBuscar" Margin="302,10,0,0" Width="50" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Foreground="White" Click="btnBuscar_Click">
+            <Button.Background>
+                <SolidColorBrush Color="#5bc0de" />
+            </Button.Background>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Margin" Value="3"/>
+                    </Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Margin" Value="3"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Image Source="../../images/find.png" Width="30" Height="30" />
+            </StackPanel>
+        </Button>
+        <Label Content="No. Factura : " HorizontalAlignment="Left" Margin="370,10,0,0" VerticalAlignment="Top" Height="40" VerticalContentAlignment="Center" FontSize="16"/>
+        <TextBox x:Name="txtFactura" HorizontalAlignment="Left" Margin="470,10,0,0" IsEnabled="False" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="300" Height="40" FontSize="16" VerticalContentAlignment="Center" IsReadOnly="True"/>
+
+        <Label Content="ID Cliente : " HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Height="40" VerticalContentAlignment="Center" FontSize="16"/>
+        <TextBox x:Name="txtIdCliente" HorizontalAlignment="Left" Margin="100,60,0,0" IsEnabled="False" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="250" Height="40" FontSize="16" VerticalContentAlignment="Center" IsReadOnly="True"/>
+
+        <Label Content="Cliente : " HorizontalAlignment="Left" Margin="370,60,0,0" VerticalAlignment="Top" Height="40" VerticalContentAlignment="Center" FontSize="16"/>
+        <TextBox x:Name="txtCliente" HorizontalAlignment="Left" Margin="470,60,0,0" IsEnabled="False" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="400" Height="40" FontSize="16" VerticalContentAlignment="Center" IsReadOnly="True"/>
+
+        <Label Content="No. Autorización : " HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Height="40" VerticalContentAlignment="Center" FontSize="16"/>
+        <TextBox x:Name="txtAutorizacion" HorizontalAlignment="Left" Margin="160,110,0,0" IsEnabled="False" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="478" Height="40" FontSize="16" VerticalContentAlignment="Center" IsReadOnly="True"/>
+
+        <Label Content="Motivo : " HorizontalAlignment="Left" Margin="643,110,0,0" VerticalAlignment="Top" Height="40" VerticalContentAlignment="Center" FontSize="16"/>
+        <ComboBox Name="cboMotivo" FontSize="16" VerticalContentAlignment="Center" Width="170" Margin="720,110,0,0" Height="40" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="cboMotivo_SelectionChanged">
+            <ComboBoxItem Tag ="A"  Height="40" VerticalContentAlignment="Center" FontSize="16" IsSelected="True" >Anulación</ComboBoxItem>
+            <ComboBoxItem Tag ="D"  Height="40" VerticalContentAlignment="Center" FontSize="16">Devolución</ComboBoxItem>
+        </ComboBox>
+
+        <DataGrid x:Name="Detalle" Width="Auto" Height="240" Margin="10,160,10,10"
+                      AlternationCount="2" AlternatingRowBackground="Aquamarine"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                      CanUserReorderColumns="True" CanUserAddRows="False" VerticalAlignment="Top" ColumnHeaderHeight="50"
+                      FontSize="16" VerticalContentAlignment="Center" ColumnWidth="*" AutoGenerateColumns="False" CellEditEnding="Detalle_CellEditEnding" LostFocus="Detalle_LostFocus" >
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Width="60">
+                    <DataGridTemplateColumn.Header>
+                        <CheckBox x:Name="chkSelectAll" Checked="chkSelectAll_Checked" Unchecked="chkSelectAll_Unchecked" Height="15" Width="16">
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="3" ScaleY="3"/>
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
+                    </DataGridTemplateColumn.Header>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding itemsel}" Tag="{Binding itemcod}" IsEnabled="{Binding itemEnable}" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked" Height="15" Width="16">
+                                <CheckBox.LayoutTransform>
+                                    <ScaleTransform ScaleX="3" ScaleY="3"/>
+                                </CheckBox.LayoutTransform>
+                            </CheckBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Código" Binding="{Binding itemcod}" Width="70" IsReadOnly="True" />
+                <DataGridTextColumn Header="Cantidad" 
+                                    Binding="{Binding itemcnt,
+                                                      TargetNullValue=(Ingrese Cantidad),
+                                                      ValidatesOnExceptions=True,
+                                                      UpdateSourceTrigger=LostFocus}"
+                                    Width="80" />
+                <DataGridTextColumn Header="Descripción" Binding="{Binding nbrprd}" Width="260" IsReadOnly="True" />
+                <DataGridTextColumn Header="Prec. Unit" Binding="{Binding itemprc, StringFormat=N2}" Width="90" IsReadOnly="True" />
+                <DataGridTextColumn Header="Descuento" Binding="{Binding itemdto, StringFormat=N2}" Width="90" IsReadOnly="True" />
+                <DataGridTextColumn Header="IVA" Binding="{Binding itemiva, StringFormat=N2}" Width="90" IsReadOnly="True" />
+                <DataGridTextColumn Header="Prec. Total" Binding="{Binding itempto, StringFormat=N2}" Width="90" IsReadOnly="True" />
+            </DataGrid.Columns>
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="FontSize" Value="16" />
+                    <Setter Property="Height" Value="40" />
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="Background" Value="White"/>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                <Grid Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" />
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
+        <Label Content="Observación : " HorizontalAlignment="Left" Margin="10,410,200,0" VerticalAlignment="Top" Height="40" VerticalContentAlignment="Center" FontSize="16"/>
+        <TextBox x:Name="txtObservacion" HorizontalAlignment="Left" Margin="130,410,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="400" Height="140" FontSize="16" VerticalContentAlignment="Top" MaxLength="200" IsReadOnly="True"/>
+
+        <Label Content="Subtotal : " HorizontalAlignment="Right" Margin="0,410,200,0" VerticalAlignment="Top" Height="40" VerticalContentAlignment="Center" FontSize="16"/>
+        <TextBox x:Name="txtSubTotal" HorizontalAlignment="Right" Margin="0,410,10,0" IsEnabled="False" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Height="40" FontSize="16" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <Label Content="Descuento : " HorizontalAlignment="Right" Margin="0,460,200,0" VerticalAlignment="Top" Height="40" VerticalContentAlignment="Center" FontSize="16"/>
+        <TextBox x:Name="txtDescuento" HorizontalAlignment="Right" Margin="0,460,10,0" IsEnabled="False" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Height="40" FontSize="16" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <Label Content="IVA : " HorizontalAlignment="Right" Margin="0,510,200,0" VerticalAlignment="Top" Height="40" VerticalContentAlignment="Center" FontSize="16"/>
+        <TextBox x:Name="txtIva" HorizontalAlignment="Right" Margin="0,510,10,0" IsEnabled="False" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Height="40" FontSize="16" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <Label Content="Total : " HorizontalAlignment="Right" Margin="0,560,200,0" VerticalAlignment="Top" Height="40" VerticalContentAlignment="Center" FontSize="16"/>
+        <TextBox x:Name="txtTotal" HorizontalAlignment="Right" Margin="0,560,10,0" IsEnabled="False" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Height="40" FontSize="16" VerticalContentAlignment="Center" IsReadOnly="True"/>
+
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="60">
+            <Button x:Name="btnGrabar" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Height="40" Foreground="White" FontSize="16" Click="btnGrabar_Click" Background="#5cb85c">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Image Source="../../images/save.png" Width="30" Height="30" />
+                    <TextBlock VerticalAlignment="Center"><Run Text="Grabar"/></TextBlock>
+                </StackPanel>
+            </Button>
+            <Button x:Name="btnCancelar" HorizontalAlignment="Left" Margin="150,10,0,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="16" Foreground="White" Click="btnCancelar_Click" Background="#d9534f">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Image Source="../../images/cancel.png" Width="30" Height="30" />
+                    <TextBlock VerticalAlignment="Center"><Run Text="Cancelar"/></TextBlock>
+                </StackPanel>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

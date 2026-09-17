@@ -1,0 +1,21 @@
+﻿<Window x:Class="TreskelRest.frms.modulos.winModulos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TreskelRest.frms.modulos"
+        mc:Ignorable="d"
+        Title="winModulos" Height="400" Width="800">
+    <Grid>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="20,23,0,0" VerticalAlignment="Top" Width="236" Height="82"/>
+        <Button x:Name="button_Copy" Content="Button" HorizontalAlignment="Left" Margin="278,23,0,0" VerticalAlignment="Top" Width="236" Height="82"/>
+        <Button x:Name="button_Copy1" Content="Button" HorizontalAlignment="Left" Margin="535,23,0,0" VerticalAlignment="Top" Width="236" Height="82"/>
+        <Button x:Name="button_Copy2" Content="Button" HorizontalAlignment="Left" Margin="20,125,0,0" VerticalAlignment="Top" Width="236" Height="82"/>
+        <Button x:Name="button_Copy3" Content="Button" HorizontalAlignment="Left" Margin="278,125,0,0" VerticalAlignment="Top" Width="236" Height="82"/>
+        <Button x:Name="button_Copy4" Content="Button" HorizontalAlignment="Left" Margin="535,125,0,0" VerticalAlignment="Top" Width="236" Height="82"/>
+        <Button x:Name="button_Copy5" Content="Button" HorizontalAlignment="Left" Margin="20,228,0,0" VerticalAlignment="Top" Width="236" Height="82"/>
+        <Button x:Name="button_Copy6" Content="Button" HorizontalAlignment="Left" Margin="278,228,0,0" VerticalAlignment="Top" Width="236" Height="82"/>
+        <Button x:Name="button_Copy7" Content="Button" HorizontalAlignment="Left" Margin="535,228,0,0" VerticalAlignment="Top" Width="236" Height="82"/>
+
+    </Grid>
+</Window>

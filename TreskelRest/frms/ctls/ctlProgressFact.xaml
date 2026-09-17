@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="TreskelRest.frms.ctls.ctlProgressFact"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TreskelRest.frms.ctls"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="300" d:DesignWidth="500">
+    <Grid>
+        <Border BorderThickness="3" BorderBrush="Black">
+            <Grid>
+                <Image x:Name="imagen"
+                   Height="80" 
+                   Width="80"
+                   VerticalAlignment="Top"
+                   Margin="0, 30, 0, 0"
+                   HorizontalAlignment="center"
+                   Source="../../images/process.png" 
+                   Stretch="Fill"/>
+                <TextBlock x:Name="contenido"
+                   Text="Procesando..." 
+                   VerticalAlignment="Bottom" 
+                   HorizontalAlignment="Center"
+                   FontSize="20"
+                   Margin="0,0, 0, 120"/>
+                <Button x:Name="Cerrar" 
+                   Content="Cerrar" 
+                   Margin="0, 0, 0, 20"
+                   VerticalAlignment="Bottom"
+                   HorizontalAlignment="Center"
+                   Width="100"
+                   Height="50"
+                   FontSize="16"
+                   Visibility="Hidden"
+                   Click="Cerrar_Click"/>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

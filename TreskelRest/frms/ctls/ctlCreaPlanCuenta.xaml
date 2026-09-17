@@ -1,0 +1,111 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TreskelRest.frms.ctls"
+             xmlns:TextBoxMask="clr-namespace:LibControls.TextBoxMask;assembly=LibControls" 
+             x:Class="TreskelRest.frms.ctls.ctlCreaPlanCuenta"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="600" d:DesignWidth="670">
+    <Grid>
+        <Label x:Name="label1" Content="Código : " HorizontalAlignment="Left" Margin="10,25,0,0" VerticalAlignment="Top" FontSize="16" VerticalContentAlignment="Center" Height="40"/>
+        <TextBox x:Name="txtNid" HorizontalAlignment="Left" Margin="120,25,0,0" TextWrapping="Wrap" Text="" 
+                 VerticalAlignment="Top" Width="200" Height="40" FontSize="16" VerticalContentAlignment="Center" 
+                 MaxLength="4" IsEnabled="False"/>
+
+        <Label Content="Nivel : " HorizontalAlignment="Left" Margin="325,25,0,0" VerticalAlignment="Top" FontSize="16" VerticalContentAlignment="Center" Height="40"/>
+        <ComboBox x:Name="cboNivel" Margin="390,25,0,0" Height="40" Width="120" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Left" 
+                  VerticalContentAlignment="Center" SelectionChanged="cboNivel_SelectionChanged">
+            <ComboBoxItem Height="40" VerticalContentAlignment="Center" FontSize="16" IsSelected="True">1</ComboBoxItem>
+            <ComboBoxItem Height="40" VerticalContentAlignment="Center" FontSize="16">2</ComboBoxItem>
+            <ComboBoxItem Height="40" VerticalContentAlignment="Center" FontSize="16">3</ComboBoxItem>
+            <ComboBoxItem Height="40" VerticalContentAlignment="Center" FontSize="16">4</ComboBoxItem>
+        </ComboBox>
+
+        <Label Content="Cuenta Padre : " HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" FontSize="16" VerticalContentAlignment="Center" Height="40"/>
+        <ComboBox x:Name="cboPadre" Margin="120,75,0,0" Height="40" Width="530" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEnabled="False">
+
+        </ComboBox>
+        
+        <Label Content="Cuenta : " HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" FontSize="16" VerticalContentAlignment="Center" Height="40"/>
+        <TextBoxMask:ctlTextBoxMask x:Name="txtCodigo" HorizontalAlignment="Left" Height="65" Margin="120,125,0,0" 
+                                    VerticalAlignment="Top" Width="200" ShowPlaceHolder="True" 
+                                    Mask="##" />
+
+        <TextBlock Text="Representa el código de la cuenta contable, las cuentas de primer nivel deben tener hasta dos dígitos, las de segundo a quinto nivel se separan con puntos acorde al formato indicado en la parte superior." 
+               HorizontalAlignment="Left" Margin="330,148,0,0" VerticalAlignment="Top" FontSize="10" 
+               Height="40" Width="320" TextWrapping="Wrap" Foreground="DarkCyan" FontStyle="Oblique" />
+
+        <Label Content="Descripción : " HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" FontSize="16" VerticalContentAlignment="Center" Height="40"/>
+        <TextBox x:Name="txtDescripcion" HorizontalAlignment="Left" Margin="120,200,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="530" Height="40" FontSize="16" VerticalContentAlignment="Center" MaxLength="4"/>
+
+        <Label Content="Tipo : " HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top" FontSize="16" VerticalContentAlignment="Center" Height="40"/>
+        <ComboBox x:Name="cboTipo" Margin="120,250,0,0" Height="40" Width="200" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center">
+
+        </ComboBox>
+
+        <Label Content="Naturaleza : " HorizontalAlignment="Left" Margin="350,250,0,0" VerticalAlignment="Top" FontSize="16" VerticalContentAlignment="Center" Height="40"/>
+        <ComboBox x:Name="cboDebCred" Margin="450,250,0,0" Height="40" Width="200" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Left" VerticalContentAlignment="Center">
+            <ComboBoxItem Tag="D" Height="40" VerticalContentAlignment="Center" FontSize="16" IsSelected="True">Débito</ComboBoxItem>
+            <ComboBoxItem Tag="C" Height="40" VerticalContentAlignment="Center" FontSize="16">Crédito</ComboBoxItem>
+        </ComboBox>
+
+        <Label Content="Cuenta de Resultados : " HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top" FontSize="16" VerticalContentAlignment="Center" Height="40"/>
+        <CheckBox x:Name="chkResultados" HorizontalAlignment="Left" Margin="190,300,0,0" VerticalAlignment="Top" IsChecked="false">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2.7" ScaleY="2.7" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+
+        <Label Content="Cuenta de Ajuste : " HorizontalAlignment="Left" Margin="270,300,0,0" VerticalAlignment="Top" FontSize="16" VerticalContentAlignment="Center" Height="40"/>
+        <CheckBox x:Name="chkAjuste" HorizontalAlignment="Left" Margin="420,300,0,0" VerticalAlignment="Top" IsChecked="false">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2.7" ScaleY="2.7" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+
+        <Label Content="Proceso para Automatización : " HorizontalAlignment="Left" Margin="10,350,0,0" VerticalAlignment="Top" FontSize="16" VerticalContentAlignment="Center" Height="40"/>
+        <ComboBox x:Name="cboProceso" Margin="250,350,0,0" Height="40" Width="400" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" IsEnabled="False">
+
+        </ComboBox>
+
+
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="80" Width="290">
+            <Button x:Name="btnGrabar" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Height="40" Foreground="White" FontSize="16" Click="btnGrabar_Click">
+                <Button.Background>
+                    <SolidColorBrush Color="#5cb85c" />
+                </Button.Background>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Image Source="../../images/save.png" Width="30" Height="30" />
+                    <TextBlock VerticalAlignment="Center">Grabar</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button x:Name="btnCancelar" HorizontalAlignment="Left" Margin="153,10,0,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="16" Foreground="White" Click="btnCancelar_Click">
+                <Button.Background>
+                    <SolidColorBrush Color="#d9534f" />
+                </Button.Background>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Margin" Value="3"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Image Source="../../images/cancel.png" Width="30" Height="30" />
+                    <TextBlock VerticalAlignment="Center">Cancelar</TextBlock>
+                </StackPanel>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

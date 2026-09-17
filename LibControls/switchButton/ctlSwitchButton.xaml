@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="LibControls.switchButton.ctlSwitchButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibControls.switchButton"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="150">
+    <Grid>
+        <Border x:Name="fondo" Height="50" Width="150" CornerRadius="10" BorderBrush="Black" BorderThickness="1" Background="Orange" IsEnabled="{Binding _IsEnable}">
+            <Grid>
+                <Grid x:Name="GrdPos">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="Texto" Text="ON" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" FontWeight="Bold" TextWrapping="Wrap"/>
+                </Grid>
+                <Border x:Name="BtnInterno" Height="40" Width="40" CornerRadius="10" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" Background="White" Margin="4" />
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

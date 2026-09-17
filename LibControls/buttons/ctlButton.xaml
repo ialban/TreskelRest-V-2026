@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="LibControls.buttons.ctlButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibControls.buttons"
+             mc:Ignorable="d" 
+             d:DesignHeight="90" d:DesignWidth="210">
+    <Grid>
+        <Button x:Name="Boton" Width="195" Height="80" HorizontalContentAlignment="Left" Click="Button_Click">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Margin" Value="4"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Image x:Name="imagen" Width="40" Height="40" />
+                <StackPanel Orientation="Vertical" Width="142" x:Name="stackTexto">
+                    <Label x:Name="codigo" Content="L" FontSize="14" />
+                    <TextBlock x:Name="titulo" FontSize="14" TextWrapping="Wrap">000</TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </Button>   
+    </Grid>
+</UserControl>

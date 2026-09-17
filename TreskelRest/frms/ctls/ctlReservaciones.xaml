@@ -1,0 +1,237 @@
+﻿<UserControl x:Class="TreskelRest.frms.ctls.ctlReservaciones"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TreskelRest.frms.ctls" 
+             xmlns:spinner="clr-namespace:LibControls.spinner;assembly=LibControls"
+             xmlns:timepicker="clr-namespace:LibControls.timepicker;assembly=LibControls"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel GotFocus="DockPanel_GotFocus">
+        <DockPanel.Resources>
+            <Style TargetType="{x:Type Grid}">
+                <Setter Property="Margin" Value="3"/>
+            </Style>
+        </DockPanel.Resources>
+
+        
+        <Grid DockPanel.Dock="right" Width="360">
+            <GroupBox Header="Información Reservación"  BorderBrush="Black" BorderThickness="2" >
+                <StackPanel Orientation="Vertical">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type StackPanel}">
+                            <Setter Property="Margin" Value="1"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="N° Id : " Width="55" FontSize="12" Height="30" HorizontalContentAlignment="Left" />
+                                <TextBox x:Name="txtCedula" Width="154" FontSize="16" Text="" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" />
+                                <Button x:Name="btnBorrar" Margin="0" Width="50" Click="btnBorrar_Click">
+                                    <StackPanel Orientation="Vertical">
+                                        <Image Source="../../images/delete.png" Width="30" Height="30"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Cliente : " Width="55" FontSize="12" HorizontalContentAlignment="Left" />
+                                <TextBox x:Name="txtCliente" IsEnabled="False" Width="205" FontSize="13" Text="" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" />
+                            </StackPanel>
+                        </StackPanel>
+                        <Button x:Name="btnBscCli" Width="65" Height="60" Click="btnBscCli_Click">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="../../images/find.png" Width="30" Height="30"/>
+                                <Label Content="Buscar" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Margin" Value="3"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <StackPanel Orientation="Vertical" Width="Auto">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Cantidad Personas : " Width="120" FontSize="12" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+                                <spinner:ctlSpinner x:Name="txtCntPersonas" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1"/>
+                                <Button x:Name="btnTeclado" Margin="0" Width="45" Height="45" Click="btnTeclado_Click">
+                                    <StackPanel Orientation="Vertical">
+                                        <Image Source="../../images/keyboard.png" Width="30" Height="30"/>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Fecha: " Width="60" FontSize="12" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" />
+                                <DatePicker x:Name="fecha" FontSize="16" Width="250" Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center"  CalendarStyle="{StaticResource styleCalendar}" />
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Desde: " Width="60" FontSize="12" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+                                        <timepicker:ctlTimePicker x:Name="Desde" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="Hasta: " Width="60" FontSize="12" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+                                        <timepicker:ctlTimePicker x:Name="Hasta" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <Label Content="Motivo: " FontSize="12" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+                                <ComboBox x:Name="cboMotivo" Width="110" Height="40" MaxDropDownHeight="320">
+                                    <ComboBoxItem Height="40" IsSelected="True">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="../../images/cancel.png" Width="30" Height="30"/>
+                                            <Label Content="Ninguno" />
+                                        </StackPanel>
+                                    </ComboBoxItem>
+                                    <ComboBoxItem Height="40">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="../../images/cumpleanios.png" Width="30" Height="30"/>
+                                            <Label Content="Cumpleaños" />
+                                        </StackPanel>
+                                    </ComboBoxItem>
+                                    <ComboBoxItem Height="40">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="../../images/romantico.png" Width="30" Height="30"/>
+                                            <Label Content="Romántico" />
+                                        </StackPanel>
+                                    </ComboBoxItem>
+                                    <ComboBoxItem Height="40">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="../../images/celebracion.png" Width="30" Height="30"/>
+                                            <Label Content="Celebración" />
+                                        </StackPanel>
+                                    </ComboBoxItem>
+                                    <ComboBoxItem Height="40">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="../../images/holliday.png" Width="30" Height="30"/>
+                                            <Label Content="Festividad" />
+                                        </StackPanel>
+                                    </ComboBoxItem>
+                                    <ComboBoxItem Height="40">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="../../images/propuestaMatrimonio.png" Width="30" Height="30"/>
+                                            <Label Content="Propuesta" />
+                                        </StackPanel>
+                                    </ComboBoxItem>
+                                    <ComboBoxItem Height="40">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="../../images/matrimonio.png" Width="30" Height="30"/>
+                                            <Label Content="Matrimonio" />
+                                        </StackPanel>
+                                    </ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Notas: " Width="60" FontSize="12" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" />
+                                <TextBox x:Name="txtNota" Width="270" TextWrapping="Wrap" Height="100" MaxLength="200"></TextBox>
+                            </StackPanel>
+                            <Label Content="Mesas Reservadas" Width="Auto" FontSize="12" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" />
+                            <WrapPanel x:Name="ReservasContainer" Orientation="Horizontal" Width="Auto" Height="Auto" Margin="3,3,3,3" FlowDirection="LeftToRight" VerticalAlignment="Top">
+                                <WrapPanel.Resources>
+                                    <Style TargetType="{x:Type Label}">
+                                        <Setter Property="Margin" Value="1"/>
+                                    </Style>
+                                </WrapPanel.Resources>
+                            </WrapPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <Grid DockPanel.Dock="Top">
+            <GroupBox Header="Acciones" Height="90" BorderBrush="Black" BorderThickness="2">
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="btnSalir" Width="75" Height="65" Background="LightCoral" Click="btnSalir_Click">
+                        <StackPanel>
+                            <Image Source="../../images/cancel.png" Width="30" Height="30" />
+                            <Label Content="Salir" FontSize="12" Foreground="White" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnCancelar" IsEnabled="False" Width="75" Height="65" Background="BlanchedAlmond" Margin="3,0,3,0" Click="btnCancelar_Click">
+                        <StackPanel>
+                            <Image Source="../../images/undo.png" Width="30" Height="30" />
+                            <Label Content="Cancelar" FontSize="12" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnGrabar" IsEnabled="False" Width="75" Height="65" Background="BlanchedAlmond" Margin="3,0,3,0" Click="btnGrabar_Click">
+                        <StackPanel>
+                            <Image Source="../../images/save.png" Width="30" Height="30" />
+                            <Label Content="Grabar" FontSize="12" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnFinalizar" IsEnabled="False" Width="75" Height="65" Background="BlanchedAlmond" Margin="3,0,3,0" Click="btnFinalizar_Click">
+                        <StackPanel>
+                            <Image Source="../../images/finalizar.png" Width="30" Height="30" />
+                            <Label Content="Finalizar" FontSize="12" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnBscRsv" Width="75" Height="65" Click="btnBscRsv_Click">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="../../images/find.png" Width="30" Height="30"/>
+                            <Label Content="Buscar" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnTodos" Width="75" Height="65" Background="BlanchedAlmond" Margin="10,0,3,0" Click="btnTodos_Click">
+                        <StackPanel>
+                            <Image Source="../../images/todo.png" Width="30" Height="30" />
+                            <Label Content="Todos" FontSize="12" />
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="btnNinguno" IsEnabled="False" Width="75" Height="65" Background="BlanchedAlmond" Margin="3,0,3,0" Click="btnNinguno_Click">
+                        <StackPanel>
+                            <Image Source="../../images/nothing.png" Width="30" Height="30" />
+                            <Label Content="Ninguno" FontSize="12" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <Grid x:Name="MesasContainer" DockPanel.Dock="Left">
+            <TabControl x:Name="tabControl" Margin="5,5,5,5">
+                <TabItem x:Name="principal" Tag="P"  Header="Principal" FontSize="16" Height="40" Margin="-2,0">
+                    <WrapPanel x:Name="principalContainer" Width="Auto" Height="Auto" Margin="3,3,3,3" FlowDirection="LeftToRight" VerticalAlignment="Top" Orientation="Horizontal" >
+
+                    </WrapPanel>
+                </TabItem>
+                <TabItem x:Name="alterno" Tag="A" Header="Alterna" FontSize="16" Height="40" Margin="-2,0">
+                    <WrapPanel x:Name="alternoContainer" Width="Auto" Height="Auto" Margin="3,3,3,3" FlowDirection="LeftToRight" VerticalAlignment="Top" Orientation="Horizontal" >
+
+                    </WrapPanel>
+                </TabItem>
+                <TabItem x:Name="exterior" Tag="E" Header="Exterior" FontSize="16" Height="40" Margin="-2,0">
+                    <WrapPanel x:Name="exteriorContainer" Width="Auto" Height="Auto" Margin="3,3,3,3" FlowDirection="LeftToRight" VerticalAlignment="Top" Orientation="Horizontal" >
+
+                    </WrapPanel>
+                </TabItem>
+                <TabItem x:Name="terraza" Tag="T" Header="Terraza" FontSize="16" Height="40" Margin="-2,0">
+                    <WrapPanel x:Name="terrazaContainer" Width="Auto" Height="Auto" Margin="3,3,3,3" FlowDirection="LeftToRight" VerticalAlignment="Top" Orientation="Horizontal" >
+
+                    </WrapPanel>
+                </TabItem>
+                <TabItem x:Name="sdopiso" Tag="S" Header="2do Piso" FontSize="16" Height="40" Margin="-2,0">
+                    <WrapPanel x:Name="sdopisoContainer" Width="Auto" Height="Auto" Margin="3,3,3,3" FlowDirection="LeftToRight" VerticalAlignment="Top" Orientation="Horizontal" >
+
+                    </WrapPanel>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </DockPanel>
+</UserControl>

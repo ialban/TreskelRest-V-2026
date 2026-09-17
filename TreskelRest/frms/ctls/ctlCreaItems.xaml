@@ -1,0 +1,183 @@
+﻿<UserControl x:Class="TreskelRest.frms.ctls.ctlCreaItems"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TreskelRest.frms.ctls"
+             xmlns:imageUploader="clr-namespace:LibControls.imageUploader;assembly=LibControls"
+             mc:Ignorable="d" Background="White" d:DesignWidth="950" Height="580">
+    <Grid>
+        <Label x:Name="label1" Content="Código : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16" VerticalContentAlignment="Center" Height="40"/>
+        <TextBox x:Name="txtNid" HorizontalAlignment="Left" Margin="116,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="40" FontSize="16" VerticalContentAlignment="Center" MaxLength="4"/>
+        <Label x:Name="Grupo" Content="Grupo : " HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" FontSize="16" Height="40" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="cboGrupo" HorizontalAlignment="Left" Margin="116,60,0,0" VerticalAlignment="Top" Width="231" Height="40" VerticalContentAlignment="Center" FontSize="16" SelectionChanged="cboGrupo_SelectionChanged">
+
+        </ComboBox>
+        <Label x:Name="Subgrupo" Content="Subgrupo : " HorizontalAlignment="Left" Margin="365,60,0,0" VerticalAlignment="Top" FontSize="16" Height="40" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="cboSubgrupo" HorizontalAlignment="Left" Margin="462,60,0,0" VerticalAlignment="Top" Width="246" Height="40" VerticalContentAlignment="Center" FontSize="16">
+
+        </ComboBox>
+        <Label x:Name="label4" Content="Producto : " HorizontalAlignment="Left" Margin="9,110,0,0" VerticalAlignment="Top" FontSize="16" Height="40" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="40" Margin="116,110,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="592" FontSize="16" VerticalContentAlignment="Center" MaxLength="100"  CharacterCasing="Upper" Typography.Capitals="AllSmallCaps"/>
+        
+        <Label Content="Alias Repo : " HorizontalAlignment="Left" Margin="9,160,0,0" VerticalAlignment="Top" FontSize="16" Height="40" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtAlias" HorizontalAlignment="Left" Height="40" Margin="116,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="180" FontSize="16" VerticalContentAlignment="Center" MaxLength="20"  CharacterCasing="Upper" Typography.Capitals="AllSmallCaps"/>
+        
+        <Label Content="Precio : " HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" FontSize="16" Height="40" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtPrecio" HorizontalAlignment="Left" Height="40" Margin="116,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="130" FontSize="16" VerticalContentAlignment="Center" MaxLength="6" />
+        <Label Content="Unidad : " HorizontalAlignment="Left" Margin="260,210,0,0" VerticalAlignment="Top" FontSize="16" Height="40" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="cboUnidad" Height="40" Width="100" Margin="340,210,0,0" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Left" VerticalContentAlignment="Center">
+            <ComboBoxItem Content="Unidad" Height="40" VerticalContentAlignment="Center" IsSelected="True" />
+            <ComboBoxItem Content="Kilo" Height="40" VerticalContentAlignment="Center" />
+            <ComboBoxItem Content="Libra" Height="40" VerticalContentAlignment="Center" />
+            <ComboBoxItem Content="Gramo" Height="40" VerticalContentAlignment="Center" />
+        </ComboBox>
+        <Label Content="Grava IVA: " HorizontalAlignment="Left" Margin="440,210,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <CheckBox x:Name="chkGravanIva" HorizontalAlignment="Left" Margin="530,210,0,0" VerticalAlignment="Top" IsChecked="true" Checked="chkGravanIva_Checked" Unchecked="chkGravanIva_Unchecked">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2.7" ScaleY="2.7" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <Label x:Name="label" Content="IVA incluido : " HorizontalAlignment="Left" Margin="580,210,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <CheckBox x:Name="chkIva" HorizontalAlignment="Left" Margin="680,210,0,0" VerticalAlignment="Top" IsChecked="False" IsEnabled="true">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2.7" ScaleY="2.7" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <Label Content="Activo : " HorizontalAlignment="Left" Margin="10,260,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <CheckBox x:Name="chkEstado" HorizontalAlignment="Left" Margin="152,260,0,0" VerticalAlignment="Top" IsChecked="False">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2.7" ScaleY="2.7" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <Label Content="Código de Barra : " HorizontalAlignment="Left" Margin="210,260,0,0" VerticalAlignment="Top" FontSize="16" Height="40" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="txtBarcode" HorizontalAlignment="Left" Height="40" Margin="350,260,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="370" FontSize="16" VerticalContentAlignment="Center" MaxLength="20" />
+        <Label Content="Para Cocina : " HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <CheckBox x:Name="chkCocina" HorizontalAlignment="Left" Margin="152,300,0,0" VerticalAlignment="Top" IsChecked="True">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2.7" ScaleY="2.7" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        
+        <Label Content="Para Parrilla : " HorizontalAlignment="Left" Margin="10,340,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <CheckBox x:Name="chkParrilla" HorizontalAlignment="Left" Margin="152,340,0,0" VerticalAlignment="Top" IsChecked="false">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2.7" ScaleY="2.7" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <Label Content="Para Bar : " HorizontalAlignment="Left" Margin="10,380,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <CheckBox x:Name="chkBar" HorizontalAlignment="Left" Margin="152,380,0,0" VerticalAlignment="Top" IsChecked="false">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2.7" ScaleY="2.7" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        
+        <Label Content="Elimina en Cocina : " HorizontalAlignment="Left" Margin="10,420,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <CheckBox x:Name="chkDelCocina" HorizontalAlignment="Left" Margin="152,420,0,0" VerticalAlignment="Top" IsChecked="false">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2.7" ScaleY="2.7" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <Label Content="Muestra Sub Grp: " HorizontalAlignment="Left" Margin="9,460,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <CheckBox x:Name="chkShowSbgrp" HorizontalAlignment="Left" Margin="152,460,0,0" VerticalAlignment="Top" IsChecked="false">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2.7" ScaleY="2.7" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+
+        <!--<Border BorderThickness="1" Margin="728,10,10,318" Width="212" Height="210" BorderBrush="Black">
+            <Image x:Name="imgProducto" Source="../../images/noimage.png" HorizontalAlignment="Left" Height="210" Margin="0,0,0,0" VerticalAlignment="Top" Width="210" Stretch="Fill"/>
+        </Border>
+        <Button x:Name="btnLoad" HorizontalAlignment="Left" Margin="728,235,0,0" VerticalAlignment="Top" Width="120" Height="40" Foreground="White" FontSize="16" Click="btnLoad_Click">
+            <Button.Background>
+                <SolidColorBrush Color="#5cb85c" />
+            </Button.Background>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Margin" Value="3"/>
+                    </Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Margin" Value="3"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Image Source="../../images/upload.png" Width="30" Height="30" />
+                <TextBlock VerticalAlignment="Center">Cargar</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button x:Name="btnNoImage" HorizontalAlignment="Left" Margin="866,235,0,0" VerticalAlignment="Top" Width="74" Height="40" Foreground="White" FontSize="16" Click="btnNoImage_Click">
+            <Button.Background>
+                <SolidColorBrush Color="#d9534f" />
+            </Button.Background>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Margin" Value="3"/>
+                    </Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Margin" Value="3"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Image Source="../../images/noimage.png" Width="30" Height="30" />
+            </StackPanel>
+        </Button>-->
+
+        <imageUploader:ctlImageUploader x:Name="imgUploader" HorizontalAlignment="Left" Width="185" Height="230" Margin="750,20,0,0" VerticalAlignment="Top" _ctlImageUploader="imgUploader__ctlImageUploader" />
+        
+        <Button x:Name="btnGrabar" HorizontalAlignment="Left" Margin="10,522,0,0" VerticalAlignment="Top" Width="120" Height="40" Foreground="White" FontSize="16" Click="btnGrabar_Click">
+            <Button.Background>
+                <SolidColorBrush Color="#5cb85c" />
+            </Button.Background>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Margin" Value="3"/>
+                    </Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Margin" Value="3"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Image Source="../../images/save.png" Width="30" Height="30" />
+                <TextBlock VerticalAlignment="Center">Grabar</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button x:Name="btnCancelar" HorizontalAlignment="Left" Margin="153,522,0,0" VerticalAlignment="Top" Width="112" Height="40" FontSize="16" Foreground="White" Click="btnCancelar_Click">
+            <Button.Background>
+                <SolidColorBrush Color="#d9534f" />
+            </Button.Background>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Margin" Value="3"/>
+                    </Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Margin" Value="3"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Image Source="../../images/cancel.png" Width="30" Height="30" />
+                <TextBlock VerticalAlignment="Center">Cancelar</TextBlock>
+            </StackPanel>
+        </Button>
+        <GroupBox Header="Relación con Materia Prima" FontSize="16" FontWeight="Bold" HorizontalAlignment="Left" Height="170" Margin="208,320,0,0" VerticalAlignment="Top" Width="500" BorderBrush="Black">
+            <StackPanel HorizontalAlignment="Left" Margin="10,10,-2,-18" Width="480">
+                <TextBlock Height="40" FontSize="16" Margin="10,10,10,0" TextWrapping="WrapWithOverflow" FontWeight="Normal" TextAlignment="Justify" >
+                    "Seleccione el producto con el cual se relaciona en el inventario, aplica únicamente a productos finales."
+                </TextBlock>
+                <TextBlock FontSize="16" Margin="10,10,0,0" FontWeight="Normal">                                        
+                    <Label Content="Materia Prima" Height="40" FontSize="16" VerticalContentAlignment="Center" Margin="0,10,0,0" />
+                    <ComboBox x:Name="cboMPrima" FontSize="16" Height="40" Width="336" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" />
+                </TextBlock>
+            </StackPanel>
+        </GroupBox>
+        <Label Content="Producto para:" Height="40" FontSize="16" VerticalContentAlignment="Center" Margin="750,260,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ComboBox x:Name="cboDestino" FontSize="16" Height="40" Width="180" Margin="750,300,0,0" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <ComboBoxItem Content="Todos" VerticalContentAlignment="Center" Height="40" IsSelected="True" />
+            <ComboBoxItem Content="Restaurant" VerticalContentAlignment="Center" Height="40" />
+            <ComboBoxItem Content="Market" VerticalContentAlignment="Center"  Height="40" />
+        </ComboBox>
+        <!--
+        <Label Content="Materia Prima : " HorizontalAlignment="Left" Margin="299,270,0,0" VerticalAlignment="Top" FontSize="16" Height="40" VerticalContentAlignment="Center"/>
+        <ComboBox x:Name="cboMateria" HorizontalAlignment="Left" Margin="462,270,0,0" VerticalAlignment="Top" Width="246" Height="40" VerticalContentAlignment="Center" FontSize="16"/>
+        -->
+    </Grid>
+</UserControl>

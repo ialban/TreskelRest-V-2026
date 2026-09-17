@@ -1,0 +1,97 @@
+﻿<Window x:Class="TreskelRest.frms.ctls.ctlIngresaCoord"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TreskelRest.frms.ctls"
+             mc:Ignorable="d" 
+             WindowStyle="None" WindowStartupLocation="CenterScreen"
+             d:DesignHeight="450" d:DesignWidth="320" ResizeMode="NoResize">
+    <Grid>
+        <UniformGrid Width="320" Height="390" Background="DarkGray" Rows="1" Margin="0,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"  IsVisibleChanged="UniformGrid_IsVisibleChanged">
+            <Grid Width="310" Height="380" Background="LightSteelBlue">
+                <DockPanel LastChildFill="False" Margin="2,2,0,0">
+                    <StackPanel x:Name="Derecha" DockPanel.Dock="Right" Height="Auto" VerticalAlignment="Top" Width="76" Margin="0,0,6,0">
+                        <StackPanel.Resources>
+                            <Style TargetType="{x:Type ToggleButton}">
+                                <Setter Property="Margin" Value="2.5"/>
+                            </Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Margin" Value="2.5"/>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Button x:Name="cancelar" Content="Esc" Height="66" Width="66" FontSize="20" Background="Red" Foreground="White" FontWeight="Bold" Click="cancelar_Click" />
+                        <Button x:Name="clear" Width="66" Height="66" Click="clear_Click">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="/images/clear.png" Width="38" Height="38" />
+                                <TextBlock Text="Clear" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="18" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="back" Width="66" Height="66" Click="back_Click">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="/images/back.png" Width="38" Height="38" />
+                                <TextBlock Text="Back" HorizontalAlignment="Center"  FontWeight="Bold" VerticalAlignment="Center" FontSize="18" />
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="enter" Width="66" Height="150" Background="GreenYellow" Click="enter_Click" IsDefault="True">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="/images/enter.png" Width="38" Height="38" />
+                                <TextBlock Text="Enter" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Center" FontSize="18" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <UniformGrid x:Name="Top" DockPanel.Dock="Top" Width="220" Height="70" >
+                        <UniformGrid.Resources>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Setter Property="Margin" Value="1"/>
+                            </Style>
+                        </UniformGrid.Resources>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <Label x:Name="lblCoord1" FontSize="18" Content="A1" Width="70" FontWeight="Bold"  HorizontalContentAlignment="Center" />
+                                <Label x:Name="lblCoord2" FontSize="18" Content="B1" Width="70" FontWeight="Bold" HorizontalContentAlignment="Center" />
+                                <Label x:Name="lblCoord3" FontSize="18" Content="C1" Width="70" FontWeight="Bold" HorizontalContentAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox x:Name="coord1" TextWrapping="Wrap" Text="" FontSize="18" VerticalContentAlignment="Center" Width="70" Height="35" HorizontalAlignment="Left"
+                                         KeyUp="coord1_KeyUp" LostFocus="coord1_LostFocus" GotFocus="coord1_GotFocus"  />
+                                <TextBox x:Name="coord2" TextWrapping="Wrap" Text="" FontSize="18" VerticalContentAlignment="Center" Width="70" Height="35" HorizontalAlignment="Left" 
+                                         KeyUp="coord2_KeyUp" LostFocus="coord2_LostFocus" GotFocus="coord2_GotFocus" />
+                                <TextBox x:Name="coord3" TextWrapping="Wrap" Text="" FontSize="18" VerticalContentAlignment="Center" Width="70" Height="35" HorizontalAlignment="Left" 
+                                         KeyUp="coord3_KeyUp" LostFocus="coord3_LostFocus" GotFocus="coord3_GotFocus" />
+                            </StackPanel>
+                        </StackPanel>
+                    </UniformGrid>
+                    <UniformGrid x:Name="Grid" Width="220" Height="Auto" Rows="4" Margin="6,6, 0, 0">
+                        <UniformGrid.Resources>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Margin" Value="1"/>
+                            </Style>
+                        </UniformGrid.Resources>
+                        <Button x:Name="btn7" Tag="" Content="7" Width="66" Height="66"  Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Click="Button_Click"/>
+                        <Button x:Name="btn8" Tag="" Content="8" Width="66" Height="66"  Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Click="Button_Click" />
+                        <Button x:Name="btn9" Tag="" Content="9" Width="66" Height="66"  Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Click="Button_Click"/>
+                        <Button x:Name="bnt4" Tag="" Content="4" Width="66" Height="66"  Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Click="Button_Click"/>
+                        <Button x:Name="bnt5" Tag="" Content="5" Width="66" Height="66"  Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Click="Button_Click"/>
+                        <Button x:Name="bnt6" Tag="" Content="6" Width="66" Height="66"  Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Click="Button_Click"/>
+                        <Button x:Name="btn1" Tag="" Content="1" Width="66" Height="66"  Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Click="Button_Click"/>
+                        <Button x:Name="btn2" Tag="" Content="2" Width="66" Height="66"  Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Click="Button_Click"/>
+                        <Button x:Name="btn3" Tag="" Content="3" Width="66" Height="66"  Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Click="Button_Click"/>
+                        <Button x:Name="btn0" Tag="" Content="0" Width="66" Height="66"  Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Click="Button_Click"/>
+                        <Button x:Name="btnPto" Width="66" Height="66"  Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Click="btnPto_Click" IsEnabled="False">
+                            <Image Source="/images/generatePin.png" Width="50" Height="50" />
+                        </Button>
+                    </UniformGrid>
+                </DockPanel>
+            </Grid>
+        </UniformGrid>
+        <Grid Width="320" Height="65" Margin="0,0,0,0" Background="DarkGray" VerticalAlignment="Top" HorizontalAlignment="Left" >
+            <Grid Margin="5,5,5,0" Width="310" Background="LightSteelBlue">
+                <StackPanel Orientation="Horizontal">
+                    <Label x:Name="contador" Content="00:00" FontSize="35" Width="250" HorizontalContentAlignment="Center" Foreground="White" />
+                    <Image x:Name="TimeDefcon" Source="/images/TimeOK.png" Width="50" Height="50" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
