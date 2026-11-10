@@ -21,6 +21,7 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <Configurations>All;Debug;Release</Configurations>
     <ApplicationIcon>treskel.ico</ApplicationIcon>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Management" />
@@ -55,5 +56,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" />
+    <PackageReference Include="SixLabors.ImageSharp" />
   </ItemGroup>
 </Project>

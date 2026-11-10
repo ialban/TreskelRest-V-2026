@@ -118,8 +118,18 @@ namespace TreskelRest.frms.ctls
             if (obj.GetType() == typeof(Button))
             {
                 var btn = (Button)obj;
-                btn.Height = height;
-                btn.Width = width;
+
+                if (btn.Name == "btnCajero")
+                {
+                    btn.Height = height;
+                    btn.Width = width;
+                }
+                else
+                {
+                    btn.Height = height;
+                    btn.Width = width;
+                }
+                
                 ((Image)((StackPanel)btn.Content).Children[0]).Width = imgSize;
                 ((Image)((StackPanel)btn.Content).Children[0]).Height = imgSize;
                 ((Label)((StackPanel)btn.Content).Children[1]).FontSize = fontSize;
@@ -127,8 +137,16 @@ namespace TreskelRest.frms.ctls
             else
             {
                 var btn = (ToggleButton)obj;
-                btn.Height = height;
-                btn.Width = width;
+                if(btn.Name == "btnCajero")
+                {
+                    btn.Height = height-8;
+                    btn.Width = width;
+                }
+                else
+                {
+                    btn.Height = height;
+                    btn.Width = width;
+                }
                 ((Image)((StackPanel)btn.Content).Children[0]).Width = imgSize;
                 ((Image)((StackPanel)btn.Content).Children[0]).Height = imgSize;
                 ((Label)((StackPanel)btn.Content).Children[1]).FontSize = fontSize;
@@ -542,14 +560,15 @@ namespace TreskelRest.frms.ctls
                         
                         ObjComportamiento.showMsgInfo(res.mensaje);
 
-                        btnCancelar_Click(sender, e);
-                        this.ventas.detVenta.Clear();
-                        this.ventas.detPago.Clear();
-
                         // Enviar la factura al SRI cuando esté activo la facturación automática
                         if (General.ENVIO_AUTO_AL_SRI)
                         {
                             string codigoVenta = ventas.ventscl.ToString().PadLeft(10, '0');
+
+                            if (ventas.ventscl == -1)
+                            {
+                                codigoVenta = res.mensaje.Substring(res.mensaje.Length - 10);
+                            }
 
                             mFacturasSRI data = ventas.getFacturasToSRIByVentcls(codigoVenta);
                             data.docutip = "F";
@@ -568,6 +587,7 @@ namespace TreskelRest.frms.ctls
                             {
                                 contenedor = win
                             };
+                            
                             win.Contenido.Children.Add(prgFact);
 
                             RoutedEventHandler loadedHandler = null;
@@ -580,6 +600,11 @@ namespace TreskelRest.frms.ctls
 
                             win.ShowDialog();
                         }
+
+                        btnCancelar_Click(sender, e);
+                        this.ventas.detVenta.Clear();
+                        this.ventas.detPago.Clear();
+
                     }
                     else
                     {
@@ -1808,6 +1833,16 @@ namespace TreskelRest.frms.ctls
             }
         }
 
+        private void btnAutomata_Unchecked(object sender, RoutedEventArgs e)
+        {
+            General.ENVIO_AUTO_AL_SRI = false;
+        }
+
+        private void btnAutomata_Checked(object sender, RoutedEventArgs e)
+        {
+            General.ENVIO_AUTO_AL_SRI = true;
+        }
+
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
 
@@ -1842,6 +1877,5 @@ namespace TreskelRest.frms.ctls
             // GC.SuppressFinalize(this);
         }
         #endregion
-
     }
 }

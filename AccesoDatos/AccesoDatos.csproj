@@ -6,6 +6,7 @@
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Flurl" />

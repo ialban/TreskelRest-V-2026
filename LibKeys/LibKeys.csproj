@@ -6,10 +6,8 @@
     <UseWPF>true</UseWPF>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <Configurations>All;Debug;Release</Configurations>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
-  <ItemGroup>
-    
-  </ItemGroup>
   <ItemGroup>
     <Content Include="images\back.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -58,6 +56,9 @@
     </Content>
     <Content Include="images\shift.png" />
     <Content Include="images\space.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="SixLabors.ImageSharp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LibControls\LibControls.csproj" />

@@ -6,7 +6,11 @@
         xmlns:local="clr-namespace:TreskelRest"
         mc:Ignorable="d"
         Title="Treskel Login" Height="371.052" Width="525" WindowStyle="None"
-        WindowStartupLocation="CenterScreen" Activated="Window_Activated" IsVisibleChanged="Window_IsVisibleChanged" Icon="treskel.ico">
+        Loaded="Window_loaded"
+        WindowStartupLocation="CenterScreen" 
+        Activated="Window_Activated" 
+        IsVisibleChanged="Window_IsVisibleChanged" 
+        Icon="treskel.ico">
     <DockPanel>
         <StackPanel Background="Black" DockPanel.Dock="Bottom" Height="50">
             <Label Foreground="White">Desarrollado por: TreskelSoft</Label>

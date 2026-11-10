@@ -84,7 +84,7 @@
                 <StackPanel Orientation="Vertical" Margin="5,5,5,5">
                     <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                         <Label Content="Empresa : " HorizontalAlignment="Left" Width="95" VerticalContentAlignment="Center" Height="40" FontSize="16" />
-                        <ComboBox x:Name="cboEmpresa" Width="320" Height="40" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center" />
+                        <ComboBox x:Name="cboEmpresa" Width="320" Height="40" HorizontalAlignment="Left" FontSize="16" VerticalContentAlignment="Center" SelectionChanged="cboEmpresa_SelectionChanged" />
                         <Label Content="N° Factura : " FontSize="16" Height="40" Width="100" HorizontalAlignment="Left" VerticalContentAlignment="Center" />
                         <!--<TextBox x:Name="NumFact" Height="40" Width="220" FontSize="16" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" MaxLength="20" />-->
                         <TextBoxMask:TextBoxMask x:Name="NumFact" Style="{StaticResource placeHolder}" FontSize="14" VerticalAlignment="Top" HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="40" Width="160" MaxLength="17" Masked="Factura" />
@@ -226,6 +226,14 @@
                             <ComboBoxItem Tag="O" FontSize="14" VerticalContentAlignment="Center" Content="Onza" />
                             <ComboBoxItem Tag="P" FontSize="14" VerticalContentAlignment="Center" Content="Porción" />
                         </ComboBox>
+                        <Label Content="Porción" FontSize="14" Height="30" />
+                        <TextBox x:Name="Porcion" FontSize="14" Height="36" VerticalContentAlignment="Center" Text="0" />
+                        <Label Content="Merma" FontSize="14" Height="30" />
+                        <StackPanel Orientation="Horizontal" Margin="0, 0 , 0, 0">
+                            <TextBox x:Name="MermaValor" FontSize="14" Height="36" VerticalContentAlignment="Center" Text="0" Width="80" />
+                            <Label x:Name="UnidadMerma" Content="Kg" FontSize="14" Height="30" Margin="0, 0, 0, 0" />
+                        </StackPanel>
+                        
                         <Label Content="Precio" FontSize="14" Height="30" />
                         <TextBox x:Name="Precio" FontSize="14" Height="36" VerticalContentAlignment="Center" Text="0.00" />
                         <Button x:Name="Seleccionar" FontSize="14" Height="40" Background="LightCoral" Click="Seleccionar_Click">
@@ -234,7 +242,7 @@
                                 <!--<Label Content="Aceptar" FontSize="14" Foreground="White" />-->
                             </StackPanel>
                         </Button>
-                        
+
                     </StackPanel>
                 </Grid>
                 <Grid x:Name="GrpProductos" DockPanel.Dock="Top" Height="78">

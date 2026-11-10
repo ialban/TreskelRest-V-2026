@@ -6,10 +6,8 @@
     <UseWPF>true</UseWPF>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <Configurations>All;Debug;Release</Configurations>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
-  <ItemGroup>
-    
-  </ItemGroup>
   <ItemGroup>
     <Resource Include="images\clock.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -51,6 +49,7 @@
     <Content Include="images\find.png" />
     <Content Include="images\treskel.ico" />
     <Content Include="ventana\treskel.ico" />
+    <PackageReference Include="SixLabors.ImageSharp" />
     <Resource Include="images\delete.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

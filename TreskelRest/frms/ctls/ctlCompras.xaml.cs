@@ -9,7 +9,6 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using TreskelRest.cls;
-using System.Globalization;
 
 namespace TreskelRest.frms.ctls
 {
@@ -19,6 +18,7 @@ namespace TreskelRest.frms.ctls
     public partial class ctlCompras : UserControl, IDisposable
     {
         private string codigo = "";
+        private string unidad = "";
         private string producto = "";
         private bool ModProd = false;
         private mProducto ProdModificar = null;
@@ -184,13 +184,21 @@ namespace TreskelRest.frms.ctls
 
             foreach (DataRow dr in dt.Rows)
             {
+                TextBlock txtBlock = new TextBlock
+                {
+                    Text = dr["descripcion"]?.ToString(),
+                    TextWrapping = TextWrapping.Wrap,
+                    TextAlignment = TextAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center
+                };
+
                 ToggleButton tbtn = new ToggleButton
                 {
                     Height = height,
                     Width = width,
                     FontSize = fontSize,
-                    Tag = dr["codigo"]?.ToString(),
-                    Content = dr["descripcion"]?.ToString(),
+                    Tag = dr["codigo"]?.ToString() + "-" + dr["unidad"]?.ToString(),
+                    Content = txtBlock,
                     Background = Brushes.Honeydew
                 };
 
@@ -198,6 +206,22 @@ namespace TreskelRest.frms.ctls
                 tbtn.Unchecked += ctlButton_UnChecked;
 
                 Contenedor.Children.Add(tbtn);
+            }
+        }
+
+        private void cboEmpresa_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (sender != null)
+            {
+                if (sender is ComboBox cbo && cbo.SelectedItem is ComboBoxItem itemSeleccionado)
+                {
+                    var valor = General.getTagFromComboBox(cboEmpresa);
+
+                    if (valor == "9999999999999")
+                    {
+                        NumFact.Text = "999-999-999999999";
+                    }
+                }
             }
         }
 
@@ -212,10 +236,27 @@ namespace TreskelRest.frms.ctls
                 }  
             }
 
-            this.codigo = ((ToggleButton)sender).Tag.ToString();
-            this.producto = ((ToggleButton)sender).Content.ToString();
+            var data = ((ToggleButton)sender).Tag.ToString().Split("-");
+            this.codigo = data[0];
+            this.unidad = data[1];
+            
+            var contenido = ((ToggleButton)sender).Content == null ? null : ((ToggleButton)sender).Content;
+            if (contenido != null && contenido.GetType() == typeof(TextBlock))
+            {
+                this.producto = ((TextBlock)contenido).Text.ToString();
+            }
+            else
+            {
+                this.producto = "";
+            }
 
             ((ToggleButton)sender).Background = Brushes.Goldenrod;
+
+            if (cboUnidad != null)
+            {
+                General.selectedByTagCombo(cboUnidad, this.unidad);
+            }
+            
         }
 
         public void ctlButton_UnChecked(Object sender, RoutedEventArgs e)
@@ -554,6 +595,8 @@ namespace TreskelRest.frms.ctls
             // TODO: uncomment the following line if the finalizer is overridden above.
             // GC.SuppressFinalize(this);
         }
-        #endregion        
+        #endregion
+
+       
     }
 }

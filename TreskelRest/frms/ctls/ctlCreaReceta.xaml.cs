@@ -263,26 +263,30 @@ namespace TreskelRest.frms.ctls
                 productos.prdCod = codigo;
                 productos.getById();
 
-                if (!productos.prdUnd.Equals("U"))
-                {                    
-                    String[] data = {"Quintal","Kilos","Gramo","Libra","Onza","Porción" };
-                    int i = 0;
+                string[] data = null;
 
-                    foreach(String dato in data)
+                data = new string[] { "Quintal", "Kilos", "Gramo", "Libra", "Onza", "Porción", "Unidad" };
+                
+                int i = 0;
+
+                foreach (String dato in data)
+                {
+                    ComboBoxItem cbi = new ComboBoxItem();
+
+                    cbi.Tag = dato.Substring(0, 1);
+                    cbi.Content = dato;
+
+                    if (cbi.Tag.ToString() == productos.prdUnd)
                     {
-                        ComboBoxItem cbi = new ComboBoxItem();
-
-                        cbi.Tag = dato.Substring(0, 1);
-                        cbi.Content = dato;
-
-                        if (i == 0)
-                        {
-                            cbi.IsSelected = true;
-                        }
-
-                        cboUnidad.Items.Add(cbi);
-                        i++;
-                    }                    
+                        cbi.IsSelected = true;
+                    }
+                    /*if (i == 0)
+                    {
+                        cbi.IsSelected = true;
+                    }
+                    */
+                    cboUnidad.Items.Add(cbi);
+                    i++;
                 }
             }
         }        

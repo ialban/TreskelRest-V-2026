@@ -226,12 +226,12 @@ namespace Entidades
                 String query = "";
                 if (grupo.Equals(""))
                 {
-                    query = "SELECT prdCod AS codigo, prdNbr as descripcion FROM tbIvtrPrd ORDER BY prdNbr";
+                    query = "SELECT prdCod AS codigo, prdNbr AS descripcion, prdUnd AS unidad FROM tbIvtrPrd ORDER BY prdNbr";
                     dt = conn.ejecutaQuery(query);
                 }
                 else
                 {
-                    query = "SELECT prdCod AS codigo, prdNbr as descripcion FROM tbIvtrPrd WHERE prdGrp=@prdGrp ORDER BY prdNbr";
+                    query = "SELECT prdCod AS codigo, prdNbr AS descripcion, prdUnd AS unidad FROM tbIvtrPrd WHERE prdGrp=@prdGrp ORDER BY prdNbr";
                     List<SqlParameter> parametros = new List<SqlParameter>();
 
                     parametros.Add(new SqlParameter("prdGrp", grupo));

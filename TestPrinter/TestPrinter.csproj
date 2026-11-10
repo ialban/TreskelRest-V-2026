@@ -5,12 +5,14 @@
     <UseWPF>true</UseWPF>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <Configurations>All;Debug;Release</Configurations>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
-    
+    <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <AppDesigner Include="Properties\" />
+    <PackageReference Include="SixLabors.ImageSharp" />
+    <PackageReference Include="System.Drawing.Common" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj" />

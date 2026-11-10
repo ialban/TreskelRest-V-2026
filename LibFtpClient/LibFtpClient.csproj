@@ -7,12 +7,13 @@
     <TargetFramework>net9.0</TargetFramework>
     <OutputType>Library</OutputType>
     <Configurations>All;Debug;Release</Configurations>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="FluentFTP" />
   </ItemGroup>
   <ItemGroup>
-    
+    <PackageReference Include="SixLabors.ImageSharp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj" />

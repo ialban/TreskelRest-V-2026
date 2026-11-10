@@ -1,7 +1,13 @@
-﻿using LibElectSign.model;
+﻿using FirmaXadesNet;
+using FirmaXadesNet.Signature.Parameters;
+using LibElectSign.model;
 using System;
 using System.Diagnostics;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xades;
 
 namespace LibElectSign
 {
@@ -22,7 +28,8 @@ namespace LibElectSign
 
             try
             {
-                int resultado = await EjecutarTreskelSign(xmlPath, firmaPath, CertificadoClave, environment);
+                respuesta = await firmar(xmlPath, firmaPath, CertificadoClave, environment);
+                /*int resultado = await EjecutarTreskelSign(xmlPath, firmaPath, CertificadoClave, environment);
                 switch (resultado)
                 {
                     case 1:
@@ -52,8 +59,8 @@ namespace LibElectSign
                             message = $"No fue posible firmar el archivo XML, revise los log en el EVENT VIEWER"
                         };
                         break;
-                }
-                
+                }*/
+
             }
             catch (Exception e)
             {
@@ -108,6 +115,64 @@ namespace LibElectSign
             {
                 return -1;
             }
+        }
+    
+        private async Task<SignResponse> firmar(string xml, string firma, string pass, string env)
+        {
+            SignResponse respuesta = new SignResponse { success = false, message = string.Empty };
+
+            try
+            {
+                // 1. Validaciones previas de archivos existentes
+                if (!File.Exists(xml))
+                {
+                    respuesta.message = $"No existe el archivo XML en la ruta {xml}";
+                    return respuesta;
+                }
+                if (!File.Exists(firma))
+                {
+                    respuesta.message = $"No existe el certificado en la ruta {firma}";
+                    return respuesta;
+                }
+
+                // 2. Cargar el certificado de forma segura (.NET 10)
+                var certificado = X509CertificateLoader.LoadPkcs12FromFile(firma, pass);
+
+                // 3. Configurar los parámetros exactos exigidos por el SRI
+                var parametros = new SignatureParameters
+                {
+                    SignaturePolicyInfo = null,
+                    SignaturePackaging = SignaturePackaging.ENVELOPED,
+
+                    // CORRECCIÓN: Se asigna el URI estándar W3C para SHA-256 como string
+                    DigestMethod = FirmaXadesNet.Crypto.DigestMethod.SHA256,
+                    Signer = new FirmaXadesNet.Crypto.Signer(certificado)
+                };
+
+                var firmador = new XadesService();
+
+                // 4. Procesar el firmado usando streams sin corromper el archivo original
+                // Leemos el archivo original en memoria para evitar conflictos de bloqueo de escritura
+                byte[] xmlOriginalBytes = File.ReadAllBytes(xml);
+
+                using (MemoryStream msOriginal = new MemoryStream(xmlOriginalBytes))
+                using (FileStream fsFirmado = new FileStream(xml, FileMode.Create, FileAccess.Write))
+                {
+                    // CORRECCIÓN: El método .Sign() procesa el stream de lectura, inyecta los parámetros y escribe en el de salida
+                    var documentoFirmado = firmador.Sign(msOriginal, parametros);
+                    documentoFirmado.Save(fsFirmado);
+                }
+
+                respuesta.success = true;
+            }
+            catch (Exception ex)
+            {
+                respuesta.success = false;
+                respuesta.message = $"Error en el proceso criptográfico: {ex.Message}";
+                System.Diagnostics.Debug.WriteLine("Error en método firmar: " + ex.ToString());
+            }
+
+            return respuesta;
         }
     }    
 }

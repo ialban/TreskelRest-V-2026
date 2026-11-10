@@ -102,6 +102,11 @@ namespace TreskelRest
         {
             InitializeComponent();
 
+            
+        }
+
+        private void Window_loaded(object sender, RoutedEventArgs e)
+        {
             clsUsuario = new clsTextBox(txtUsuario, true);
             clsClave = new clsTextBox(txtClave, true);
 
@@ -124,7 +129,7 @@ namespace TreskelRest
             clsClave.muestraTeclado += new clsTextBox.MuestraTeclado(MuestraTecladoPantalla);
 
             clsUsuario.caracteresPermitidos = clsTextBox.CARACTERES_PERMITIDOS.USUARIOS;
-            clsUsuario.permiteEspacios = false;            
+            clsUsuario.permiteEspacios = false;
             clsClave.permiteEspacios = false;
 
             muestraImagenFondo();

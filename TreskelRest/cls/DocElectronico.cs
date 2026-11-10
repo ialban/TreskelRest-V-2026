@@ -45,6 +45,9 @@ namespace TreskelRest.cls
         public delegate void retornaEstado(string estado);
         public event retornaEstado _retornaEstado;
 
+        public delegate void disparaError(string error);
+        public event disparaError _disparaError;
+
         public delegate void Terminado();
         public event Terminado _Finalizado;
 
@@ -73,8 +76,16 @@ namespace TreskelRest.cls
                 Thread.Sleep(1000);
                 System.Windows.Forms.Application.DoEvents();
 
-                var resp = await client.Login(General.USUARIO_WS, General.CLAVE_WS, General.RUC_EMPRESA, General.EMPRESA_GUID);
-
+                AuthenticationResponse resp;
+                try
+                {
+                    resp = await client.Login(General.USUARIO_WS, General.CLAVE_WS, General.RUC_EMPRESA, General.EMPRESA_GUID);
+                }catch(Exception ex)
+                {
+                    _disparaError("Error al conectarse al Web Service: " + ex.Message);
+                    return;
+                }
+                
                 System.Windows.Forms.Application.DoEvents();
                 _retornaEstado("C");
                 Thread.Sleep(1000);
@@ -820,6 +831,7 @@ namespace TreskelRest.cls
                     if (gf.ArchivoFirmado == false)
                     {
                         ObjComportamiento.showMsgError("El Archivo no pudo ser firmado");
+                        _disparaError("El Archivo no pudo ser firmado");
                         return;
                     }
 

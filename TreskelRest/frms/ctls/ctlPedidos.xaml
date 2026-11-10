@@ -181,15 +181,15 @@
                             </StackPanel>
                         </Button>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,3,0">
-                        <!--<Label x:Name="Mesero" Tag="" FontSize="18" VerticalContentAlignment="Center" Height="60" Width="120" HorizontalContentAlignment="Center" />-->
-                        <TextBlock x:Name="Mesero" Tag="" FontSize="18" Height="60" Width="60" TextWrapping="Wrap" />
-                        <ToggleButton x:Name="btnMesero" Width="70" Height="70" Background="GhostWhite" Click="btnMesero_Click" HorizontalAlignment="Right" Checked="btnMesero_Checked" Unchecked="btnMesero_Unchecked">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Height="80" Margin="0,-3,3,0">
+                        <ToggleButton x:Name="btnMesero" Width="70" Height="55" Background="GhostWhite" 
+                                      Click="btnMesero_Click" HorizontalAlignment="Right" Checked="btnMesero_Checked" Unchecked="btnMesero_Unchecked">
                             <StackPanel>
-                                <Image Source="../../images/mesero.png" Width="30" Height="30" />
-                                <Label Content="Mesero" FontSize="14" />
+                                <Image Source="../../images/mesero.png" Width="35" Height="35" />
+                                <Label Content="Mesero" FontSize="11" FontWeight="Medium" Margin="0,-5, 0, 0" />
                             </StackPanel>
                         </ToggleButton>
+                        <TextBlock x:Name="Mesero" Tag="" FontSize="13" Foreground="Blue" Height="22" Width="70" TextWrapping="Wrap" Margin="0,-1,0,0" TextAlignment="Center"  />
                     </StackPanel>
                 </Grid>
             </GroupBox>

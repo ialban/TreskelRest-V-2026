@@ -6,6 +6,7 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <Configurations>All;Debug;Release</Configurations>
     <StartupObject>TreskelKeys.App</StartupObject>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FoxLearn.License">
@@ -14,6 +15,10 @@
   </ItemGroup>
   <ItemGroup>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FoxLearn" />
+    <PackageReference Include="SixLabors.ImageSharp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LibKeys\LibKeys.csproj" />

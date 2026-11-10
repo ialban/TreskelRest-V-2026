@@ -23,8 +23,11 @@
     <Configurations>All;Debug;Release</Configurations>
     <StartupObject />
     <ApplicationIcon>treskel.ico</ApplicationIcon>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="images\automata.png" />
+    <None Remove="images\mercado.png" />
     <None Remove="images\treskel-sb.png" />
   </ItemGroup>
   <ItemGroup>
@@ -34,10 +37,13 @@
     <PackageReference Include="Microsoft.CSharp" />
     <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="Npgsql" />
+    <PackageReference Include="SixLabors.ImageSharp" />
     <PackageReference Include="System.ComponentModel.Annotations" />
     <PackageReference Include="System.Data.DataSetExtensions" />
+    <PackageReference Include="System.Drawing.Common" />
     <PackageReference Include="System.Management" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" />
+    <PackageReference Include="System.Text.Encoding.CodePages" />
     <PackageReference Include="ZXing.Net" />
     <PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters" />
     <PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters.CoreServices" />
@@ -45,6 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="fonts\password.ttf" />
+    <Resource Include="images\mercado.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="images\treskel-sb.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -1035,6 +1044,11 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\automata.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

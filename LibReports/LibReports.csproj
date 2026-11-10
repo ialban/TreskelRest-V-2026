@@ -7,10 +7,13 @@
     <TargetFramework>net9.0</TargetFramework>
     <OutputType>Library</OutputType>
     <Configurations>All;Debug;Release</Configurations>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     
     <PackageReference Include="ClosedXML" />
+    
+    <PackageReference Include="SixLabors.ImageSharp" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="VBIDE">

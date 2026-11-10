@@ -418,52 +418,56 @@ namespace TreskelRest.cls
 
         public static void fillComboBoxFromDataTable(ComboBox cbo, DataTable dt, String incluir, bool combinaCodDsc = false)
         {
+            if (cbo == null) return;
             cbo.Items.Clear();
-            if (incluir.Equals("T"))
+
+            cbo.VerticalContentAlignment = System.Windows.VerticalAlignment.Center;
+
+            string textoDefault = incluir switch
             {
-                ComboBoxItem cboi = new ComboBoxItem();
-                cboi.Tag = "";
-                cboi.Content = "-- Todos --";
-                cboi.IsSelected = true;
-                cboi.Height = 40;
-                cbo.VerticalContentAlignment = System.Windows.VerticalAlignment.Center;
-                cbo.Items.Add(cboi);
+                "T" => "-- Todos --",
+                "S" => "-- Seleccione --",
+                "N" => "-- Ninguno --",
+                _ => null
+            };
+
+            if (textoDefault != null)
+            {
+                cbo.Items.Add(new ComboBoxItem
+                {
+                    Tag = "",
+                    Content = textoDefault,
+                    IsSelected = true,
+                    Height = 40
+                });
             }
 
-            if (incluir.Equals("S"))
-            {
-                ComboBoxItem cboi = new ComboBoxItem();
-                cboi.Tag = "";
-                cboi.Content = "-- Seleccione --";
-                cboi.IsSelected = true;
-                cboi.Height = 40;
-                cbo.VerticalContentAlignment = System.Windows.VerticalAlignment.Center;
-
-                cbo.Items.Add(cboi);
-            }
-
-            if (incluir.Equals("N"))
-            {
-                ComboBoxItem cboi = new ComboBoxItem();
-                cboi.Tag = "";
-                cboi.Content = "-- Ninguno --";
-                cboi.IsSelected = true;
-                cboi.Height = 40;
-                cbo.VerticalContentAlignment = System.Windows.VerticalAlignment.Center;
-
-                cbo.Items.Add(cboi);
-            }
+            if (dt == null || dt.Rows.Count == 0) return;
 
             foreach (DataRow dr in dt.Rows)
             {
-                ComboBoxItem cboi = new ComboBoxItem();
-                cboi.Tag = dr["codigo"].ToString();
-                cboi.Content = combinaCodDsc ? "(" + dr["codigo"].ToString() + ") " + dr["descripcion"].ToString() : dr["descripcion"].ToString();
-                cboi.Height = 40;
-                cbo.VerticalContentAlignment = System.Windows.VerticalAlignment.Center;
+                string codigo = dr["codigo"]?.ToString() ?? string.Empty;
+                string descripcion = dr["descripcion"]?.ToString() ?? string.Empty;
+                string contenido = combinaCodDsc ? $"({codigo}) {descripcion}" : descripcion;
 
-                cbo.Items.Add(cboi);
+                cbo.Items.Add(new ComboBoxItem
+                {
+                    Tag = codigo,
+                    Content = contenido,
+                    Height = 40
+                });
             }
+        }
+
+        public static string getTagFromComboBox(ComboBox cbo)
+        {
+            string valor = "";
+            if (cbo.SelectedItem is ComboBoxItem itemSeleccionado)
+            {
+                valor = itemSeleccionado.Tag?.ToString();
+            }
+            
+            return valor;
         }
 
         public static String sbDefineImagen(string valor)

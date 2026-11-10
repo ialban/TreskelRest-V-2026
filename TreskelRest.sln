@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.6.11822.322 stable
+VisualStudioVersion = 18.6.11822.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreskelRest", "TreskelRest\TreskelRest.csproj", "{DFA7EC4A-2783-48CA-91CD-CAB652C57797}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -31,8 +31,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPrinter", "TestPrinter\TestPrinter.csproj", "{99E6323C-2ECD-41EB-85FA-6CF19D026DEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibFtpClient", "LibFtpClient\LibFtpClient.csproj", "{8939BCFB-CB6B-467E-BA9D-AF5EC58F44D5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libBackup", "libBackup\libBackup.csproj", "{C676939C-D769-40FA-A00E-A37908473FE4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibFacturacionElectronica", "LibFacturacionElectronica\LibFacturacionElectronica.csproj", "{FBE76803-F076-4B0D-8417-563A53F1ADC4}"
 EndProject
@@ -129,12 +127,6 @@ Global
 		{8939BCFB-CB6B-467E-BA9D-AF5EC58F44D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8939BCFB-CB6B-467E-BA9D-AF5EC58F44D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8939BCFB-CB6B-467E-BA9D-AF5EC58F44D5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C676939C-D769-40FA-A00E-A37908473FE4}.All|Any CPU.ActiveCfg = Release|Any CPU
-		{C676939C-D769-40FA-A00E-A37908473FE4}.All|Any CPU.Build.0 = Release|Any CPU
-		{C676939C-D769-40FA-A00E-A37908473FE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C676939C-D769-40FA-A00E-A37908473FE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C676939C-D769-40FA-A00E-A37908473FE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C676939C-D769-40FA-A00E-A37908473FE4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FBE76803-F076-4B0D-8417-563A53F1ADC4}.All|Any CPU.ActiveCfg = Debug|Any CPU
 		{FBE76803-F076-4B0D-8417-563A53F1ADC4}.All|Any CPU.Build.0 = Debug|Any CPU
 		{FBE76803-F076-4B0D-8417-563A53F1ADC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

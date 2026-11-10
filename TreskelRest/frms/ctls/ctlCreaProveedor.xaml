@@ -9,6 +9,23 @@
     <Grid>
         <Label x:Name="label1" Content="Ruc : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16" VerticalContentAlignment="Center" Height="40"/>
         <TextBox x:Name="txtNid" HorizontalAlignment="Left" Margin="116,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="40" FontSize="16" VerticalContentAlignment="Center" MaxLength="13"/>
+        <Button x:Name="btnMercado" HorizontalAlignment="Left" Margin="330,10,0,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="16" Foreground="White" Click="btnMercado_Click">
+            <Button.Background>
+                <SolidColorBrush Color="#4E91E8" />
+            </Button.Background>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Margin" Value="3"/>
+                    </Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Margin" Value="3"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Image Source="../../images/mercado.png" Width="30" Height="30" />
+                <TextBlock VerticalAlignment="Center">Mercado</TextBlock>
+            </StackPanel>
+        </Button>
         <Label x:Name="label2" Content="Proveedor : " HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" FontSize="16" Height="40" VerticalContentAlignment="Center"/>
         <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Margin="116,73,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="562" MaxLength="50" FontSize="16" Height="40" VerticalContentAlignment="Center"  CharacterCasing="Upper" Typography.Capitals="AllSmallCaps" />
         <Label x:Name="label4" Content="Dirección : " HorizontalAlignment="Left" Margin="9,130,0,0" VerticalAlignment="Top" FontSize="16" Height="40" VerticalContentAlignment="Center"/>
@@ -25,8 +42,8 @@
                 <ScaleTransform ScaleX="2.7" ScaleY="2.7" />
             </CheckBox.LayoutTransform>
         </CheckBox>
-        <Grid HorizontalAlignment="Center">
-            <Button x:Name="btnGrabar" HorizontalAlignment="Left" Margin="10,470,0,0" VerticalAlignment="Top" Width="120" Height="40" Foreground="White" FontSize="16" Click="btnGrabar_Click">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="80" Width="290">
+            <Button x:Name="btnGrabar" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Height="40" Foreground="White" FontSize="16" Click="btnGrabar_Click">
                 <Button.Background>
                     <SolidColorBrush Color="#5cb85c" />
                 </Button.Background>
@@ -43,7 +60,7 @@
                     <TextBlock VerticalAlignment="Center">Grabar</TextBlock>
                 </StackPanel>
             </Button>
-            <Button x:Name="btnCancelar" HorizontalAlignment="Left" Margin="145,470,0,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="16" Foreground="White" Click="btnCancelar_Click">
+            <Button x:Name="btnCancelar" HorizontalAlignment="Left" Margin="145,10,0,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="16" Foreground="White" Click="btnCancelar_Click">
                 <Button.Background>
                     <SolidColorBrush Color="#d9534f" />
                 </Button.Background>

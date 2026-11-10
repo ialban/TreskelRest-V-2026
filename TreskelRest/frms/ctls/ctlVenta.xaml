@@ -222,15 +222,21 @@
                                 </StackPanel>
                             </Button>
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,3,0">
-                            <!--<Label x:Name="Mesero" FontSize="12" VerticalContentAlignment="Center" Height="60" Width="80" HorizontalContentAlignment="Center" />-->
-                            <TextBlock x:Name="Mesero" FontSize="12" Height="60" Width="70" TextWrapping="Wrap" TextAlignment="Right" />
-                            <ToggleButton x:Name="btnCajero" Width="80" Height="70" Background="GhostWhite" HorizontalAlignment="Right" Checked="btnCajero_Checked" Unchecked="btnCajero_Unchecked">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,0,95,0">
+                            <ToggleButton x:Name="btnAutomata" Width="80" Height="57" Background="GhostWhite" HorizontalAlignment="Right" Checked="btnAutomata_Checked" Unchecked="btnAutomata_Unchecked" IsChecked="True">
                                 <StackPanel>
-                                    <Image Source="../../images/cajero.png" Width="30" Height="30" />
-                                    <Label Content="Cajero" FontSize="14" />
+                                    <Image Source="../../images/automata.png" Width="35" Height="35" />
                                 </StackPanel>
                             </ToggleButton>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Margin="0,0,3,0">
+                            <ToggleButton x:Name="btnCajero" Width="80" Height="57" Background="GhostWhite" HorizontalAlignment="Right" Checked="btnCajero_Checked" Unchecked="btnCajero_Unchecked">
+                                <StackPanel>
+                                    <Image Source="../../images/cajero.png" Width="23" Height="23" />
+                                    <Label Content="Cajero" FontSize="12" />
+                                </StackPanel>
+                            </ToggleButton>
+                            <TextBlock x:Name="Mesero" FontSize="11" Height="15" Width="70" TextWrapping="Wrap" Foreground="Blue" TextAlignment="Center" />
                         </StackPanel>
                     </Grid>
                     <Grid Margin="0,0,0,0">

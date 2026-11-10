@@ -99,7 +99,7 @@ namespace Entidades
             DataTable dt = null;
             if (conn.conectar())
             {
-                String query = "SELECT provNid AS codigo, provNbr AS descripcion FROM tbIvtrProv WHERE provAtv = true";
+                string query = "SELECT provNid AS codigo, provNbr AS descripcion FROM tbIvtrProv WHERE provAtv = true ORDER BY provNbr";
 
                 dt = conn.ejecutaQuery(query);
                 conn.cerrar();

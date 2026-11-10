@@ -8,13 +8,14 @@
     <Copyright>Copyright ©  2022</Copyright>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
+    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Flurl" />
     <PackageReference Include="Flurl.Http" />
     <PackageReference Include="Microsoft.CSharp" />
     <PackageReference Include="Newtonsoft.Json" />
-    <PackageReference Include="System.Data.DataSetExtensions"/>
+    <PackageReference Include="System.Data.DataSetExtensions" />
     <PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters" />
     <PackageReference Include="Microsoft.AspNetCore.SystemWebAdapters.CoreServices" />
   </ItemGroup>

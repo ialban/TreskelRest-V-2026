@@ -90,8 +90,8 @@ namespace TreskelRest.frms.ctls
                 setTamanioBotones(btnToBill, 70, 14, 30);
                 setTamanioBotones(btnUndoBill, 70, 14, 30);
                 setTamanioBotones(btnImpFact, 70, 14, 30);
-                setTamanioBotones(btnMesero, 70, 14, 30);
-                Mesero.FontSize = 14;
+                setTamanioBotones(btnMesero, 70, 11, 30);
+                Mesero.FontSize = 13;
             }
             else
             {
@@ -114,7 +114,15 @@ namespace TreskelRest.frms.ctls
         {
             if (obj is ButtonBase btn)
             {
-                btn.Height = size;
+                if (btn.Name == "btnMesero")
+                {
+                    btn.Height = size - 15;
+                }
+                else
+                {
+                    btn.Height = size;
+                }
+                
                 btn.Width = size;
 
                 if (btn.Content is StackPanel panel && panel.Children.Count >= 2)

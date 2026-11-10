@@ -9,14 +9,13 @@
         <Label x:Name="label1" Content="Código : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16" VerticalContentAlignment="Center" Height="40"/>
         <TextBox x:Name="txtNid" HorizontalAlignment="Left" Margin="116,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="40" FontSize="16" VerticalContentAlignment="Center" MaxLength="4"/>
         <Label Content="Unidad : " HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" FontSize="16" Height="40" VerticalContentAlignment="Center"/>
-        <ComboBox x:Name="cboUnidad" HorizontalAlignment="Left" Margin="116,73,0,0" VerticalAlignment="Top" Width="299" Height="40" VerticalContentAlignment="Center" FontSize="16">
-            <ComboBoxItem Tag="" Height="40" VerticalContentAlignment="Center" FontSize="16" Content="-- Todos --" />
-            <ComboBoxItem Tag="U" Height="40" VerticalContentAlignment="Center" FontSize="16" IsSelected="True" >Unidad</ComboBoxItem>
+        <ComboBox x:Name="cboUnidad" HorizontalAlignment="Left" Margin="116,73,0,0" VerticalAlignment="Top" Width="200" Height="40" VerticalContentAlignment="Center" FontSize="16">
+            <ComboBoxItem Tag="" Height="40" VerticalContentAlignment="Center" FontSize="16" Content="-- Seleccione --" IsSelected="True"/>
+            <ComboBoxItem Tag="U" Height="40" VerticalContentAlignment="Center" FontSize="16" >Unidad</ComboBoxItem>
             <ComboBoxItem Tag="L" Height="40" VerticalContentAlignment="Center" FontSize="16">Libra</ComboBoxItem>
             <ComboBoxItem Tag="K" Height="40" VerticalContentAlignment="Center" FontSize="16">Kilo</ComboBoxItem>
             <ComboBoxItem Tag="O" Height="40" VerticalContentAlignment="Center" FontSize="16">Onza</ComboBoxItem>
             <ComboBoxItem Tag="G" Height="40" VerticalContentAlignment="Center" FontSize="16">Gramo</ComboBoxItem>
-            <ComboBoxItem Tag="P" Height="40" VerticalContentAlignment="Center" FontSize="16">Porciones</ComboBoxItem>
         </ComboBox>
         <Label x:Name="label4" Content="Producto : " HorizontalAlignment="Left" Margin="9,130,0,0" VerticalAlignment="Top" FontSize="16" Height="40" VerticalContentAlignment="Center"/>
         <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="40" Margin="116,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="535" FontSize="16" VerticalContentAlignment="Center" MaxLength="100"  CharacterCasing="Upper" Typography.Capitals="AllSmallCaps"/>

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LibKeys
 {
@@ -16,9 +12,9 @@ namespace LibKeys
             new string[]{ "78", "37", "31", "73", "45", "29", "52", "54", "37", "19" }
         };
 
-        public Boolean validar(string[] rotulos, string[] valores)
+        public bool validar(string[] rotulos, string[] valores)
         {
-            Boolean correcto = true;
+            bool correcto = true;
             string caracteres = "ABCDEFGHIJ";
 
             for(int i=0; i<3; i++)

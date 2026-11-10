@@ -885,6 +885,7 @@ namespace Entidades
                     DataRow row = dt.Rows[0];
 
                     fact.ventscl = row["ventscl"]?.ToString();
+                    fact.ventfch = row["ventfch"]?.ToString();
                     fact.cajacod = row["cajacod"]?.ToString();
                     fact.usuacod = row["usuacod"]?.ToString();
                     fact.ventfch = row["ventfch"]?.ToString();
@@ -894,6 +895,7 @@ namespace Entidades
                     fact.niddir = row["niddir"]?.ToString();
                     fact.nideml = row["nideml"]?.ToString();
                     fact.nidtlf = row["nidtlf"]?.ToString();
+                    fact.rucDev = row["rucdev"]?.ToString();
                     fact.docuToolTip = "";
 
                     string tipo = row["tipo"]?.ToString();
@@ -907,7 +909,7 @@ namespace Entidades
                         case "A":
                         case "D":
                             fact.docutip = "NotaDeCredito";
-                            fact.docuTipRet = (tipo == "A") ? "Anulación" : "Devolución"; // Operador ternario más rápido
+                            fact.docuTipRet = (tipo == "A") ? "Anulación" : "Devolución";
                             break;
                         default:
                             fact.docutip = "Retención";

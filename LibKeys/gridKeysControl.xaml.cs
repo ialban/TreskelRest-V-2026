@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LibKeys
 {
@@ -21,6 +11,7 @@ namespace LibKeys
     public partial class gridKeysControl : Window
     {
         private string codigo = "";
+        private bool generado = false;
 
         public event RetornaValidacion retornaValidacion;
         public delegate void RetornaValidacion(Boolean resultado);
@@ -45,7 +36,8 @@ namespace LibKeys
             this.generaTablero();
             this.generaRotulos();
 
-            texto1.Focus();            
+            texto1.Focus();
+            generado = true;
         }
 
         public void Limpia()
@@ -67,6 +59,8 @@ namespace LibKeys
         public void generaRotulos()
         {
             string letras = "";
+
+            if (generado) return;
 
             for (int i = 0; i < 3; i++)
             {

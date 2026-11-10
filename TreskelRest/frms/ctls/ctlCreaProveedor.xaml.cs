@@ -151,5 +151,14 @@ namespace TreskelRest.frms.ctls
         {
             contenedor.Close();
         }
+
+        private void btnMercado_Click(object sender, RoutedEventArgs e)
+        {
+            txtNid.Text = "9999999999999";
+            txtNombre.Text = "MERCADO";
+            txtDireccion.Text = "NINGUNO";
+            txtTfl.Text = "9999999999";
+            chkEstado.IsChecked = true;
+        }
     }
 }

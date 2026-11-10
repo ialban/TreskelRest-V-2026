@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -25,6 +26,9 @@ namespace TreskelRest
             CultureInfo.DefaultThreadCurrentCulture = culturaPunto;
             CultureInfo.DefaultThreadCurrentUICulture = culturaPunto;
 
+            System.Threading.Thread.CurrentThread.CurrentCulture = culturaPunto;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = culturaPunto;
+
             // Forzar a los controles visuales de WPF a usar esta cultura
             FrameworkElement.LanguageProperty.OverrideMetadata(
                 typeof(FrameworkElement),
@@ -32,6 +36,8 @@ namespace TreskelRest
                     System.Windows.Markup.XmlLanguage.GetLanguage(culturaPunto.IetfLanguageTag)
                 )
             );
+
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
             base.OnStartup(e);
         }
